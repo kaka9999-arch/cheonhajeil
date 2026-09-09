@@ -12,7 +12,7 @@
 <title>이세계 길드 이야기</title>
 <meta name="description" content="F급 모험가 길드를 물려받은 접수원이 20년 안에 S급 길드를 만드는 픽셀 경영 시뮬레이션. 의뢰·파티·건물 콤보·전이자·마왕군.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="style.dc8ec494.css">
+<link rel="stylesheet" href="style.91be9949.css">
 </head>
 <body>
 <div id="app">
@@ -50,12 +50,13 @@
     <div class="topbar">
       <div class="date"><b id="tYear">1</b>년 <span id="tMonth">1</span>월 <span id="tDay">1</span>일</div>
       <div class="mid">
-        <div class="stat"><span>금화 <b id="tGold">500</b></span><span>명성 <b id="tFame">0</b></span><span>길드 <b id="tRank">F</b></span></div>
+        <div class="stat"><span>금화 <b id="tGold">500</b></span><span>명성 <b id="tFame">0</b></span><span>소재 <b id="tMat">0</b></span><span>연구 <b id="tRp">0</b></span><span>길드 <b id="tRank">F</b></span></div>
         <div class="demon"><span>마왕군</span><div class="bar"><i id="tDemon" style="width:0%"></i></div><span id="tDemonN">0</span></div>
       </div>
       <div class="speed" id="speed"><button data-s="0" type="button">II</button><button data-s="1" class="active" type="button">▶</button><button data-s="2" type="button">▶▶</button><button data-s="4" type="button">▶▶▶</button></div>
     </div>
-    <div class="guildwrap"><canvas id="guild"></canvas><div id="floats"></div><div id="stamp" class="stampfx"></div></div>
+    <div class="guildwrap"><canvas id="guild"></canvas><div id="floats"></div></div>
+    <div class="fieldwrap"><canvas id="field"></canvas><div id="stamp" class="stampfx"></div></div>
     <div class="tabs" id="tabs">
       <button data-tab="guild" class="active" type="button">길드</button>
       <button data-tab="quests" type="button">의뢰<span class="badge hidden" id="bQuests"></span></button>
@@ -88,6 +89,6 @@
 <div id="crt"></div>
 <div id="wipe"></div>
 
-<script src="app.7af82480.js"></script>
+<script src="app.2c112e45.js"></script>
 </body>
 </html>
