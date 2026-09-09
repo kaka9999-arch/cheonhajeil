@@ -1,0 +1,16 @@
+{
+  "name": "이세계 길드 이야기",
+  "short_name": "길드 이야기",
+  "description": "F급 모험가 길드를 물려받은 접수원이 20년 안에 S급 길드를 만드는 픽셀 경영 시뮬레이션",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#06061a",
+  "theme_color": "#06061a",
+  "lang": "ko",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
