@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#06061a">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>이세계 길드 이야기</title>
+<meta name="description" content="F급 모험가 길드를 물려받은 접수원이 20년 안에 S급 길드를 만드는 픽셀 경영 시뮬레이션. 의뢰·파티·건물 콤보·전이자·마왕군.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="style.dc8ec494.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="scene"></canvas>
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- GUILD MANAGEMENT -</div>
+      <h1>이세계<br><em>길드 이야기</em></h1>
+      <canvas class="logo" id="logo" width="96" height="48"></canvas>
+      <div class="eyebrow">F급 길드의 접수원이 되어 20년 안에 S급으로</div>
+    </div>
+    <div class="parch">
+      <div class="eyebrow">접수원 <b id="titleName">무명</b> <button id="btnName" class="btn sm dark" type="button" style="margin-left:6px">이름</button></div>
+      <div id="titleInfo" class="mute" style="margin:6px 0"></div>
+      <div class="row" style="margin-top:8px">
+        <button id="btnContinue" class="btn primary hidden" type="button">이어서 운영</button>
+        <button id="btnNew" class="btn primary" type="button">새 길드 열기</button>
+      </div>
+      <div id="hallBox" class="mute" style="margin-top:8px"></div>
+    </div>
+    <div id="dailyBox"></div>
+    <div class="meta-grid" id="metaGrid"></div>
+    <div class="row">
+      <button id="btnRank" class="btn dark" type="button">길드 순위표</button>
+      <button id="btnHelp" class="btn dark" type="button">규칙</button>
+    </div>
+    <div id="rankPane" class="hidden" style="margin-top:10px">
+      <div class="tabs2"><button data-tab="all" class="active" type="button">전체</button><button data-tab="daily" type="button">오늘의 도전</button></div>
+      <div id="rankList"></div>
+    </div>
+  </section>
+
+    <section id="main" class="screen hidden">
+    <div class="topbar">
+      <div class="date"><b id="tYear">1</b>년 <span id="tMonth">1</span>월 <span id="tDay">1</span>일</div>
+      <div class="mid">
+        <div class="stat"><span>금화 <b id="tGold">500</b></span><span>명성 <b id="tFame">0</b></span><span>길드 <b id="tRank">F</b></span></div>
+        <div class="demon"><span>마왕군</span><div class="bar"><i id="tDemon" style="width:0%"></i></div><span id="tDemonN">0</span></div>
+      </div>
+      <div class="speed" id="speed"><button data-s="0" type="button">II</button><button data-s="1" class="active" type="button">▶</button><button data-s="2" type="button">▶▶</button><button data-s="4" type="button">▶▶▶</button></div>
+    </div>
+    <div class="guildwrap"><canvas id="guild"></canvas><div id="floats"></div><div id="stamp" class="stampfx"></div></div>
+    <div class="tabs" id="tabs">
+      <button data-tab="guild" class="active" type="button">길드</button>
+      <button data-tab="quests" type="button">의뢰<span class="badge hidden" id="bQuests"></span></button>
+      <button data-tab="advs" type="button">모험가</button>
+      <button data-tab="dex" type="button">도감</button>
+      <button data-tab="book" type="button">명부</button>
+    </div>
+    <div class="pane" id="pane"></div>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="result">
+      <div class="eyebrow" id="resultEyebrow"></div>
+      <h1 id="resultTitle"></h1>
+      <div class="big"><span id="resultScore">0</span><small>점</small></div>
+    </div>
+    <div id="resultText" class="parch" style="margin-bottom:8px"></div>
+    <div class="meta-grid" id="resultGrid"></div>
+    <div id="resultRank" class="eyebrow" style="margin:6px 0 10px"></div>
+    <div id="hallPick"></div>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">새 길드 열기</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+  </section>
+
+  <div id="discover" class="discover"><div class="box"><div class="k" id="discK">NEW!</div><h2 id="discName"></h2><p id="discDesc"></p><p class="mute" style="margin-top:8px">누르면 닫힘</p></div></div>
+</div>
+
+<div id="modal" class="modal hidden"><div class="parch" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="crt"></div>
+<div id="wipe"></div>
+
+<script src="app.a8acefb1.js"></script>
+</body>
+</html>

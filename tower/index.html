@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#06061a">
+<link rel="icon" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>백층탑</title>
+<meta name="description" content="매치3 대결로 100층 탑을 오르는 로그라이트 RPG. 죽으면 1층부터, 직업과 유물은 남는다.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="style.da395cd2.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="scene"></canvas>
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- MATCH 3 ROGUELITE -</div>
+      <h1>백층<em>탑</em></h1>
+      <div class="eyebrow">죽으면 1층부터 · 직업과 유물은 남는다</div>
+    </div>
+    <div class="parch">
+      <div class="eyebrow">직업 선택</div>
+      <div id="classes" class="classes"></div>
+      <div id="startRelic"></div>
+      <div id="ascBox"></div>
+      <div class="row" style="margin-top:8px">
+        <button id="btnContinue" class="btn hidden" type="button">이어서 오르기</button>
+        <button id="btnStart" class="btn primary" type="button">탑에 오르기</button>
+      </div>
+    </div>
+    <div id="dailyBox"></div>
+    <div id="rivalBox"></div>
+    <div class="meta-grid" id="metaGrid"></div>
+    <div class="row">
+      <button id="btnRank" class="btn dark" type="button">명예의 탑</button>
+      <button id="btnAch" class="btn dark" type="button">업적·칭호</button>
+      <button id="btnStats" class="btn dark" type="button">기록</button>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button id="btnHelp" class="btn dark" type="button">규칙</button>
+      <button id="btnSettings" class="btn dark" type="button">설정</button>
+    </div>
+    <div id="rankPane" class="hidden" style="margin-top:12px">
+      <div id="rankTabs" class="tabs"><button data-tab="all" class="active" type="button">전체</button><button data-tab="week" type="button">이번 주</button><button data-tab="daily" type="button">오늘의 도전</button></div>
+      <div id="rankList"></div>
+    </div>
+  </section>
+
+    <section id="tower" class="screen hidden">
+    <div class="head">
+      <div><div class="eyebrow" id="towerCls">전사</div><div class="fl"><span id="towerFloor">1</span><small>층</small></div></div>
+      <div class="stat-line" id="towerStats"></div>
+    </div>
+    <div class="bar"><i id="towerHp"></i><span id="towerHpTxt"></span></div>
+    <div class="mana" id="towerMana" style="margin-top:4px"></div>
+    <canvas id="towerCanvas" class="shaft-canvas"></canvas>
+    <div id="towerRival"></div>
+    <div class="inv" id="towerInv"></div>
+    <button id="btnEnter" class="btn primary wide" type="button">진입</button>
+    <div class="row" style="margin-top:8px"><button id="btnSpellsView" class="btn dark" type="button">주문 확인</button><button id="btnQuit" class="btn dark" type="button">탑 밖으로 (포기)</button></div>
+  </section>
+
+    <section id="battle" class="screen hidden">
+        <div class="stage" id="stage">
+      <canvas id="mon"></canvas>
+      <div id="bubble"></div>
+      <div id="replayTag" class="replaytag hidden">REPLAY</div>
+    </div>
+    <div class="unit enemy" id="enemyPanel"></div>
+    <div class="boardwrap">
+      <canvas id="board" width="640" height="640"></canvas>
+      <div id="turnBanner" class="turnbanner"></div>
+      <div id="floats"></div>
+    </div>
+    <div class="unit me" id="playerPanel"></div>
+    <div class="spells" id="spellGrid"></div>
+    <div class="battlebar" id="battleBar"></div>
+  </section>
+
+    <section id="reward" class="screen hidden">
+    <div class="parch">
+      <div class="eyebrow" id="rewardEyebrow">승리</div>
+      <h2 id="rewardTitle">전리품</h2>
+      <div class="reward-sum" id="rewardSum"></div>
+      <div id="rewardLevel"></div>
+      <h3 id="rewardCardsTitle">주문 카드 · 하나를 고른다</h3>
+      <div class="cards" id="rewardCards"></div>
+      <div class="row"><button id="btnRewardSkip" class="btn" type="button">건너뛰기</button></div>
+    </div>
+  </section>
+
+    <section id="room" class="screen hidden">
+    <div class="parch">
+      <div class="eyebrow" id="roomEyebrow"></div>
+      <h2 id="roomTitle"></h2>
+      <p id="roomText"></p>
+      <div id="roomBody"></div>
+      <div class="row" style="margin-top:10px"><button id="btnRoomLeave" class="btn primary" type="button">다음 층으로</button></div>
+    </div>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="result">
+      <div class="eyebrow" id="resultEyebrow"></div>
+      <h1 id="resultTitle"></h1>
+      <div class="big"><span id="resultFloor">0</span><small>층</small></div>
+    </div>
+    <div class="result-grid" id="resultGrid"></div>
+    <div id="resultUnlocks"></div>
+    <div id="resultRank" class="eyebrow" style="margin:6px 0 12px"></div>
+    <button id="btnInfinite" class="btn primary wide hidden" type="button" style="margin-bottom:8px">무한탑으로 계속 오른다 (101층~)</button>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 오르기</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+    <div class="sharewrap">
+      <div class="eyebrow" style="margin-bottom:6px">자랑 카드</div>
+      <canvas id="shareCanvas" width="600" height="340"></canvas>
+      <div class="row" style="margin-top:8px"><button id="btnShareSave" class="btn dark" type="button">이미지 저장</button><button id="btnShare" class="btn dark" type="button">공유</button><button id="btnReplay" class="btn dark" type="button">마지막 전투 되감기</button></div>
+    </div>
+  </section>
+
+    <canvas id="fx"></canvas>
+  <div id="combo" class="combo"></div>
+  <div id="flash" class="flash"></div>
+  <div id="bossIntro" class="bossintro"></div>
+</div>
+
+<div id="modal" class="modal hidden"><div class="parch" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="crt"></div>
+<div id="wipe"></div>
+
+<script src="app.fec9185a.js"></script>
+</body>
+</html>

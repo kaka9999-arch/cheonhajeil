@@ -1,0 +1,16 @@
+{
+  "name": "백층탑",
+  "short_name": "백층탑",
+  "description": "매치3 대결로 100층 탑을 오르는 로그라이트 RPG",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#141317",
+  "theme_color": "#141317",
+  "lang": "ko",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
