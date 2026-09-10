@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#06061a">
+<link rel="icon" href="data:,">
+<title>달빛 낚시터</title>
+<meta name="description" content="밤 연못에서 90초 동안 낚시. 꾹 눌러 던지고, 느낌표에 낚아채고, 초록 칸에 고기를 가둬 감아올린다. 총 어획량으로 겨루는 픽셀 낚시 게임.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="style.dfc29e0f.css">
+</head>
+<body>
+<div id="app">
+  <header class="head"><h1>달빛 낚시터<small>MOONLIT POND</small></h1><a href="../">◀ 게임 상자</a></header>
+
+    <section class="screen title" id="scrTitle">
+    <canvas id="titleArt" width="240" height="120"></canvas>
+    <div class="parch">
+      <div class="sub">- 90초 한 판 -</div>
+      <div class="kv"><span>낚시꾼</span><b id="tNick">무명</b></div>
+      <div class="kv"><span>최고 어획량</span><b id="tBest">0.0 kg</b></div>
+      <div class="kv"><span>공용 지갑</span><b id="tWallet">0 G</b></div>
+      <div class="mute" style="margin-top:6px">화면을 <b style="color:var(--ylw)">꾹 누르면</b> 힘이 차고, 떼면 던진다. 멀리 던질수록 귀한 고기. <b style="color:var(--ylw)">!</b> 가 뜨면 바로 눌러 낚아채고, 초록 칸에 고기를 가두면 감긴다.</div>
+    </div>
+    <button class="btn primary" id="btnStart" type="button">낚시 시작</button>
+    <div class="row"><button class="btn" id="btnRank" type="button">순위표</button><button class="btn" id="btnNick" type="button">이름 바꾸기</button><button class="btn" id="btnCrt" type="button">주사선 끄기</button></div>
+    <div class="parch"><h2>어종 도감<small class="mute" id="codexCount"></small></h2><div class="codex" id="codex"></div></div>
+    <div class="parch" id="giftBox"><h2>선물 상자</h2><div class="mute">빠칭코 상점에서 산 아이템을 여기서 쓴다.</div><div class="gift" id="giftList"></div></div>
+  </section>
+
+    <section class="screen" id="scrPlay" hidden>
+    <div class="hud"><div><span>남은 시간</span><b id="hTime">90</b></div><div><span>어획량</span><b id="hKg">0.0</b></div><div><span>마릿수</span><b id="hN">0</b></div><div><span>골드</span><b id="hG">0</b></div></div>
+    <div id="stageWrap"><canvas id="stage" width="240" height="200"></canvas><div id="pop"></div><div id="msg">꾹 눌러서 던지기</div></div>
+    <div class="hint" id="hint">멀리 던질수록 <b>귀한 고기</b>가 문다</div>
+    <button class="btn" id="btnQuit" type="button">그만두기</button>
+  </section>
+
+    <section class="screen" id="scrResult" hidden>
+    <div class="parch">
+      <h2>오늘의 조과</h2>
+      <div class="big" id="rKg">0.0 kg</div>
+      <div class="kv"><span>마릿수</span><b id="rN">0</b></div>
+      <div class="kv"><span>가장 큰 고기</span><b id="rBig">-</b></div>
+      <div class="kv"><span>지갑에 넣은 골드</span><b id="rG">0 G</b></div>
+      <div class="catchList" id="rList"></div>
+      <div class="mute" id="rRank">순위표에 올리는 중…</div>
+    </div>
+    <button class="btn primary" id="btnAgain" type="button">한 판 더</button>
+    <button class="btn" id="btnHome" type="button">타이틀로</button>
+  </section>
+</div>
+
+<div class="modal" id="rankModal" hidden><div class="parch"><h2>순위표<small class="mute">한 판 최고 어획량</small></h2><div class="rank" id="rankList"></div><button class="btn" id="rankClose" type="button">닫기</button></div></div>
+<div class="modal" id="nickModal" hidden><div class="parch"><h2>낚시꾼 이름</h2><div class="mute">순위표에 올라갈 이름. 한글 2~8자. 다른 게임과 같이 쓴다.</div><input id="nickIn" maxlength="8" placeholder="예: 달빛강태공"><div class="err" id="nickErr"></div><button class="btn primary" id="nickGo" type="button">정하기</button></div></div>
+<div id="crt"></div>
+<script src="app.5befdc05.js"></script>
+</body>
+</html>
