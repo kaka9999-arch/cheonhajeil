@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#06061a">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>천하제일</title>
+<meta name="description" content="폐관수련으로 내공을 쌓고 강호 열두 문파를 한 수에 꺾는 무협 먼치킨 방치형 게임">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="style.f70f7d38.css">
+</head>
+<body>
+<div id="app">
+
+    <header>
+    <div><span class="logo">천하<em>제일</em></span><span class="sub">天下第一</span> <a class="sub" href="../" style="margin-left:8px;color:var(--ylw)">◀ 게임 상자</a></div>
+    <button id="nameSeal" class="nameseal" type="button" title="이름 바꾸기">무명</button>
+  </header>
+
+  <main>
+        <section id="trainScreen" class="screen">
+      <div class="qi-stage">
+        <canvas id="meridian"></canvas>
+        <div class="qi-readout">
+          <div class="lbl">내 공</div>
+          <div class="num"><span id="qiNum">0</span></div>
+          <div class="rate" id="qiRate"></div>
+        </div>
+        <div class="realm-tag" id="realmName"><b>삼류</b></div>
+        <div class="tap-hint">두드려서 운기 · 기가 단전에 모인다</div>
+        <button id="breakBtn" class="break-seal" type="button" disabled>이류 돌파<small>필요 내공 500</small></button>
+      </div>
+      <div class="shelf-head"><h2>비급 서가</h2><span>책등을 눌러 익힌다 · 경지마다 새 비급</span></div>
+      <div id="shelf" class="shelf"></div>
+      <div class="shelf-foot"><span>수련 = 초당 내공 · 전투 = 비무 전투력 · 운기 = 두드림 · 폐관 = 오프라인</span><button id="buyMax" type="button">싼 것부터 전부 익히기</button></div>
+      <div class="news"><span class="tag">강호 소식</span><div class="track" id="newsTrack"></div></div>
+    </section>
+
+        <section id="worldScreen" class="screen hidden">
+      <div id="mapWrap">
+        <canvas id="map"></canvas>
+        <div class="map-title"><div class="brush">강호 지도</div><div class="sub">문장을 눌러 문파를 찾아간다</div></div>
+        <div class="power-tag"><div class="lbl">전투력</div><div class="num" id="powerNum">1</div></div>
+      </div>
+      <div class="sect-list"><h3>열두 문파와 그 위</h3><div id="sectList"></div></div>
+      <div id="sheet" class="sheet hidden"><div id="sheetBody"></div></div>
+    </section>
+
+        <section id="bookScreen" class="screen hidden">
+      <div id="bookSeg" class="seg"><button data-p="rank" class="active" type="button">강호 명부</button><button data-p="seal" type="button">별호</button><button data-p="set" type="button">설정</button></div>
+      <div id="pane-rank" class="pane">
+        <h3>강호 명부</h3>
+        <p class="desc">역대 최고 내공 순. 경지 돌파·문파 평정 때 자동으로 올라간다.</p>
+        <div id="myRank" class="myrank"></div>
+        <div id="rankList"></div>
+        <div style="text-align:center;margin-top:10px"><button id="rankRefresh" class="linkbtn" type="button">지금 기록 올리고 새로 고침</button></div>
+      </div>
+      <div id="pane-seal" class="pane hidden">
+        <h3>별호의 벽</h3>
+        <p class="desc">강호가 그대에게 붙인 이름들. 붉은 낙관이 얻은 별호다.</p>
+        <div id="sealWall" class="seals"></div>
+        <div id="sealDesc" class="seal-desc"></div>
+      </div>
+      <div id="pane-set" class="pane hidden">
+        <h3>행적</h3>
+        <div id="statGrid" class="stat-grid"></div>
+        <div class="setrow"><span>효과음<small>목탁·징·낙관 소리</small></span><button id="soundBtn" type="button">켬</button></div>
+        <div class="setrow"><span>주사선<small>브라운관 느낌의 가로줄. 세 게임에 같이 적용</small></span><button id="crtBtn" type="button">켬</button></div>
+        <div class="setrow" style="flex-direction:column;align-items:stretch;gap:6px"><span>선물 상자<small>양털 빠칭코 상점에서 산 아이템. 여기서 쓴다.</small></span><div id="giftBox"></div></div>
+        <div class="setrow"><span>이름<small>한글 2~8자</small></span><button id="renameBtn" type="button">바꾸기</button></div>
+        <div class="setrow"><span>환골탈태<small id="rebirthInfo"></small></span><button id="rebirthBtn" class="danger" type="button">다시 태어나기</button></div>
+        <div class="setrow" style="flex-direction:column;align-items:stretch;gap:8px">
+          <span>세이브 코드<small>다른 기기로 옮길 때. 복사한 코드를 아래 칸에 붙여넣고 불러온다.</small></span>
+          <textarea id="exportArea" class="code" placeholder="여기에 세이브 코드를 붙여넣거나, 내보내기를 누르면 코드가 나타난다"></textarea>
+          <div style="display:flex;gap:8px"><button id="exportBtn" type="button" style="flex:1">내보내기(복사)</button><button id="importBtn" type="button" style="flex:1">불러오기</button></div>
+        </div>
+        <div class="setrow"><span>기록 삭제<small>이 기기의 세이브를 지운다</small></span><button id="resetBtn" class="danger" type="button">삭제</button></div>
+      </div>
+    </section>
+  </main>
+
+    <nav>
+    <button id="tab-train" type="button">수련<small>修練</small></button>
+    <button id="tab-world" type="button">강호<small>江湖</small></button>
+    <button id="tab-book" type="button">명부<small>名簿</small></button>
+  </nav>
+</div>
+
+<div id="duel" class="duel hidden">
+  <div class="scroll">
+    <div class="head"><span class="vs" id="duelVs"></span><span style="font-size:11px;color:var(--tx2)">比武</span></div>
+        <canvas id="duelStage"></canvas>
+    <div class="lines" id="duelLines"></div>
+    <div class="foot"><button id="duelSkip" type="button">건너뛰기</button><button id="duelClose" class="primary hidden" type="button">돌아가기</button></div>
+  </div>
+</div>
+
+<div id="modal" class="modal hidden"><div class="box" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="crt"></div>
+
+<script src="app.8277dc74.js"></script>
+</body>
+</html>
