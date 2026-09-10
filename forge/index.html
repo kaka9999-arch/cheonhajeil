@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#06061a">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>명검 두드리기</title>
+<meta name="description" content="떨어지는 박자에 맞춰 망치를 내려쳐 검을 벼린다. 정확할수록 좋은 검, 좋은 검일수록 비싸게 팔린다. 박자는 검마다 더 빨라진다.">
+<link rel="stylesheet" href="style.e34d4826.css">
+</head>
+<body>
+<div id="app">
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- 리듬 액션 -</div>
+      <h1>명검<em>두드리기</em></h1>
+      <div class="eyebrow">박자에 맞춰 두드려 검을 벼리는 대장장이</div>
+      <div class="eyebrow" style="margin-top:4px"><a href="../" style="color:var(--ylw)">◀ 게임 상자</a></div>
+    </div>
+    <div class="parch">
+      <div class="eyebrow">이름 <b id="titleName">무명</b> <button id="btnName" class="btn dark" type="button" style="margin-left:6px;padding:4px 8px">이름</button></div>
+      <p style="margin-top:8px">노란 <b>타격존</b>에 파란 박자가 닿는 순간 <b>망치</b>를 눌러라. 정확할수록(완벽 &gt; 좋음) 검 품질이 오른다. <b>박자를 놓치면 내구도(♥)가 줄고</b>, 0이 되면 검이 깨져 그 자리에서 끝난다. 검을 완성할 때마다 내구도가 하나 돌아오지만, 다음 검은 <b>더 빨라진다</b> — 언젠가는 반드시 깨진다.</p>
+      <div class="row" style="margin-top:8px"><button id="btnStart" class="btn primary wide" type="button">대장간 열기</button></div>
+    </div>
+    <div class="meta-grid" id="metaGrid"></div>
+    <div class="row">
+      <button id="btnRank" class="btn dark" type="button">명장 명부</button>
+    </div>
+    <div id="rankPane" class="hidden" style="margin-top:10px">
+      <div id="rankList"></div>
+    </div>
+  </section>
+
+    <section id="play" class="screen hidden">
+    <div class="play-head">
+      <div class="fl"><small>제</small><span id="swordNo">1</span><small>검</small></div>
+      <div class="stat-line"><span>판매 대금 <b id="lootNow">0</b>냥</span></div>
+    </div>
+    <div class="hearts" id="hearts"></div>
+    <div class="bpmline">박자 <b id="bpmNow">92</b>BPM · <span id="beatProg">0/16</span></div>
+
+    <div class="lanewrap" id="lane">
+      <div class="hitzone" id="hitzone"></div>
+      <div class="judgefx" id="judgefx"></div>
+    </div>
+
+    <button id="hammer" class="hammer" type="button">쾅! 두드리기</button>
+    <div class="swordinfo"><span>완벽 <b id="cPerfect">0</b></span><span>좋음 <b id="cGood">0</b></span><span>빗맞음 <b id="cMiss">0</b></span></div>
+
+    <div class="row giveup"><button id="btnGiveup" class="btn dark" type="button">여기까지 팔고 마치기</button></div>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="result">
+      <div class="eyebrow" id="resultEyebrow"></div>
+      <h1 id="resultTitle"></h1>
+      <div class="big"><span id="resultLoot">0</span><small>냥</small></div>
+    </div>
+    <div class="result-grid" id="resultGrid"></div>
+    <div id="resultRank" class="eyebrow" style="margin:6px 0 12px"></div>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 벼린다</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+  </section>
+
+</div>
+
+<div id="modal" class="modal hidden"><div class="parch" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="flash" class="flash"></div>
+<div id="crt"></div>
+
+<script src="app.dde35656.js"></script>
+</body>
+</html>
