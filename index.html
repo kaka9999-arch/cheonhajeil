@@ -8,7 +8,7 @@
 <title>게임 상자</title>
 <meta name="description" content="브라우저에서 바로 하는 픽셀 게임 모음. 무협 방치형, 매치3 로그라이트, 길드 경영, 빠칭코. 공개 랭킹과 공용 지갑.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="style.5d7a6f4f.css">
+<link rel="stylesheet" href="style.da85db34.css">
 </head>
 <body>
 <div id="app">
@@ -18,7 +18,9 @@
     <div class="me parch">
       <div class="row2"><span>접수원 · 모험가</span><b id="nick">무명</b></div>
       <div class="row2"><span>공용 지갑</span><b id="wallet">0</b><small>G</small></div>
+      <div class="row2"><span>동기화 코드</span><b id="syncCode" class="code">-</b></div>
       <div class="hint">지갑 골드는 양털 빠칭코에서 벌고, 상점에서 산 아이템은 각 게임의 선물 상자에서 쓴다</div>
+      <div class="btns"><button class="btn primary" id="btnSync" type="button">저장 동기화</button></div>
     </div>
   </header>
   <main>
@@ -28,11 +30,24 @@
     <div id="betaList" class="cards"></div>
     <div class="sect"><h2>모든 게임</h2><span id="allCount" class="mute"></span></div>
     <div id="allList" class="cards"></div>
-    <div class="parch note"><b>랭킹</b>은 게임마다 따로 있고 이름은 함께 쓴다. <b>저장</b>은 이 브라우저에만 남는다. 다른 기기로 옮기려면 각 게임의 세이브 코드를 쓴다.</div>
+    <div class="parch note"><b>랭킹</b>은 게임마다 따로 있고 이름은 함께 쓴다. <b>저장</b>은 게임을 하는 동안 서버에도 올라간다. 다른 기기에서는 위 <b>동기화 코드</b>를 넣으면 기록·지갑·랭킹이 그대로 이어진다.</div>
   </main>
   <footer class="mute">kaka9999-arch.github.io/cheonhajeil · 이미지 파일 없이 캔버스와 글자로만 그린 게임들</footer>
 </div>
+<div class="modal" id="syncModal" hidden><div class="parch">
+  <h2>저장 동기화</h2>
+  <div class="mute">게임을 하는 동안 저장이 서버에 올라간다. 다른 기기에서 아래 코드를 넣으면 같은 사람으로 이어진다.</div>
+  <div class="codebox"><span>내 코드</span><b id="myCode">불러오는 중…</b><button class="btn" id="codeCopy" type="button">복사</button></div>
+  <div class="row"><button class="btn" id="codeRotate" type="button">코드 재발급</button><button class="btn" id="autoToggle" type="button">자동 올리기 끄기</button></div>
+  <h3>다른 기기의 코드 넣기</h3>
+  <div class="mute">이 기기의 기록은 그 코드의 기록으로 <b style="color:var(--red)">전부 바뀐다</b>. 먼저 이 기기 것을 올려 두고 싶으면 아래 "전부 올리기"를 누른다.</div>
+  <div class="row"><input id="codeIn" maxlength="9" placeholder="XXXX-XXXX" autocapitalize="characters" autocomplete="off"><button class="btn primary" id="codeGo" type="button">이어하기</button></div>
+  <div class="err" id="syncErr"></div>
+  <h3>게임별 저장</h3>
+  <div id="syncList" class="synclist"><div class="mute">불러오는 중…</div></div>
+  <div class="row"><button class="btn" id="pushAll" type="button">전부 올리기</button><button class="btn" id="syncClose" type="button">닫기</button></div>
+</div></div>
 <div id="crt"></div>
-<script src="app.5de8d915.js"></script>
+<script src="app.28854ed3.js"></script>
 </body>
 </html>
