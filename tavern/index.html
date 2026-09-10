@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#06061a">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>주막 소동</title>
+<meta name="description" content="재료를 담아 손님 주문을 맞추는 주막 요리 액션. 손님 참을성이 다하기 전에 내야 하고, 날이 갈수록 손님은 몰려오고 요리는 복잡해진다.">
+<link rel="stylesheet" href="style.61c6ae0b.css">
+</head>
+<body>
+<div id="app">
+
+    <section id="title" class="screen">
+    <div class="hero" style="text-align:center;padding:16px 0 10px">
+      <div class="sub" style="font-size:11px;color:var(--tx2);letter-spacing:2px">- 요리 액션 -</div>
+      <h1>주막<em>소동</em></h1>
+      <div class="eyebrow">몰려드는 손님, 손이 열 개라도 모자란 주막</div>
+      <div class="eyebrow" style="margin-top:4px"><a href="../" style="color:var(--ylw)">◀ 게임 상자</a></div>
+    </div>
+    <div class="parch">
+      <div class="eyebrow">주모 <b id="titleName">무명</b> <button id="btnName" class="btn dark sm" type="button" style="margin-left:6px">이름</button></div>
+      <p style="margin-top:8px">손님이 주문한 요리의 <b>재료를 접시에 담고 그 손님을 누르면</b> 낸다(재료 순서는 상관없다). <b>빨리 낼수록 팁</b>이 붙고 연달아 내면 콤보. 참을성이 다한 손님은 그냥 가 버리고 <b>평판(♥)이 깎인다</b> — 평판이 0이면 문을 닫는다. 하루 70초, 날이 갈수록 손님은 빨리 오고 새 요리가 늘어난다. 하루가 끝나면 강화 하나를 고른다.</p>
+      <div class="row" style="margin-top:6px"><button id="btnStart" class="btn primary wide" type="button">주막 문 열기</button></div>
+    </div>
+    <div class="meta-grid" id="metaGrid"></div>
+    <div class="row" style="margin-top:6px"><button id="btnRank" class="btn dark" type="button">장부 명부</button></div>
+    <div id="rankPane" hidden style="margin-top:8px"><div id="rankList"></div></div>
+  </section>
+
+    <section id="play" class="screen hidden">
+    <div class="hud">
+      <div class="day"><small>제</small><span id="hDay">1</span><small>일</small></div>
+      <div><div class="hearts" id="hearts"></div><div class="bar" style="margin-top:4px"><i id="timeFill"></i><span id="timeTxt"></span></div></div>
+      <div class="rev">매출<b id="hRev">0</b></div>
+    </div>
+    <div class="combo" id="comboFx"></div>
+
+    <div class="queue" id="queue"></div>
+    <div class="recipes" id="recipes"></div>
+
+    <div class="platewrap">
+      <div class="plate" id="plate"></div>
+      <button id="btnClear" class="btn dark" type="button">비우기</button>
+    </div>
+    <div class="pantry" id="pantry"></div>
+    <p class="hint">재료를 담고 주문이 맞는 손님을 누르면 낸다. 접시 테두리가 빨개지면 망친 것 — 비우기.</p>
+    <div class="row"><button id="btnGiveup" class="btn dark" type="button">오늘 장사 접고 문 닫기</button></div>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="result">
+      <div class="eyebrow" id="resultEyebrow"></div>
+      <h1 id="resultTitle"></h1>
+      <div class="big"><span id="resultRev">0</span><small>냥</small></div>
+    </div>
+    <div class="result-grid" id="resultGrid"></div>
+    <div id="resultRank" class="eyebrow" style="margin:6px 0 10px"></div>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 문 열기</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+  </section>
+
+</div>
+
+<div id="modal" class="modal" hidden><div class="parch" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="flash" class="flash"></div>
+<div id="crt"></div>
+
+<script src="app.bf1b8e33.js"></script>
+</body>
+</html>
