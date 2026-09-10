@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#06061a">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>오행자물쇠</title>
+<meta name="description" content="오행 룬 조합을 힌트만 보고 추리해 금고를 딴다. 경비가 돌기 전에 맞혀야 하는 야반도주 코드브레이커.">
+<link rel="stylesheet" href="style.43e014b7.css">
+</head>
+<body>
+<div id="app">
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- 코드브레이커 -</div>
+      <h1>오행<em>자물쇠</em></h1>
+      <div class="eyebrow">금고의 룬 조합을 추리해 훔치는 밤손님</div>
+      <div class="eyebrow" style="margin-top:4px"><a href="../" style="color:var(--ylw)">◀ 게임 상자</a></div>
+    </div>
+    <div class="parch">
+      <div class="eyebrow">이름 <b id="titleName">무명</b> <button id="btnName" class="btn dark" type="button" style="margin-left:6px;padding:4px 8px">이름</button></div>
+      <p style="margin-top:8px">자물쇠마다 정해진 <b>오행 룬</b> 조합이 있다. 룬을 눌러 추측을 채우고 <b>확인</b>을 누르면 맞힌 자리 수(●)와 색만 맞은 수(○)를 알려 준다. 그 힌트로 다음 추측을 좁혀 가라. <b>시도를 다 쓰거나 시간이 다 되면</b> 경비에게 들킨다. 금고를 딸수록 룬 색·자리 수는 늘고 시도·시간은 줄어든다 — 언젠가는 반드시 들킨다.</p>
+      <div class="row" style="margin-top:8px"><button id="btnStart" class="btn primary wide" type="button">밤도둑질 시작</button></div>
+    </div>
+    <div class="meta-grid" id="metaGrid"></div>
+    <div class="row">
+      <button id="btnRank" class="btn dark" type="button">명예의 밤손님</button>
+    </div>
+    <div id="rankPane" class="hidden" style="margin-top:10px">
+      <div id="rankList"></div>
+    </div>
+  </section>
+
+    <section id="play" class="screen hidden">
+    <div class="play-head">
+      <div class="fl"><small>금고</small><span id="vaultNo">1</span>번</div>
+      <div class="stat-line"><span>훔친 금 <b id="lootNow">0</b>냥</span><span>시도 <b id="guessesLeft">8</b>/<b id="guessesMax">8</b></span></div>
+    </div>
+    <div class="bar" id="timeBar"><i id="timeFill"></i><span id="timeTxt"></span></div>
+
+    <div class="slots" id="slots"></div>
+    <div class="row" style="margin:8px 0 10px">
+      <button id="btnBack" class="btn dark" type="button">되돌리기</button>
+      <button id="btnClear" class="btn dark" type="button">전체지우기</button>
+      <button id="btnConfirm" class="btn primary" type="button" disabled>확인</button>
+    </div>
+    <div class="runes" id="runes"></div>
+
+    <h3>추측 기록</h3>
+    <div class="hint">● 자리까지 명중 · ○ 색만 근접</div>
+    <div class="hist" id="hist"></div>
+
+    <div class="row" style="margin-top:6px"><button id="btnGiveup" class="btn dark" type="button">포기하고 빠져나가기</button></div>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="result">
+      <div class="eyebrow" id="resultEyebrow"></div>
+      <h1 id="resultTitle"></h1>
+      <div class="big"><span id="resultLoot">0</span><small>냥</small></div>
+    </div>
+    <div class="result-grid" id="resultGrid"></div>
+    <div id="resultRank" class="eyebrow" style="margin:6px 0 12px"></div>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 턴다</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+  </section>
+
+</div>
+
+<div id="modal" class="modal hidden"><div class="parch" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="flash" class="flash"></div>
+<div id="crt"></div>
+
+<script src="app.daf28ac2.js"></script>
+</body>
+</html>
