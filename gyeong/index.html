@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#06061a">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>달빛 경공</title>
+<meta name="description" content="밤 기와지붕 위를 경공으로 달리는 무한 러너. 한 번 누르면 뛰고, 공중에서 한 번 더 뛴다. 굴뚝은 넘고, 박쥐는 몸을 낮춰 지나가고, 은전을 모으면 질풍이 터진다.">
+<link rel="stylesheet" href="style.271c5948.css">
+</head>
+<body>
+<div id="app">
+
+    <section id="title" class="screen">
+    <div class="hero" style="text-align:center;padding:16px 0 10px">
+      <div class="sub" style="font-size:11px;color:var(--tx2);letter-spacing:2px">- 무한 러너 -</div>
+      <h1>달빛<em>경공</em></h1>
+      <div class="eyebrow">밤 지붕 위를 달리는 한 자락 그림자</div>
+      <div class="eyebrow" style="margin-top:4px"><a href="../" style="color:var(--ylw)">◀ 게임 상자</a></div>
+    </div>
+    <div class="parch">
+      <div class="eyebrow">그림자 <b id="titleName">무명</b> <button id="btnName" class="btn dark sm" type="button" style="margin-left:6px">이름</button></div>
+      <p style="margin-top:8px"><b>화면을 누르면 뛰고, 공중에서 한 번 더 누르면 두 단 점프</b>. 굴뚝은 한 번, 담장은 두 번 뛰어 넘고, 구멍은 빠지면 끝. <b>박쥐는 뛰면 맞는다</b> — 땅에 붙어 지나가라. 은전 12개를 모으면 <b>질풍</b>이 터져 잠시 무적으로 내달린다. 멀리 갈수록 빨라진다.</p>
+      <div class="row" style="margin-top:6px"><button id="btnStart" class="btn primary wide" type="button">달리기</button></div>
+    </div>
+    <div class="meta-grid" id="metaGrid"></div>
+    <div class="row" style="margin-top:6px"><button id="btnRank" class="btn dark" type="button">경공 명부</button></div>
+    <div id="rankPane" hidden style="margin-top:8px"><div id="rankList"></div></div>
+  </section>
+
+    <section id="play" class="screen hidden">
+    <div class="hud">
+      <div class="dist"><b id="hDist">0</b><small>m</small></div>
+      <div class="mid"><div class="energy"><i id="energyFill"></i><span id="energyTxt">내력</span></div><div class="biome" id="hBiome">기와골목</div></div>
+      <div class="coins">은전 <b id="hCoins">0</b></div>
+    </div>
+    <div class="stagewrap" id="stagewrap"><canvas id="stage" width="360" height="300"></canvas><div class="tapfx" id="tapfx"></div><div class="banner" id="banner"></div></div>
+    <p class="hint">화면 아무 데나 누르면 뛴다 · 공중에서 한 번 더</p>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="result">
+      <div class="eyebrow" id="resultEyebrow"></div>
+      <h1 id="resultTitle"></h1>
+      <div class="big"><span id="resultDist">0</span><small>m</small></div>
+    </div>
+    <div class="result-grid" id="resultGrid"></div>
+    <div id="resultRank" class="eyebrow" style="margin:6px 0 10px"></div>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 달리기</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+  </section>
+
+</div>
+
+<div id="modal" class="modal" hidden><div class="parch" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="flash" class="flash"></div>
+<div id="crt"></div>
+
+<script src="app.4f273003.js"></script>
+</body>
+</html>
