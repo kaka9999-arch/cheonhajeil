@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0a0a1e">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>비검행</title>
+<meta name="description" content="세로 스크롤 슈팅. 비검을 타고 하늘을 오르며 검기를 쏜다. 끌면 움직이고 검기는 자동, 탭하면 폭탄. 3막의 보스를 넘기면 무한 하늘.">
+<link rel="stylesheet" href="style.669d3cf3.css">
+</head>
+<body>
+<div id="app">
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- 세로 스크롤 슈팅 -</div>
+      <h1>비검<em>행</em></h1>
+      <div class="eyebrow">검 한 자루 타고 하늘을 가른다</div>
+      <div class="eyebrow" style="margin-top:4px"><a href="../" style="color:var(--ylw)">◀ 게임 상자</a></div>
+    </div>
+    <div class="parch">
+      <div class="eyebrow">검객 <b id="titleName">무명</b> <button id="btnName" class="btn dark sm" type="button" style="margin-left:6px">이름</button></div>
+      <p style="margin-top:8px"><b>손가락을 끌면 비검이 따라오고 검기는 저절로 나간다.</b> 끌지 않고 <b>탭하면 폭탄</b> — 화면의 탄을 전부 지운다. 부적 <b>검</b>은 무기 강화, <b>강기</b>는 방패, <b>폭</b>은 폭탄. 3막마다 보스, 천마를 넘기면 무한 하늘.</p>
+      <div class="row" style="margin-top:6px"><button id="btnStart" class="btn primary wide" type="button">비검 출발</button></div>
+    </div>
+    <div class="meta-grid" id="metaGrid"></div>
+    <div class="row" style="margin-top:6px"><button id="btnRank" class="btn dark" type="button">비검 명부</button></div>
+    <div id="rankPane" hidden style="margin-top:8px"><div id="rankList"></div></div>
+  </section>
+
+    <section id="play" class="screen hidden">
+    <div class="hud">
+      <div class="score"><b id="hScore">0</b></div>
+      <div class="mid"><div class="stagename" id="hStage">1막 구름 위</div><div class="bosshp" id="bossHp" hidden><i></i><span></span></div></div>
+      <div class="right"><div class="lives" id="hLives"></div><div class="bombs" id="hBombs"></div></div>
+    </div>
+    <div class="stagewrap" id="stagewrap"><canvas id="stage" width="360" height="520"></canvas><div class="banner" id="banner"></div><div class="weapon" id="hWeapon"></div></div>
+    <p class="hint" id="hint">끌어서 이동 · 탭하면 폭탄</p>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="result">
+      <div class="eyebrow" id="resultEyebrow"></div>
+      <h1 id="resultTitle"></h1>
+      <div class="big"><span id="resultScore">0</span><small>점</small></div>
+    </div>
+    <div class="result-grid" id="resultGrid"></div>
+    <div id="resultRank" class="eyebrow" style="margin:6px 0 10px"></div>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 오르기</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+  </section>
+
+</div>
+
+<div id="modal" class="modal" hidden><div class="parch" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="flash" class="flash"></div>
+<div id="crt"></div>
+
+<script src="app.86733bb7.js"></script>
+</body>
+</html>
