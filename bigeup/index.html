@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0a0612">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>무림 비급전</title>
+<meta name="description" content="덱 빌딩 카드 로그라이트. 무공 카드 덱으로 3막 21층의 강호를 오른다. 적의 다음 행동을 보고 막을지 때릴지 고른다.">
+<link rel="stylesheet" href="style.55257816.css">
+</head>
+<body>
+<div id="app">
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- 덱 빌딩 로그라이트 -</div>
+      <h1>무림<em>비급전</em></h1>
+      <div class="eyebrow">비급 한 권으로 강호 3막 21층을 오른다</div>
+      <div class="eyebrow" style="margin-top:4px"><a href="../" style="color:var(--ylw)">◀ 게임 상자</a></div>
+    </div>
+    <div class="parch">
+      <div class="eyebrow">협객 <b id="titleName">무명</b> <button id="btnName" class="btn dark sm" type="button" style="margin-left:6px">이름</button></div>
+      <p style="margin-top:8px">매 턴 <b>내력 3</b>으로 손패 5장 중 골라 쓴다. 적 머리 위 <b>의도</b>가 다음 행동이다 — 막을 만큼만 막고 나머지로 때려라. 전투마다 카드를 얻고, 객잔에서 연마하고, 유물을 모아 <b>천마</b>까지.</p>
+      <div class="row" style="margin-top:6px"><button id="btnContinue" class="btn primary wide" type="button" hidden>이어서 오르기</button></div>
+      <div class="row" style="margin-top:6px"><button id="btnStart" class="btn primary wide" type="button">새 여정</button></div>
+    </div>
+    <div class="meta-grid" id="metaGrid"></div>
+    <div class="row" style="margin-top:6px"><button id="btnRank" class="btn dark" type="button">비급 명부</button></div>
+    <div id="rankPane" hidden style="margin-top:8px"><div id="rankList"></div></div>
+  </section>
+
+    <section id="map" class="screen hidden">
+    <div class="topbar"><div class="hp"><i id="mapHpFill"></i><span id="mapHp"></span></div><div class="gold" id="mapGold"></div><button id="btnDeck" class="btn dark sm" type="button">덱</button></div>
+    <div class="actline" id="actLine"></div>
+    <div class="layers" id="layerDots"></div>
+    <h2 id="mapTitle">갈림길</h2>
+    <div class="nodes" id="nodes"></div>
+    <div class="relicbar" id="mapRelics"></div>
+  </section>
+
+    <section id="combat" class="screen hidden">
+    <div class="topbar"><div class="hp"><i id="cHpFill"></i><span id="cHp"></span></div><div class="pstat" id="pStat"></div><div class="piles" id="piles"></div></div>
+    <div class="arena" id="arena"><div class="pc" id="hero"><canvas width="16" height="16"></canvas><div class="nm" id="heroName">협객</div></div><div class="enemies" id="enemies"></div><div class="banner" id="banner"></div><div class="fx" id="fx"></div></div>
+    <div class="handbar">
+      <div class="energy" id="energy"><b>3</b><small>내력</small></div>
+      <div class="hand" id="hand"></div>
+      <button id="btnEnd" class="btn primary" type="button">턴 종료</button>
+    </div>
+    <div class="hint" id="cHint">카드를 누르면 쓴다 · 적을 골라야 하면 적을 누른다</div>
+  </section>
+
+    <section id="panel" class="screen hidden">
+    <div class="topbar"><div class="hp"><i id="pHpFill"></i><span id="pHp"></span></div><div class="gold" id="pGold"></div><button id="btnDeck2" class="btn dark sm" type="button">덱</button></div>
+    <div id="panelBody"></div>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="result">
+      <div class="eyebrow" id="resultEyebrow"></div>
+      <h1 id="resultTitle"></h1>
+      <div class="big"><span id="resultScore">0</span><small>점</small></div>
+    </div>
+    <div class="result-grid" id="resultGrid"></div>
+    <div id="resultRank" class="eyebrow" style="margin:6px 0 10px"></div>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 오르기</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+  </section>
+
+</div>
+
+<div id="modal" class="modal" hidden><div class="parch" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="flash" class="flash"></div>
+<div id="crt"></div>
+
+<script src="app.7d964e56.js"></script>
+</body>
+</html>
