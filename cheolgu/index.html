@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#08101c">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>철구난무</title>
+<meta name="description" content="벽돌깨기 로그라이트. 쇠구슬을 부채로 받아쳐 진법을 부순다. 판마다 강화 3택1, 5판마다 보스, 떨어지는 부적을 받으면 분신·화염구·넓은 부채.">
+<link rel="stylesheet" href="style.49d2746d.css">
+</head>
+<body>
+<div id="app">
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- 벽돌깨기 로그라이트 -</div>
+      <h1>철구<em>난무</em></h1>
+      <div class="eyebrow">쇠구슬 하나로 진법을 부순다</div>
+      <div class="eyebrow" style="margin-top:4px"><a href="../" style="color:var(--ylw)">◀ 게임 상자</a></div>
+    </div>
+    <div class="parch">
+      <div class="eyebrow">부채잡이 <b id="titleName">무명</b> <button id="btnName" class="btn dark sm" type="button" style="margin-left:6px">이름</button></div>
+      <p style="margin-top:8px"><b>손가락을 좌우로 끌면 부채가 따라온다</b>, 탭하면 발사. 부채 가운데로 받으면 곧게, 끝으로 받으면 비스듬히 튄다. 판을 깨면 <b>강화 3택1</b>, 5판마다 <b>보스</b>. 떨어지는 부적을 받으면 분신·화염구·넓은 부채. 목숨 3개.</p>
+      <div class="row" style="margin-top:6px"><button id="btnStart" class="btn primary wide" type="button">진법 깨기</button></div>
+    </div>
+    <div class="meta-grid" id="metaGrid"></div>
+    <div class="row" style="margin-top:6px"><button id="btnRank" class="btn dark" type="button">철구 명부</button></div>
+    <div id="rankPane" hidden style="margin-top:8px"><div id="rankList"></div></div>
+  </section>
+
+    <section id="play" class="screen hidden">
+    <div class="hud">
+      <div class="stage"><small>판</small><b id="hStage">1</b></div>
+      <div class="score"><b id="hScore">0</b><small>점</small></div>
+      <div class="lives" id="hLives"></div>
+    </div>
+    <div class="powers" id="hPowers"></div>
+    <div class="stagewrap" id="stagewrap"><canvas id="stage" width="360" height="480"></canvas><div class="banner" id="banner"></div><div class="combo" id="hCombo"></div></div>
+    <p class="hint" id="hint">끌어서 부채 이동 · 탭해서 발사</p>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="result">
+      <div class="eyebrow" id="resultEyebrow"></div>
+      <h1 id="resultTitle"></h1>
+      <div class="big"><span id="resultScore">0</span><small>점</small></div>
+    </div>
+    <div class="result-grid" id="resultGrid"></div>
+    <div id="resultRank" class="eyebrow" style="margin:6px 0 10px"></div>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 깨기</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+  </section>
+
+</div>
+
+<div id="modal" class="modal" hidden><div class="parch" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="flash" class="flash"></div>
+<div id="crt"></div>
+
+<script src="app.5a15ed47.js"></script>
+</body>
+</html>
