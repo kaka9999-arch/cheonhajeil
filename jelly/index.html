@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#fff4e6">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>젤리 팡</title>
+<meta name="description" content="연쇄 낙하 퍼즐. 색 젤리 두 개를 떨어뜨려 같은 색 4개를 붙이면 팡! 위에서 내려오며 또 터지면 연쇄. 점수는 연쇄가 전부다.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<link rel="stylesheet" href="style.4a779374.css">
+</head>
+<body>
+<div id="app">
+  <div class="bubbles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="logo"><span class="j j1">젤</span><span class="j j2">리</span><span class="j j3">팡</span></div>
+      <div class="tag">같은 색 넷이 모이면 팡, 이어지면 연쇄</div>
+      <a href="../" class="back">◀ 게임 상자</a>
+    </div>
+    <div class="card">
+      <div class="who">플레이어 <b id="titleName">무명</b> <button id="btnName" class="btn small" type="button">이름</button></div>
+      <p>젤리 두 개가 붙은 조각이 떨어진다. <b>◀ ▶</b>로 옮기고 <b>↻</b>로 돌리고 <b>▼</b>로 빨리 내린다. 같은 색이 <b>4개</b> 붙으면 터지고, 위에 있던 젤리가 내려오며 또 터지면 <b>연쇄</b> — 점수가 크게 뛴다. 갈수록 빨라지고, 가운데 맨 위가 막히면 끝.</p>
+      <button id="btnStart" class="btn primary big" type="button">시작</button>
+    </div>
+    <div class="meta" id="metaGrid"></div>
+    <button id="btnRank" class="btn wide" type="button">젤리 명부</button>
+    <div id="rankPane" hidden><div id="rankList"></div></div>
+  </section>
+
+    <section id="play" class="screen hidden">
+    <div class="hud">
+      <div class="score"><small>점수</small><b id="hScore">0</b></div>
+      <div class="level"><small>레벨</small><b id="hLevel">0</b></div>
+      <div class="chain"><small>최고 연쇄</small><b id="hChain">0</b></div>
+    </div>
+    <div class="boardwrap">
+      <div class="boardframe" id="boardframe"><canvas id="board" width="264" height="528"></canvas><div class="chaintext" id="chainText"></div></div>
+      <div class="side"><div class="nextlabel">다음</div><canvas id="next" width="52" height="110"></canvas></div>
+    </div>
+    <div class="pad">
+      <button class="pbtn" id="pLeft" type="button" aria-label="왼쪽">◀</button>
+      <button class="pbtn" id="pRot" type="button" aria-label="회전">↻</button>
+      <button class="pbtn" id="pDown" type="button" aria-label="빠른 낙하">▼</button>
+      <button class="pbtn" id="pRight" type="button" aria-label="오른쪽">▶</button>
+    </div>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="hero">
+      <div class="tag" id="resultEyebrow"></div>
+      <div class="logo small"><span id="resultTitle"></span></div>
+      <div class="bigscore"><span id="resultScore">0</span><small>점</small></div>
+    </div>
+    <div class="meta" id="resultGrid"></div>
+    <div class="tag" id="resultRank" style="min-height:1.4em"></div>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 하기</button><button id="btnHome" class="btn" type="button">처음으로</button></div>
+  </section>
+</div>
+
+<div id="modal" class="modal" hidden><div class="card" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="crt"></div>
+
+<script src="app.1b289702.js"></script>
+</body>
+</html>
