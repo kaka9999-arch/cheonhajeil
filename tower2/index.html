@@ -9,10 +9,10 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>백층탑</title>
-<meta name="description" content="매치3 대결로 100층 탑을 오르는 로그라이트 RPG. 죽으면 1층부터, 직업과 유물은 남는다.">
+<title>백층탑 2 · 역탑</title>
+<meta name="description" content="백층탑 속편. 매치3 대결로 뒤집힌 탑 지하 100층을 내려간다. 갈림길 지도·특수 보석·장비·직업 각성·영혼 제단.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="style.c3abfb6a.css">
+<link rel="stylesheet" href="style.43627b26.css">
 </head>
 <body>
 <div id="app">
@@ -20,10 +20,10 @@
 
     <section id="title" class="screen">
     <div class="hero">
-      <div class="sub">- MATCH 3 ROGUELITE -</div>
-      <h1>백층<em>탑</em></h1>
-      <div class="eyebrow">죽으면 1층부터 · 직업과 유물은 남는다</div>
-      <div class="eyebrow" style="margin-top:4px"><a href="../" style="color:var(--ylw)">◀ 게임 상자</a></div>
+      <div class="sub">- MATCH 3 ROGUELITE II -</div>
+      <h1>백층탑 <em>2</em></h1>
+      <div class="eyebrow">뒤집힌 탑, 지하 백 층을 내려간다 · 영혼 조각은 남는다</div>
+      <div class="eyebrow" style="margin-top:4px"><a href="../" style="color:var(--ylw)">◀ 게임 상자</a> · <a href="../tower/" style="color:var(--tx2)">전작 백층탑</a></div>
     </div>
     <div class="parch">
       <div class="eyebrow">직업 선택</div>
@@ -31,16 +31,17 @@
       <div id="startRelic"></div>
       <div id="ascBox"></div>
       <div class="row" style="margin-top:8px">
-        <button id="btnContinue" class="btn hidden" type="button">이어서 오르기</button>
-        <button id="btnStart" class="btn primary" type="button">탑에 오르기</button>
+        <button id="btnContinue" class="btn hidden" type="button">이어서 내려가기</button>
+        <button id="btnStart" class="btn primary" type="button">역탑에 내려가기</button>
       </div>
     </div>
+    <div class="row" style="margin-top:8px"><button id="btnAltar" class="btn dark wide" type="button">영혼 제단 · 영구 강화</button></div>
     <div id="dailyBox"></div>
     <div id="giftBox"></div>
     <div id="rivalBox"></div>
     <div class="meta-grid" id="metaGrid"></div>
     <div class="row">
-      <button id="btnRank" class="btn dark" type="button">명예의 탑</button>
+      <button id="btnRank" class="btn dark" type="button">명예의 비석</button>
       <button id="btnAch" class="btn dark" type="button">업적·칭호</button>
       <button id="btnStats" class="btn dark" type="button">기록</button>
     </div>
@@ -48,28 +49,27 @@
       <button id="btnHelp" class="btn dark" type="button">규칙</button>
       <button id="btnSettings" class="btn dark" type="button">설정</button>
     </div>
-    <div id="rankPane" class="hidden" style="margin-top:12px">
-      <div id="rankTabs" class="tabs"><button data-tab="all" class="active" type="button">전체</button><button data-tab="week" type="button">이번 주</button><button data-tab="daily" type="button">오늘의 도전</button></div>
-      <div id="rankList"></div>
-    </div>
+    <div id="rankPane" class="hidden" style="margin-top:12px"><div id="rankList"></div></div>
   </section>
 
-    <section id="tower" class="screen hidden">
+    <section id="map" class="screen hidden">
     <div class="head">
-      <div><div class="eyebrow" id="towerCls">전사</div><div class="fl"><span id="towerFloor">1</span><small>층</small></div></div>
-      <div class="stat-line" id="towerStats"></div>
+      <div><div class="eyebrow" id="mapCls">전사</div><div class="fl"><span id="mapFloor">B1</span><small id="mapZone">이끼 동굴</small></div></div>
+      <div class="stat-line" id="mapStats"></div>
     </div>
-    <div class="bar"><i id="towerHp"></i><span id="towerHpTxt"></span></div>
-    <div class="mana" id="towerMana" style="margin-top:4px"></div>
-    <canvas id="towerCanvas" class="shaft-canvas"></canvas>
-    <div id="towerRival"></div>
-    <div class="inv" id="towerInv"></div>
-    <button id="btnEnter" class="btn primary wide" type="button">진입</button>
-    <div class="row" style="margin-top:8px"><button id="btnSpellsView" class="btn dark" type="button">주문 확인</button><button id="btnQuit" class="btn dark" type="button">탑 밖으로 (포기)</button></div>
+    <div class="bar"><i id="mapHp"></i><span id="mapHpTxt"></span></div>
+    <div class="mana" id="mapMana" style="margin-top:4px"></div>
+    <div class="eyebrow" id="mapHint" style="margin:6px 0 2px;color:var(--tx2)"></div>
+    <canvas id="mapCanvas" class="map-canvas"></canvas>
+    <button id="btnDescend" class="btn primary wide hidden" type="button" style="margin-bottom:8px">아래 구역으로 내려간다</button>
+    <div id="mapRival"></div>
+    <div class="inv" id="mapInv"></div>
+    <div class="row"><button id="btnEquip" class="btn dark" type="button">장비 · 가방</button><button id="btnSpellsView" class="btn dark" type="button">주문 확인</button></div>
+    <div class="row" style="margin-top:8px"><button id="btnQuit" class="btn dark" type="button">역탑 밖으로 (포기)</button></div>
   </section>
 
     <section id="battle" class="screen hidden">
-        <div class="stage" id="stage">
+    <div class="stage" id="stage">
       <canvas id="mon"></canvas>
       <div id="bubble"></div>
       <div id="replayTag" class="replaytag hidden">REPLAY</div>
@@ -103,7 +103,7 @@
       <h2 id="roomTitle"></h2>
       <p id="roomText"></p>
       <div id="roomBody"></div>
-      <div class="row" style="margin-top:10px"><button id="btnRoomLeave" class="btn primary" type="button">다음 층으로</button></div>
+      <div class="row" style="margin-top:10px"><button id="btnRoomLeave" class="btn primary" type="button">지도로</button></div>
     </div>
   </section>
 
@@ -111,13 +111,13 @@
     <div class="result">
       <div class="eyebrow" id="resultEyebrow"></div>
       <h1 id="resultTitle"></h1>
-      <div class="big"><span id="resultFloor">0</span><small>층</small></div>
+      <div class="big"><span id="resultFloor">B1</span></div>
     </div>
     <div class="result-grid" id="resultGrid"></div>
     <div id="resultUnlocks"></div>
     <div id="resultRank" class="eyebrow" style="margin:6px 0 12px"></div>
-    <button id="btnInfinite" class="btn primary wide hidden" type="button" style="margin-bottom:8px">무한탑으로 계속 오른다 (101층~)</button>
-    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 오르기</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+    <button id="btnInfinite" class="btn primary wide hidden" type="button" style="margin-bottom:8px">무한 역탑으로 계속 내려간다 (B101~)</button>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 내려가기</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
     <div class="sharewrap">
       <div class="eyebrow" style="margin-bottom:6px">자랑 카드</div>
       <canvas id="shareCanvas" width="600" height="340"></canvas>
@@ -125,7 +125,7 @@
     </div>
   </section>
 
-    <canvas id="fx"></canvas>
+  <canvas id="fx"></canvas>
   <div id="combo" class="combo"></div>
   <div id="flash" class="flash"></div>
   <div id="bossIntro" class="bossintro"></div>
@@ -136,6 +136,6 @@
 <div id="crt"></div>
 <div id="wipe"></div>
 
-<script src="app.053ab8ee.js"></script>
+<script src="app.7b7ebc78.js"></script>
 </body>
 </html>
