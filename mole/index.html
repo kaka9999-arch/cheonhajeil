@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#1a0e2e">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>두더지 뿅망치</title>
+<meta name="description" content="반응속도 아케이드. 야시장 좌판에서 튀어나오는 두더지를 뿅망치로 60초 안에 최대한 많이 때린다. 폭탄은 피하고 황금 두더지는 놓치지 말 것.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.4470fb61.css">
+</head>
+<body>
+<div id="app">
+  <div class="lanterns" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="logo">🔨 두더지 뿅망치</div>
+      <div class="tag">60초, 튀어나오면 바로 내려친다</div>
+      <a href="../" class="back">◀ 게임 상자</a>
+    </div>
+    <div class="card">
+      <div class="who">플레이어 <b id="titleName">무명</b> <button id="btnName" class="btn small" type="button">이름</button></div>
+      <p>두더지가 나온 구멍을 <b>바로 탭</b>해서 잡는다. 연속으로 맞히면 <b>콤보</b>가 붙어 점수 배율이 오른다. 빈 구멍을 잘못 누르거나 <b>폭탄</b>을 건드리면 콤보가 끊기고 점수가 깎인다. <b>황금 두더지</b>는 순식간에 사라지니 놓치지 말 것.</p>
+      <button id="btnStart" class="btn primary big" type="button">시작</button>
+    </div>
+    <div class="meta" id="metaGrid"></div>
+    <button id="btnRank" class="btn wide" type="button">명예의 좌판</button>
+    <div id="rankPane" hidden><div id="rankList"></div></div>
+  </section>
+
+    <section id="play" class="screen hidden">
+    <div class="hud">
+      <div class="score"><small>점수</small><b id="hScore">0</b></div>
+      <div class="combo"><small>콤보</small><b id="hCombo">0</b></div>
+      <div class="time"><small>남은 시간</small><b id="hTime">60</b></div>
+    </div>
+    <div class="boardwrap">
+      <canvas id="board" width="306" height="306"></canvas>
+      <div class="popup" id="popup"></div>
+    </div>
+    <div class="hint">폭탄은 피하고, 황금 두더지는 놓치지 마세요</div>
+  </section>
+
+    <section id="result" class="screen hidden">
+    <div class="hero">
+      <div class="tag" id="resultEyebrow"></div>
+      <div class="logo small" id="resultTitle"></div>
+      <div class="bigscore"><span id="resultScore">0</span><small>점</small></div>
+    </div>
+    <div class="meta" id="resultGrid"></div>
+    <div class="tag" id="resultRank" style="min-height:1.4em"></div>
+    <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 하기</button><button id="btnHome" class="btn" type="button">처음으로</button></div>
+  </section>
+</div>
+
+<div id="modal" class="modal" hidden><div class="card" id="modalBox"></div></div>
+<div id="toast"></div>
+<div id="crt"></div>
+
+<script src="app.5f3d1e02.js"></script>
+</body>
+</html>
