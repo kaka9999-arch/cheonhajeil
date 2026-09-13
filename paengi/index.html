@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#101018">
+<link rel="icon" href="data:,">
+<title>팽이치기</title>
+<meta name="description" content="탭한 곳으로 팽이를 몰아 상대 팽이를 링 밖으로 밀어내자.">
+<link rel="stylesheet" href="style.41283b28.css">
+</head>
+<body>
+<div id="app">
+  <header class="head"><h1>팽이치기<small>링아웃 배틀</small></h1><a href="../">◀ 게임 상자</a></header>
+
+  <section class="screen" id="scrTitle">
+    <canvas id="titleArt" width="240" height="120"></canvas>
+    <div class="box">
+      <div class="kv"><span>플레이어</span><b id="tNick">무명</b></div>
+      <div class="kv"><span>최고 점수</span><b id="tBest">0</b></div>
+      <div class="kv"><span>공용 지갑</span><b id="tWallet">0 G</b></div>
+      <div class="mute" style="margin-top:6px">탭한 곳으로 내 팽이를 몬다. 상대 팽이와 부딪치면 회전력이 센 쪽이 이긴다 — 밀려나 링 밖으로 나가면 끝.</div>
+    </div>
+    <button class="btn primary" id="btnStart" type="button">시작</button>
+    <div class="row"><button class="btn" id="btnRank" type="button">순위표</button><button class="btn" id="btnNick" type="button">이름 바꾸기</button><button class="btn" id="btnCrt" type="button">주사선 켜기</button></div>
+  </section>
+
+  <section class="screen" id="scrPlay" hidden>
+    <div class="hud"><div><span>회전력</span><b id="hTime">100</b></div><div><span>점수</span><b id="hScore">0</b></div><div><span>골드</span><b id="hGold">0</b></div></div>
+    <div id="stageWrap"><canvas id="stage" width="240" height="240"></canvas><div id="pop"></div><div id="msg">탭한 곳으로 팽이를 몬다</div></div>
+    <button class="btn" id="btnQuit" type="button">그만두기</button>
+  </section>
+
+  <section class="screen" id="scrResult" hidden>
+    <div class="box">
+      <h2>결과</h2>
+      <div class="big" id="rScore">0</div>
+      <div class="kv"><span>지갑에 넣은 골드</span><b id="rGold">0 G</b></div>
+      <div class="mute" id="rRank">순위표에 올리는 중…</div>
+    </div>
+    <button class="btn primary" id="btnAgain" type="button">한 판 더</button>
+    <button class="btn" id="btnHome" type="button">타이틀로</button>
+  </section>
+</div>
+
+<div class="modal" id="rankModal" hidden><div class="box"><h2>순위표<small class="mute">한 판 최고 점수</small></h2><div class="rank" id="rankList"></div><button class="btn" id="rankClose" type="button">닫기</button></div></div>
+<div class="modal" id="nickModal" hidden><div class="box"><h2>이름</h2><div class="mute">순위표에 올라갈 이름. 한글 2~8자. 다른 게임과 같이 쓴다.</div><input id="nickIn" maxlength="8" placeholder="예: 무명객"><div class="err" id="nickErr"></div><button class="btn primary" id="nickGo" type="button">정하기</button></div></div>
+<div id="crt"></div>
+<script src="app.4221f1d9.js"></script>
+</body>
+</html>
