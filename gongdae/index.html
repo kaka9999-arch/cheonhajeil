@@ -7,7 +7,7 @@
 <link rel="icon" href="data:,">
 <title>혼자 하는 공격대</title>
 <meta name="description" content="탱커·힐러·딜러 3, 5인 공격대 중 하나를 조작하고 나머지 넷은 AI 가 맡아 거대 보스 3종을 격파하는 실시간 레이드. 멀티플레이 아님.">
-<link rel="stylesheet" href="style.156124c4.css">
+<link rel="stylesheet" href="style.518302fa.css">
 </head>
 <body>
 <div id="app">
@@ -57,6 +57,7 @@
           <b id="pauseTitle">잠시 멈춤</b>
           <div class="mute" id="pauseSub">계속하려면 아래를 누른다</div>
           <button class="btn primary" id="pauseResume" type="button">계속하기</button>
+          <button class="btn" id="pauseAuto" type="button">스킬 자동 켜기</button>
           <button class="btn" id="pauseSound" type="button">효과음 끄기</button>
           <button class="btn" id="pauseQuit" type="button">포기하고 결과 보기</button>
         </div>
@@ -98,7 +99,9 @@
 <div class="modal" id="nickModal" hidden><div class="box"><h2>이름</h2><div class="mute">순위표에 올라갈 이름. 한글 2~8자. 다른 게임과 같이 쓴다.</div><input id="nickIn" maxlength="8" placeholder="예: 무명객"><div class="err" id="nickErr"></div><div class="row"><button class="btn" id="nickSkip" type="button">닫기</button><button class="btn primary" id="nickGo" type="button">정하기</button></div></div></div>
 <div class="modal" id="helpModal" hidden><div class="box"><h2>규칙</h2><div class="mute helptx">
   <b>이동</b> 아레나를 누른 채 끌면 그 방향으로 간다. 키보드는 <kbd>WASD</kbd>·방향키, 스킬은 <kbd>1</kbd>~<kbd>6</kbd>.<br>
-  <b>공격</b> 기본 공격은 사거리 안이면 자동. 하단 스킬은 쿨다운이 다 차면 누른다.<br>
+  <b>공격</b> 기본 공격은 사거리 안이면 자동. 하단 스킬 6개는 쿨다운이 다 차면 누른다.<br>
+  <b>스킬 자동</b> 버튼이 많으면 내 상태 줄 오른쪽 <kbd>자동</kbd>(또는 멈춤 창)으로 켠다 — 스킬은 알아서 쓰고 <b>이동만 직접</b> 하면 된다. 수동으로 눌러 끼어들 수도 있다.<br>
+  <b>준비 시간</b> 보스를 마주하면 3초를 센다. 이 시간은 점수의 경과 시간에 들어가지 않는다.<br>
   <b>빨간 도형</b>은 곧 터진다는 예고다. 게이지가 다 차기 전에 도형 <u>밖</u>으로 나가야 한다 — 가운데 숫자가 남은 초.<br>
   <b>초록 원</b>은 안전지대다. 이때는 반대로 원 <u>안</u>으로 들어가 있어야 한다.<br>
   <b>탱커</b>가 보스 어그로(빨간 화살표 표식)를 붙잡는다. 탱커와 힐러가 둘 다 쓰러지면 전멸. 탱커가 없으면 딜러가 물려 순식간에 무너진다.<br>
@@ -108,6 +111,6 @@
   <b>멈춤</b> 아레나 우측 상단 <kbd>⏸</kbd>(또는 <kbd>Esc</kbd>)로 잠시 멈추거나 포기할 수 있다. 내가 쓰러져도 탱커·힐러가 살아 있으면 파티는 계속 싸운다 — 관전하거나 바로 결과를 볼 수 있다.
 </div><div class="row" style="margin-top:10px"><button class="btn primary wide" id="helpClose" type="button">알겠다</button></div></div></div>
 <div id="crt"></div>
-<script src="app.75a37553.js"></script>
+<script src="app.bc4d0596.js"></script>
 </body>
 </html>
