@@ -7,7 +7,7 @@
 <link rel="icon" href="data:,">
 <title>혼자 하는 공격대</title>
 <meta name="description" content="탱커·힐러·딜러 3, 5인 공격대 중 하나를 조작하고 나머지 넷은 AI 가 맡아 거대 보스 3종을 격파하는 실시간 레이드. 멀티플레이 아님.">
-<link rel="stylesheet" href="style.a8025537.css">
+<link rel="stylesheet" href="style.4a8bfa3e.css">
 </head>
 <body>
 <div id="app">
@@ -57,6 +57,7 @@
     </div>
 
         <div class="selfrow" id="selfRow"></div>
+        <div class="gearrow" id="gearRow" hidden></div>
         <div class="partyrow" id="partyRow"></div>
         <div class="skillrow" id="skillRow"></div>
   </section>
@@ -70,6 +71,8 @@
       <div class="kv"><span>격파</span><b id="rBosses">0 / 3</b></div>
       <div class="kv"><span>걸린 시간</span><b id="rTime">0:00</b></div>
       <div class="kv"><span>지갑에 넣은 골드</span><b id="rGold">0 G</b></div>
+      <div class="mlabel">이번 판 장비·각인</div>
+      <div class="gearlist" id="rGear"></div>
       <div class="mlabel">기여도</div>
       <div id="rMeter" class="meterpanel"></div>
       <div class="mute" id="rRank">순위표에 올리는 중…</div>
@@ -79,6 +82,11 @@
   </section>
 </div>
 
+<div class="modal" id="rewardModal" hidden><div class="box reward">
+  <h2 id="rewardTitle">전리품<small class="mute">하나만 고른다</small></h2>
+  <div class="cards" id="rewardCards"></div>
+  <div class="have" id="rewardHave"></div>
+</div></div>
 <div class="modal" id="rankModal" hidden><div class="box"><h2>순위표<small class="mute">한 판 최고 점수</small></h2><div class="rank" id="rankList"></div><button class="btn" id="rankClose" type="button">닫기</button></div></div>
 <div class="modal" id="nickModal" hidden><div class="box"><h2>이름</h2><div class="mute">순위표에 올라갈 이름. 한글 2~8자. 다른 게임과 같이 쓴다.</div><input id="nickIn" maxlength="8" placeholder="예: 무명객"><div class="err" id="nickErr"></div><div class="row"><button class="btn" id="nickSkip" type="button">닫기</button><button class="btn primary" id="nickGo" type="button">정하기</button></div></div></div>
 <div class="modal" id="helpModal" hidden><div class="box"><h2>규칙</h2><div class="mute helptx">
@@ -88,9 +96,11 @@
   <b>초록 원</b>은 안전지대다. 이때는 반대로 원 <u>안</u>으로 들어가 있어야 한다.<br>
   <b>탱커</b>가 보스 어그로(빨간 화살표 표식)를 붙잡는다. 탱커와 힐러가 둘 다 쓰러지면 전멸. 탱커가 없으면 딜러가 물려 순식간에 무너진다.<br>
   보스 3종(입문→중급→최종)을 순서대로 잡으면 완주. 우측 상단 <b>딜미터</b>로 실시간 딜량·힐량 순위를 볼 수 있다.<br>
+  <b>장비</b> 출격 직후와 보스를 잡을 때마다 <b>3장 중 1장</b>을 고른다 — 무기·방어구·장신구는 슬롯마다 하나, 각인은 내 스킬을 강화한다(한 판 안에서만 유효).<br>
+  <b>전리품</b> 잡몹을 잡거나 보스 체력이 75·50·25%를 지날 때 바닥에 구슬이 떨어진다. <b>내가 직접 밟아야</b> 먹는다 — 회복·쿨다운 초기화·공격력 증가·보호막 중 하나.<br>
   <b>멈춤</b> 아레나 우측 상단 <kbd>⏸</kbd>(또는 <kbd>Esc</kbd>)로 잠시 멈추거나 포기할 수 있다. 내가 쓰러져도 탱커·힐러가 살아 있으면 파티는 계속 싸운다 — 관전하거나 바로 결과를 볼 수 있다.
 </div><div class="row" style="margin-top:10px"><button class="btn primary wide" id="helpClose" type="button">알겠다</button></div></div></div>
 <div id="crt"></div>
-<script src="app.3a238df1.js"></script>
+<script src="app.7ecd4749.js"></script>
 </body>
 </html>
