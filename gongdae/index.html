@@ -7,18 +7,20 @@
 <link rel="icon" href="data:,">
 <title>혼자 하는 공격대</title>
 <meta name="description" content="탱커·힐러·딜러 3, 5인 공격대 중 하나를 조작하고 나머지 넷은 AI 가 맡아 거대 보스 3종을 격파하는 실시간 레이드. 멀티플레이 아님.">
-<link rel="stylesheet" href="style.98b73eec.css">
+<link rel="stylesheet" href="style.c221b5aa.css">
 </head>
 <body>
 <div id="app">
   <header class="head"><h1>혼자 하는 <em>공격대</em></h1><a href="../">◀ 게임 상자</a></header>
 
     <section class="screen" id="scrTitle">
-    <div class="mute" style="margin:2px 0 8px">탱커·힐러·딜러 3, 5인 중 하나를 고른다. 나머지 넷은 AI 가 채운다.</div>
+    <div class="mute" style="margin:2px 0 6px">탱커·힐러·딜러 3, 5인 중 하나를 고른다. 나머지 넷은 AI 가 채운다.</div>
     <div id="classGrid" class="classgrid"></div>
+        <div class="box clsinfo" id="clsInfo"></div>
     <div class="box">
       <div class="kv"><span>플레이어</span><b id="tNick">무명</b></div>
       <div class="kv"><span>최고 점수</span><b id="tBest">0</b></div>
+      <div class="kv"><span>완주 / 출격</span><b id="tRecord">0 / 0</b></div>
       <div class="kv"><span>공용 지갑</span><b id="tWallet">0 G</b></div>
     </div>
     <button class="btn primary" id="btnStart" type="button">공격대 출발</button>
@@ -27,21 +29,37 @@
 
     <section class="screen" id="scrBattle" hidden>
     <div class="bhud">
-      <div class="bname"><b id="bBossName">돌골렘</b><small id="bBossSub">입문</small></div>
-      <div class="bbar"><i id="bBossHp"></i><span id="bBossHpTxt"></span></div>
+      <div class="bname">
+        <span class="bpip" id="bPips"></span>
+        <b id="bBossName">돌골렘</b><small id="bBossSub">입문</small>
+        <span class="btime" id="bTime">0:00</span>
+      </div>
+      <div class="bbar"><i id="bBossHp"></i><em class="notch" style="left:66%"></em><em class="notch" style="left:50%"></em><em class="notch" style="left:33%"></em><span id="bBossHpTxt"></span></div>
+            <div class="castbar" id="castBar" hidden><i id="castFill"></i><span id="castName">쿵쿵!</span></div>
     </div>
-    <div id="arenaWrap"><canvas id="arena" width="360" height="360"></canvas><div id="floats"></div><button class="meterbtn" id="btnMeter" type="button">딜미터</button></div>
-    <div id="meterPanel" class="meterpanel hidden"></div>
-    <div class="partyrow" id="partyRow"></div>
-    <div class="skillrow" id="skillRow"></div>
+
+    <div id="arenaWrap">
+      <canvas id="arena" width="360" height="360"></canvas>
+      <div id="banner" class="banner"></div>
+      <button class="meterbtn" id="btnMeter" type="button">딜미터</button>
+      <div id="meterPanel" class="meterpanel float-panel" hidden></div>
+    </div>
+
+        <div class="selfrow" id="selfRow"></div>
+        <div class="partyrow" id="partyRow"></div>
+        <div class="skillrow" id="skillRow"></div>
   </section>
 
     <section class="screen" id="scrResult" hidden>
-    <div class="box">
-      <h2 id="rTitle">결과</h2>
+    <div class="box result">
+      <div class="rtop"><div class="grade" id="rGrade">A</div><div><h2 id="rTitle">결과</h2><div class="mute" id="rSub">돌골렘에서 전멸</div></div></div>
       <div class="big" id="rScore">0</div>
+      <div class="newbest" id="rNew" hidden>최고 점수 갱신!</div>
+      <div class="bosslist" id="rBossList"></div>
       <div class="kv"><span>격파</span><b id="rBosses">0 / 3</b></div>
+      <div class="kv"><span>걸린 시간</span><b id="rTime">0:00</b></div>
       <div class="kv"><span>지갑에 넣은 골드</span><b id="rGold">0 G</b></div>
+      <div class="mlabel">기여도</div>
       <div id="rMeter" class="meterpanel"></div>
       <div class="mute" id="rRank">순위표에 올리는 중…</div>
     </div>
@@ -51,14 +69,16 @@
 </div>
 
 <div class="modal" id="rankModal" hidden><div class="box"><h2>순위표<small class="mute">한 판 최고 점수</small></h2><div class="rank" id="rankList"></div><button class="btn" id="rankClose" type="button">닫기</button></div></div>
-<div class="modal" id="nickModal" hidden><div class="box"><h2>이름</h2><div class="mute">순위표에 올라갈 이름. 한글 2~8자. 다른 게임과 같이 쓴다.</div><input id="nickIn" maxlength="8" placeholder="예: 무명객"><div class="err" id="nickErr"></div><button class="btn primary" id="nickGo" type="button">정하기</button></div></div>
-<div class="modal" id="helpModal" hidden><div class="box"><h2>규칙</h2><div class="mute" style="font-size:13px;line-height:1.7">
-  화면을 누른 채 끌면 그 방향으로 움직인다. 기본 공격은 사거리 안이면 자동. 하단 스킬 3개는 쿨다운이 차면 탭.<br>
-  <b>바닥의 빨강 도형</b>은 곧 터진다는 경고다 — 안(원·부채꼴·직선)에 있으면 맞는다. 안전지대로 표시된 기믹은 반대로 그 안에 있어야 한다.<br>
-  <b>탱커</b>가 보스 어그로를 붙잡는다. 탱커와 힐러가 둘 다 쓰러지면 전멸. 탱커가 없으면 딜러가 다음 표적이 되어 순식간에 무너진다.<br>
+<div class="modal" id="nickModal" hidden><div class="box"><h2>이름</h2><div class="mute">순위표에 올라갈 이름. 한글 2~8자. 다른 게임과 같이 쓴다.</div><input id="nickIn" maxlength="8" placeholder="예: 무명객"><div class="err" id="nickErr"></div><div class="row"><button class="btn" id="nickSkip" type="button">닫기</button><button class="btn primary" id="nickGo" type="button">정하기</button></div></div></div>
+<div class="modal" id="helpModal" hidden><div class="box"><h2>규칙</h2><div class="mute helptx">
+  <b>이동</b> 아레나를 누른 채 끌면 그 방향으로 간다. 키보드는 <kbd>WASD</kbd>·방향키, 스킬은 <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd>.<br>
+  <b>공격</b> 기본 공격은 사거리 안이면 자동. 하단 스킬은 쿨다운이 다 차면 누른다.<br>
+  <b>빨간 도형</b>은 곧 터진다는 예고다. 게이지가 다 차기 전에 도형 <u>밖</u>으로 나가야 한다 — 가운데 숫자가 남은 초.<br>
+  <b>초록 원</b>은 안전지대다. 이때는 반대로 원 <u>안</u>으로 들어가 있어야 한다.<br>
+  <b>탱커</b>가 보스 어그로(빨간 화살표 표식)를 붙잡는다. 탱커와 힐러가 둘 다 쓰러지면 전멸. 탱커가 없으면 딜러가 물려 순식간에 무너진다.<br>
   보스 3종(입문→중급→최종)을 순서대로 잡으면 완주. 우측 상단 <b>딜미터</b>로 실시간 딜량·힐량 순위를 볼 수 있다.
 </div><div class="row" style="margin-top:10px"><button class="btn primary wide" id="helpClose" type="button">알겠다</button></div></div></div>
 <div id="crt"></div>
-<script src="app.f7b7c71a.js"></script>
+<script src="app.af0f616a.js"></script>
 </body>
 </html>
