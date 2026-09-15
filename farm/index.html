@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#ffd84a">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>햇살 농장 일기</title>
+<meta name="description" content="잡초투성이 빈 농장을 손가락으로 쓸어 일구고, 계절 작물·동물·가공품으로 돈을 벌며, 주민들과 친해져 텅 빈 마을 회관을 되살린다.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+<link rel="stylesheet" href="style.5a7b480f.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="titleCv" class="bgcv" aria-hidden="true"></canvas>
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- SUNNY FARM DIARY -</div>
+      <h1>햇살 농장<br><em>일기</em></h1>
+      <div class="tag">일구고, 거두고, <b>마을을 되살린다</b></div>
+      <div><a class="back" href="../">◀ 게임 상자</a></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="panel">
+      <div class="who">농장주 <b id="titleName">무명</b> <button id="btnName" class="btn sm" type="button">이름</button></div>
+      <div id="titleInfo" class="mute"></div>
+      <div class="row">
+        <button id="btnContinue" class="btn primary hidden" type="button">이어서 하기</button>
+        <button id="btnNew" class="btn primary" type="button">새 농장 시작</button>
+      </div>
+    </div>
+    <div class="howto">
+      <div><b>손가락으로 쓸어서</b><span>잡초·돌을 치우고, 땅을 갈고, 씨앗을 심고, 물을 준다. 기력이 떨어지면 <em>잠자리</em>에 들자.</span></div>
+      <div><b>계절 · 동물 · 가공</b><span>봄·여름·가을·겨울마다 다른 작물. 닭·소·양, 잼·치즈·와인으로 값을 올린다.</span></div>
+      <div><b>마을을 되살린다</b><span>주민 8명과 친해지고 <em>회관 복구</em> 8단계를 끝내면 햇살 마을 대축제가 다시 열린다.</span></div>
+    </div>
+    <div class="meta" id="metaGrid"></div>
+    <button id="btnRank" class="btn wide" type="button">농장 순위표 (누적 수익)</button>
+    <div id="rankPane" class="hidden"><div id="rankList"></div></div>
+  </section>
+
+    <section id="game" class="screen hidden">
+    <div class="hud">
+      <div class="datepill"><img id="wxIcon" alt=""><span><b id="dateTxt">봄 1일</b><small id="yearTxt">1년차</small></span></div>
+      <div class="cap"><span class="coinI"></span><b id="goldTxt">0</b></div>
+      <div class="energy" id="energyBox" title="기력"><i id="energyBar"></i><span id="energyTxt">100</span></div>
+      <button class="roundbtn moon" id="btnSleep" type="button" aria-label="잠자기"><span class="moonI"></span></button>
+      <button class="roundbtn" id="btnMenu" type="button" aria-label="메뉴"><span class="menuI"><i></i><i></i><i></i></span></button>
+    </div>
+    <div class="views">
+      <div class="view" id="vFarm">
+        <canvas id="farmCv"></canvas>
+        <div class="coachbar hidden" id="coachBar"></div>
+        <button class="btn sm ghbtn hidden" id="btnGh" type="button">온실</button>
+      </div>
+      <div class="view scroll hidden" id="vRanch"></div>
+      <div class="view hidden" id="vForest"><canvas id="forestCv"></canvas><div class="forestinfo" id="forestInfo"></div></div>
+      <div class="view scroll hidden" id="vTown"></div>
+      <div class="view scroll hidden" id="vBag"></div>
+    </div>
+    <div class="toolbar" id="toolbar">
+      <button type="button" data-tool="auto" class="on"><img alt="" id="tlAuto"><span>자동</span></button>
+      <button type="button" data-tool="hoe"><img alt="" id="tlHoe"><span>괭이</span></button>
+      <button type="button" data-tool="water"><img alt="" id="tlWater"><span>물</span></button>
+      <button type="button" data-tool="seed"><img alt="" id="tlSeed"><span id="tlSeedTxt">씨앗</span><i class="cnt" id="tlSeedCnt"></i></button>
+      <button type="button" data-tool="fert"><img alt="" id="tlFert"><span>비료</span><i class="cnt" id="tlFertCnt"></i></button>
+      <button type="button" data-tool="sprinkler"><img alt="" id="tlSpr"><span>스프링클러</span><i class="cnt" id="tlSprCnt"></i></button>
+    </div>
+    <div class="tabbar" id="tabbar" role="tablist">
+      <button type="button" data-tab="farm" class="on"><img alt="" id="tbFarm"><span>농장</span></button>
+      <button type="button" data-tab="ranch"><img alt="" id="tbRanch"><span>목장·공방</span><i class="dotN hidden" id="dotRanch">!</i></button>
+      <button type="button" data-tab="forest"><img alt="" id="tbForest"><span>숲</span></button>
+      <button type="button" data-tab="town"><img alt="" id="tbTown"><span>마을</span><i class="dotN hidden" id="dotTown">!</i></button>
+      <button type="button" data-tab="bag"><img alt="" id="tbBag"><span>가방</span></button>
+    </div>
+  </section>
+</div>
+<div id="night" class="night hidden" aria-hidden="true"><div class="zz">잘 자요…</div></div>
+<div id="sheet" class="sheet hidden" role="dialog" aria-modal="true"><div class="box" id="sheetBox"></div></div>
+<div id="pop" class="pop hidden"><div class="box" id="popBox"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.0ea90ac2.js"></script>
+</body>
+</html>
