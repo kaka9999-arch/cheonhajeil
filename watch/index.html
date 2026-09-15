@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#06061a">
+<title>탑 중계석</title>
+<meta name="description" content="백층탑 AI 도전자 여덟 명이 동시에 100층을 오른다. 고블린 캐스터와 해골 기사 해설위원의 생중계, 실시간 승리 확률, 시상식.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="style.e38a551a.css">
+</head>
+<body>
+<div id="app">
+  <header class="top win">
+    <a class="back" href="../">◀ 게임 상자</a>
+    <div class="ttl"><span class="live">● LIVE</span> 탑 중계석 <small id="tourName">제 1회 백층탑 등반 대회</small></div>
+    <div class="speed" role="group" aria-label="중계 속도">
+      <button type="button" data-sp="0" title="일시정지 (스페이스)">❚❚</button>
+      <button type="button" data-sp="1">1×</button>
+      <button type="button" data-sp="3">3×</button>
+      <button type="button" data-sp="8">8×</button>
+      <button type="button" data-sp="30">30×</button>
+    </div>
+    <div class="tick mono" id="tickTxt">0틱</div>
+  </header>
+
+    <section class="race win"><canvas id="raceCanvas" aria-label="탑 단면 레이스"></canvas></section>
+
+    <section class="cam">
+    <div class="win stagewrap">
+      <div class="camlabel" id="camLabel">카메라 준비 중</div>
+      <canvas id="stage"></canvas>
+      <div id="floats"></div>
+      <div class="banner" id="banner"></div>
+    </div>
+    <div class="win hud" id="hud"></div>
+    <div class="win boardwrap"><canvas id="board"></canvas><div class="combo" id="combo"></div></div>
+  </section>
+
+    <aside class="side">
+    <div class="win booth">
+      <div class="spk" id="spkC"><canvas width="48" height="48"></canvas><div><b>캐스터 꾸엑</b><p></p></div></div>
+      <div class="spk" id="spkA"><canvas width="48" height="48"></canvas><div><b>해설 본즈 경</b><p></p></div></div>
+    </div>
+    <div class="win board-list">
+      <div class="eyebrow">순위 <small>이름을 누르면 카메라 고정</small></div>
+      <ol id="standings"></ol>
+    </div>
+    <div class="win tabs">
+      <div class="tabbar"><button type="button" class="on" data-tab="hl">하이라이트</button><button type="button" data-tab="log">중계 기록</button></div>
+      <ul id="hl" class="feed"></ul>
+      <ul id="log" class="feed hidden"></ul>
+    </div>
+  </aside>
+</div>
+
+<div id="overlay" class="overlay"><div class="win sheet" id="sheet"></div></div>
+<div id="crt"></div>
+
+<script src="app.e7ce783b.js"></script>
+</body>
+</html>
