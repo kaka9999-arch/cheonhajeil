@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#5fb8ff">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>하늘길 상단</title>
+<meta name="description" content="구름 위에 떠 있는 섬들을 비행선으로 잇는 무역 게임. 싸게 사서 비싸게 팔고, 비행선·선원·지점을 키워 폭풍의 눈 너머 전설의 섬 아르카까지.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+<link rel="stylesheet" href="style.8ff0cd7e.css">
+</head>
+<body>
+<div id="app">
+
+    <canvas id="titleCv" class="bgcv" aria-hidden="true"></canvas>
+  <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- SKY MERCHANT -</div>
+      <h1>하늘길<br><em>상단</em></h1>
+      <div class="tag">구름 위 섬을 잇는 <b>비행선 무역</b></div>
+      <div><a class="back" href="../">◀ 게임 상자</a></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="panel">
+      <div class="who">상단주 <b id="titleName">무명</b> <button id="btnName" class="btn sm" type="button">이름</button></div>
+      <div id="titleInfo" class="mute"></div>
+      <div class="row">
+        <button id="btnContinue" class="btn primary hidden" type="button">이어서 하기</button>
+        <button id="btnNew" class="btn primary" type="button">새 상단 시작</button>
+      </div>
+    </div>
+    <div class="howto">
+      <div><b>싸게 사서 비싸게</b><span>섬마다 <em>특산</em>은 싸고 <em>수요</em>는 비싸다. 많이 사면 값이 오르고, 한 섬에 쏟아부으면 값이 무너진다.</span></div>
+      <div><b>하늘길은 위험하다</b><span>해적·폭풍·떠다니는 화물·구름고래. 싸울지, 뇌물을 줄지, 달아날지 고른다.</span></div>
+      <div><b>상단을 키운다</b><span>비행선 6종·선원·지점. 이야기 8장을 따라 폭풍의 눈 너머 전설의 섬 <em>아르카</em>까지.</span></div>
+    </div>
+    <div class="meta" id="metaGrid"></div>
+    <button id="btnRank" class="btn wide" type="button">상단 순위표 (총 자산)</button>
+    <div id="rankPane" class="hidden"><div id="rankList"></div></div>
+  </section>
+
+    <section id="port" class="screen hidden">
+    <div class="scene" id="sceneWrap">
+      <canvas id="sceneCv" aria-hidden="true"></canvas>
+      <div class="topbar">
+        <div class="daypill"><b id="dayTxt">1</b><small>일째</small></div>
+        <div class="cap"><span class="coinI"></span><b id="goldTxt">0</b></div>
+        <button class="rankB" id="btnRankBadge" type="button" aria-label="상단 정보"><small>등급</small><b id="rankTxt">F</b></button>
+        <button class="roundbtn" id="btnMenu" type="button" aria-label="메뉴"><span class="menuI"><i></i><i></i><i></i></span></button>
+      </div>
+      <div class="islname"><b id="islName">민들레섬</b><span id="islSub"></span></div>
+      <button class="goalbtn" id="btnGoal" type="button"><small id="goalCh">1장</small><b id="goalTxt">목표</b><i class="goalbar"><i id="goalBar"></i></i></button>
+    </div>
+    <div class="shipline" id="shipLine"></div>
+    <div class="newsline" id="newsLine"></div>
+    <div class="tabbar" id="tabbar" role="tablist">
+      <button type="button" data-tab="market" class="on"><img alt="" id="tiMarket"><span>시장</span></button>
+      <button type="button" data-tab="board"><img alt="" id="tiBoard"><span>의뢰</span><i class="dotN hidden" id="dotBoard"></i></button>
+      <button type="button" data-tab="yard"><img alt="" id="tiYard"><span>조선소</span></button>
+      <button type="button" data-tab="tavern"><img alt="" id="tiTavern"><span>주점</span></button>
+      <button type="button" data-tab="branch"><img alt="" id="tiBranch"><span>지점</span></button>
+    </div>
+    <div class="tabbody" id="tabBody"></div>
+    <div class="dock"><button class="btn primary go" id="btnMap" type="button">지도 · 출항</button></div>
+  </section>
+
+    <section id="map" class="screen hidden">
+    <div class="mapwrap" id="mapWrap"><canvas id="mapCv"></canvas></div>
+    <div class="maptop">
+      <button class="btn sm" id="mapBack" type="button">◀ 항구</button>
+      <b>하늘 지도</b>
+      <button class="btn sm" id="mapPrices" type="button">시세표</button>
+    </div>
+    <div class="destcard" id="destCard"></div>
+  </section>
+
+    <section id="voyage" class="screen hidden">
+    <canvas id="voyCv" class="bgcv" aria-hidden="true"></canvas>
+    <div class="voytop">
+      <div class="voyroute"><b id="voyFrom">민들레섬</b><span class="arrow">▶</span><b id="voyTo">양떼구름섬</b></div>
+      <div class="voyprog"><i id="voyBar"></i><span id="voyDay">1 / 2일</span></div>
+      <div class="voystats"><span class="cap sm"><span class="coinI"></span><b id="voyGold">0</b></span><span class="hpgauge"><small>선체</small><i class="g"><i id="voyHp"></i></i></span><span class="sup"><small>보급</small><b id="voySup">0</b></span></div>
+    </div>
+    <div class="voylog" id="voyLog" aria-live="polite"></div>
+    <button class="btn fast" id="btnFast" type="button" aria-label="빠르게">▶▶</button>
+  </section>
+</div>
+
+<div id="battle" class="battle hidden" data-guard role="dialog" aria-modal="true">
+  <div class="bbox">
+    <canvas id="battleCv" aria-hidden="true"></canvas>
+    <div class="bbars">
+      <div class="bside"><b>우리 배</b><div class="bhp"><i id="bMyHp"></i><span id="bMyHpT"></span></div></div>
+      <div class="bside en"><b id="bEnName">해적선</b><div class="bhp en"><i id="bEnHp"></i><span id="bEnHpT"></span></div></div>
+    </div>
+    <div class="blog" id="bLog"></div>
+    <div class="bacts" id="bActs">
+      <button class="btn red" data-act="fire" type="button">포격<small id="bFireSub"></small></button>
+      <button class="btn blue" data-act="evade" type="button">회피 기동<small>피해 −60%</small></button>
+      <button class="btn" data-act="flee" type="button">달아나기<small id="bFleeSub"></small></button>
+      <button class="btn" data-act="bribe" type="button">뇌물<small id="bBribeSub"></small></button>
+    </div>
+    <div class="bend hidden" id="bEnd"><div id="bEndTxt"></div><button class="btn primary wide" id="bEndOk" type="button">계속 항해</button></div>
+  </div>
+</div>
+<div id="sheet" class="sheet hidden" role="dialog" aria-modal="true"><div class="box" id="sheetBox"></div></div>
+<div id="pop" class="pop hidden"><div class="box" id="popBox"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.7179307e.js"></script>
+</body>
+</html>
