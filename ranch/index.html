@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#8ee06a">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>꼬마 몬스터 목장</title>
+<meta name="description" content="알에서 깨어난 몬스터를 주 단위로 훈련·휴식·원정시키며 키워 리그 E급부터 S급까지. 은퇴한 챔피언끼리 교배해 더 강한 세대를 만들고 도감 52종을 모은다.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+<link rel="stylesheet" href="style.c382da2d.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="titleCv" class="bgcv" aria-hidden="true"></canvas>
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- MONSTER RANCH -</div>
+      <h1>꼬마 몬스터<br><em>목장</em></h1>
+      <div class="tag">키우고, 싸우고, <b>대를 잇는다</b></div>
+      <div><a class="back" href="../">◀ 게임 상자</a></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="panel">
+      <div class="who">목장주 <b id="titleName">무명</b> <button id="btnName" class="btn sm" type="button">이름</button></div>
+      <div id="titleInfo" class="mute"></div>
+      <div class="row">
+        <button id="btnContinue" class="btn primary hidden" type="button">이어서 하기</button>
+        <button id="btnNew" class="btn primary" type="button">새 목장 열기</button>
+      </div>
+    </div>
+    <div class="howto">
+      <div><b>한 주에 한 가지</b><span>몬스터마다 훈련·휴식·놀기·원정을 정하고 <em>다음 주</em>. 무리하면 다치고, 스트레스가 쌓이면 말을 안 듣는다.</span></div>
+      <div><b>리그 E → S</b><span>매달 4주차 <em>공식 승급전</em>에서 우승하면 등급이 오른다. 결승에는 늘 옆 목장 하나가 기다린다.</span></div>
+      <div><b>대를 잇는다</b><span>나이 든 몬스터는 은퇴해 명예의 전당에. 챔피언끼리 <em>교배</em>하면 잠재력이 더 높은 알이 나온다. 도감 52종.</span></div>
+    </div>
+    <div class="meta" id="metaGrid"></div>
+    <button id="btnRank" class="btn wide" type="button">목장 순위표 (명성)</button>
+    <div id="rankPane" class="hidden"><div id="rankList"></div></div>
+  </section>
+
+    <section id="ranch" class="screen hidden">
+    <div class="scene" id="sceneWrap">
+      <canvas id="sceneCv"></canvas>
+      <div class="topbar">
+        <div class="datepill"><b id="dateTxt">1년 3월 1주</b><small id="seasonTxt">봄</small></div>
+        <div class="cap"><span class="coinI"></span><b id="goldTxt">0</b></div>
+        <button class="fameB" id="btnFame" type="button" aria-label="명성"><small>명성</small><b id="fameTxt">0</b></button>
+        <button class="roundbtn" id="btnMenu" type="button" aria-label="메뉴"><span class="menuI"><i></i><i></i><i></i></span></button>
+      </div>
+      <div class="calline" id="calLine"></div>
+    </div>
+    <div class="tabbar" id="tabbar" role="tablist">
+      <button type="button" data-tab="mons" class="on"><img alt="" id="tiMons"><span>몬스터</span></button>
+      <button type="button" data-tab="tour"><img alt="" id="tiTour"><span>대회</span><i class="dotN hidden" id="dotTour">!</i></button>
+      <button type="button" data-tab="breed"><img alt="" id="tiBreed"><span>교배·알</span><i class="dotN hidden" id="dotEgg"></i></button>
+      <button type="button" data-tab="shop"><img alt="" id="tiShop"><span>가게</span></button>
+      <button type="button" data-tab="fac"><img alt="" id="tiFac"><span>시설</span></button>
+    </div>
+    <div class="tabbody" id="tabBody"></div>
+    <div class="dock">
+      <button class="btn foodB" id="btnFood" type="button"><img alt="" id="foodIcon"><span><small>먹이</small><b id="foodTxt">기본 사료</b></span></button>
+      <button class="btn primary go" id="btnWeek" type="button">다음 주 ▶</button>
+    </div>
+  </section>
+
+    <section id="bracket" class="screen hidden">
+    <div class="brhead"><div class="ribbon gold" id="brTitle">대회</div><div class="brsub" id="brSub"></div></div>
+    <div class="brgrid" id="brGrid"></div>
+    <div class="brinfo" id="brInfo"></div>
+    <div class="row brbtns"><button class="btn" id="brAuto" type="button">자동으로 치르기</button><button class="btn primary go" id="brGo" type="button">경기 시작</button></div>
+  </section>
+
+    <section id="battle" class="screen hidden">
+    <canvas id="battleCv" class="bgcv"></canvas>
+    <div class="bhud">
+      <div class="bside me"><div class="bname"><b id="bMeName">내 몬스터</b><small id="bMeInfo"></small></div><div class="bbar hp"><i id="bMeHp"></i><span id="bMeHpT"></span></div><div class="bbar guts"><i id="bMeGuts"></i><span id="bMeGutsT"></span></div></div>
+      <div class="bvs">VS<small id="bTurn"></small></div>
+      <div class="bside en"><div class="bname"><b id="bEnName">상대</b><small id="bEnInfo"></small></div><div class="bbar hp"><i id="bEnHp"></i><span id="bEnHpT"></span></div><div class="bbar guts"><i id="bEnGuts"></i><span id="bEnGutsT"></span></div></div>
+    </div>
+    <div class="blog" id="bLog" aria-live="polite"></div>
+    <div class="bpanel">
+      <div class="bprompt" id="bPrompt">…</div>
+      <div class="bskills" id="bSkills"></div>
+      <div class="row bctl"><button class="btn sm" id="bAuto" type="button">자동 OFF</button><button class="btn sm" id="bSpeed" type="button">속도 1×</button></div>
+    </div>
+  </section>
+</div>
+
+<div id="sheet" class="sheet hidden" role="dialog" aria-modal="true"><div class="box" id="sheetBox"></div></div>
+<div id="pop" class="pop hidden"><div class="box" id="popBox"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.5a8d5163.js"></script>
+</body>
+</html>
