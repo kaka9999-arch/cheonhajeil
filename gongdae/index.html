@@ -7,7 +7,7 @@
 <link rel="icon" href="data:,">
 <title>혼자 하는 공격대</title>
 <meta name="description" content="탱커·힐러·딜러 3, 5인 공격대 중 하나를 조작하고 나머지 넷은 AI 가 맡아 거대 보스 3종을 격파하는 실시간 레이드. 멀티플레이 아님.">
-<link rel="stylesheet" href="style.159e8b23.css">
+<link rel="stylesheet" href="style.69894cf2.css">
 </head>
 <body>
 <div id="app">
@@ -15,13 +15,18 @@
 
     <section class="screen" id="scrTitle">
     <div class="intro">
-      <b>5인 공격대 중 하나를 조작한다.</b> 나머지 넷은 AI 가 채운다.<br>
+      <b>5인 공격대 중 하나를 조작한다.</b> 나머지 넷은 AI 가 싸우고, <b>동료 편성은 내가 고른다</b>(탱커 1·힐러 1·딜러 3).<br>
       보스를 잡을 때마다 <b>장비·각인</b>을 3장 중 1장 고르고, 바닥에 떨어진 <b>전리품</b>은 직접 밟아 먹는다.<br>
       3마리를 잡으면 <b>다음 회차</b>로 — 보스가 계속 강해지고 <b>전멸할 때까지</b> 이어진다.<br>
       직업 <b>12종</b> · 보스 <b>15종</b> · 장비 <b>34종</b> · 각인 <b>64종</b> · 정수 <b>9종</b>.
     </div>
     <div id="classGrid" class="classgrid"></div>
         <div class="box clsinfo" id="clsInfo"></div>
+        <div class="box party" id="partyBox">
+      <div class="phead">공격대 편성<small class="mute">슬롯을 눌러 동료를 바꾼다</small><button class="pbtn" id="btnRandRoster" type="button">무작위</button></div>
+      <div class="pslots" id="partySlots"></div>
+      <div class="ppick" id="partyPick" hidden></div>
+    </div>
     <button class="btn primary" id="btnStart" type="button">공격대 출발</button>
         <div class="box bosses">
       <div class="bhead">보스 도감<small class="mute">한 판에 단계마다 1종씩 무작위</small><b id="bossProg">0 / 9 격파</b></div>
@@ -100,6 +105,8 @@
 <div class="modal" id="rankModal" hidden><div class="box"><h2>순위표<small class="mute">한 판 최고 점수</small></h2><div class="rank" id="rankList"></div><button class="btn" id="rankClose" type="button">닫기</button></div></div>
 <div class="modal" id="nickModal" hidden><div class="box"><h2>이름</h2><div class="mute">순위표에 올라갈 이름. 한글 2~8자. 다른 게임과 같이 쓴다.</div><input id="nickIn" maxlength="8" placeholder="예: 무명객"><div class="err" id="nickErr"></div><div class="row"><button class="btn" id="nickSkip" type="button">닫기</button><button class="btn primary" id="nickGo" type="button">정하기</button></div></div></div>
 <div class="modal" id="helpModal" hidden><div class="box"><h2>규칙</h2><div class="mute helptx">
+  <b>공격대 편성</b> 내 직업을 고른 뒤 아래 <b>편성</b> 패널에서 동료 4명을 직접 정한다(탱커 1·힐러 1·딜러 3 — 내가 맡은 역할은 자동으로 빠진다). 슬롯을 누르면 그 역할의 직업 후보가 나온다. <b>무작위</b> 버튼으로 맡길 수도 있고, 정한 편성은 다음 출격에도 남는다.<br>
+  <b>힐러 셋은 성격이 다르다</b> — <b class="hy">사제</b>는 회복량과 보호막으로 안정적이고, <b class="hy">연단사</b>는 파티 피해 감소·공격력 버프로 <b>맞는 양을 줄이고 빨리 끝낸다</b>, <b class="hy">무녀</b>는 흡수막과 <b>부활</b>로 사고를 덮는다.<br>
   <b>이동</b> 아레나를 누른 채 끌면 그 방향으로 간다. 키보드는 <kbd>WASD</kbd>·방향키, 스킬은 <kbd>1</kbd>~<kbd>6</kbd>.<br>
   <b>공격</b> 기본 공격은 사거리 안이면 자동. 하단 스킬 6개는 쿨다운이 다 차면 누른다.<br>
   <b>스킬 자동</b> 버튼이 많으면 내 상태 줄 오른쪽 <kbd>자동</kbd>(또는 멈춤 창)으로 켠다 — 스킬은 알아서 쓰고 <b>이동만 직접</b> 하면 된다. 수동으로 눌러 끼어들 수도 있다.<br>
@@ -109,7 +116,7 @@
   <b>쫓아오는 장판</b>(강철 투구충의 땅속 추격, 피의 사냥꾼의 사냥 개시)은 서서 피할 수 없다 — 장판이 나보다 훨씬 느리니 <b>계속 달리면</b> 벗어난다. <b>회전하는 부채꼴</b>(옥린 사룡의 감아치기, 심연의 거인의 팔 휘두르기)은 한 번 비키는 것으로 끝나지 않고 같이 돌아야 한다.<br>
   <b>탱커</b>가 보스 어그로(빨간 화살표 표식)를 붙잡는다. 탱커와 힐러가 둘 다 쓰러지면 전멸. 탱커가 없으면 딜러가 물려 순식간에 무너진다.<br>
   보스는 <b>15종 중 단계마다 1종씩 무작위</b>로 나온다(입문→중급→최종) — 편성 조합 125가지. 직업은 <b>12종</b>(탱커 3·힐러 3·딜러 6).<br>
-  <b>무한 도전</b> 셋을 다 잡으면 끝이 아니라 <b>다음 회차</b>가 시작된다. 회차마다 보스 체력 ×1.30, 피해 ×1.28 로 올라가고 <b>회복 효율은 떨어진다</b>(2회차 88% · 4회차 70%) — 깊이 갈수록 회복보다 회피가 중요해진다. <b>전멸할 때까지</b> 계속되고, 잡은 보스 수가 곧 점수다(보스 1마리 = 500점 × 그 회차).<br>
+  <b>무한 도전</b> 셋을 다 잡으면 끝이 아니라 <b>다음 회차</b>가 시작된다. 회차마다 보스 체력 ×1.30, 피해 ×1.28 로 올라가고 <b>회복 효율은 떨어진다</b>(2회차 85% · 4회차 65%) — 깊이 갈수록 회복보다 회피가 중요해진다. <b>전멸할 때까지</b> 계속되고, 잡은 보스 수가 곧 점수다(보스 1마리 = 500점 × 그 회차).<br>
   <b>보스는 가만히 있지 않는다</b> — 보스마다 움직이는 방식이 다르다. 어슬렁 배회하거나(돌골렘·백골 군주), 같은 궤도를 순회하거나(녹슨 기계병·늪의 거수), 벽을 타거나(거미 여왕), 짧게 순간이동한다(무형의 공포).
   일정 시간마다 <b class="hy">노란 조준 원</b>으로 착지 지점을 예고하고 <b>도약</b>하니 그 원에서 벗어나야 한다(체력이 낮아지면 더 자주 뛴다). 부채꼴·직선 기믹도 보스가 서 있는 자리에서 뻗으므로 매번 방향이 다르다.<br>
   우측 상단 <b>딜미터</b>로 실시간 딜량·힐량 순위를 볼 수 있다.<br>
@@ -119,6 +126,6 @@
   <b>멈춤</b> 아레나 우측 상단 <kbd>⏸</kbd>(또는 <kbd>Esc</kbd>)로 잠시 멈추거나 포기할 수 있다. 내가 쓰러져도 탱커·힐러가 살아 있으면 파티는 계속 싸운다 — 관전하거나 바로 결과를 볼 수 있다.
 </div><div class="row" style="margin-top:10px"><button class="btn primary wide" id="helpClose" type="button">알겠다</button></div></div></div>
 <div id="crt"></div>
-<script src="app.92929802.js"></script>
+<script src="app.5b8fbce5.js"></script>
 </body>
 </html>
