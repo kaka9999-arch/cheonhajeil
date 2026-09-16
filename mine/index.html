@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0a0806">
+<link rel="icon" href="data:,">
+<title>랜턴 광부</title>
+<meta name="description" content="랜턴 기름이 줄어드는 동안 갱도를 파 내려간다. 광석을 캘수록 가방이 무거워져 올라오기 힘들어진다. 한 칸만 더와 지금 올라가자의 줄다리기.">
+<link rel="stylesheet" href="style.5970389b.css">
+</head>
+<body class="nocrt">
+<div id="app">
+  <header class="head"><h1>랜턴 광부<small>깊이 200m 아래의 심연광</small></h1><a href="../">◀ 게임 상자</a></header>
+
+    <section class="screen" id="scrTitle">
+    <canvas id="titleArt" width="288" height="150"></canvas>
+    <div class="box">
+      <div class="kv"><span>광부</span><b id="tNick">무명</b></div>
+      <div class="kv"><span>한 판 최고 수익</span><b id="tBest">0 냥</b></div>
+      <div class="kv"><span>가장 깊이 내려간 곳</span><b id="tDepth">0 m</b></div>
+      <div class="kv"><span>광산 금화 (장비 강화용)</span><b id="tCoin">0 냥</b></div>
+      <div class="kv"><span>공용 지갑</span><b id="tWallet">0 G</b></div>
+      <p class="mute tip">누르고 있으면 그쪽으로 계속 판다. 기름이 다 타기 전에 지표로 돌아와야 캔 광석이 돈이 된다.</p>
+    </div>
+    <div class="row">
+      <button class="btn" id="btnShop" type="button">⛏ 장비 갖추기</button>
+      <button class="btn" id="btnHelp" type="button">? 도움말</button>
+    </div>
+    <div class="row">
+      <button class="btn" id="btnRank" type="button">순위표</button>
+      <button class="btn" id="btnNick" type="button">이름 바꾸기</button>
+      <button class="btn" id="btnCrt" type="button">주사선 켜기</button>
+    </div>
+    <button class="btn primary" id="btnStart" type="button">갱도로 내려간다</button>
+  </section>
+
+    <section class="screen hidden" id="scrPlay" hidden>
+    <div class="hud">
+      <div><span>깊이</span><b id="hDepth">0m</b></div>
+      <div><span>가방</span><b id="hBag">0 / 18</b></div>
+      <div><span>캔 광석</span><b id="hValue">0 냥</b></div>
+    </div>
+    <div class="bars">
+      <div class="bar oil"><i id="oilBar"></i><em id="oilTx">랜턴 75초</em></div>
+      <div class="bar hp"><i id="hpBar"></i><em id="hpTx">몸 100</em></div>
+    </div>
+    <div id="stageWrap">
+      <canvas id="stage" width="288" height="384"></canvas>
+      <div id="layerTag">표토</div>
+      <div id="alert" class="hidden" hidden>낙반!</div>
+    </div>
+    <div class="row">
+      <button class="btn flare" id="btnFlare" type="button">🔥 신호탄 <b id="flareN">1</b></button>
+      <button class="btn" id="btnQuit" type="button">구조 요청</button>
+    </div>
+    <p class="mute tip" id="playTip">갱도 안을 누르면 그쪽으로 판다. 손을 대고 있으면 계속 판다.</p>
+  </section>
+
+    <section class="screen hidden" id="scrResult" hidden>
+    <div class="box">
+      <h2 id="rTitle">지표로 돌아왔다</h2>
+      <div class="big" id="rGold">0 냥</div>
+      <div id="rList" class="oreList"></div>
+      <div class="kv"><span>가장 깊었던 곳</span><b id="rDepth">0 m</b></div>
+      <div class="kv"><span>깊이 수당</span><b id="rBonus">0 냥</b></div>
+      <div class="kv"><span>공용 지갑에 넣은 골드</span><b id="rWallet">0 G</b></div>
+      <div class="mute" id="rRank">순위표에 올리는 중…</div>
+    </div>
+    <button class="btn primary" id="btnAgain" type="button">한 판 더</button>
+    <div class="row">
+      <button class="btn" id="btnShop2" type="button">⛏ 장비 갖추기</button>
+      <button class="btn" id="btnHome" type="button">타이틀로</button>
+    </div>
+  </section>
+</div>
+
+<div class="pop hidden" id="shopPop" hidden><div class="box">
+  <h2>장비 갖추기<small class="mute">광산 금화 <b id="shopCoin">0</b>냥</small></h2>
+  <div id="shopList"></div>
+  <p class="mute">장비는 한 번 올리면 계속 남는다. 금화는 갱도에서 가지고 나온 광석값이 그대로 쌓인 것.</p>
+  <button class="btn primary" data-close type="button">닫기</button>
+</div></div>
+
+<div class="pop hidden" id="helpPop" hidden><div class="box">
+  <h2>어떻게 하나</h2>
+  <ul class="help">
+    <li><b>판다</b> — 갱도 안을 누르면 광부가 그쪽으로 한 칸씩 판다. 손을 떼지 않으면 계속 판다. 방향키·WASD 도 된다.</li>
+    <li><b>랜턴</b> — 기름은 계속 준다. 20% 밑으로 떨어지면 시야가 확 좁아지고, 다 타면 어둠 속에서 몸이 상한다.</li>
+    <li><b>무게</b> — 광석을 담을수록 무거워져 <b>올라오는 속도</b>가 가장 크게 느려진다. 내려갈 땐 가볍고 올라올 땐 무겁다.</li>
+    <li><b>돌아오기</b> — 지표(맨 위)까지 올라와야 광석이 돈이 된다. 기절하면 절반만 건진다.</li>
+    <li><b>위험</b> — 초록 주머니는 가스(파면 터진다), 파란 칸은 물(기름이 세 배로 탄다), 파낸 자리 위의 바위는 흔들리다 떨어진다.</li>
+    <li><b>신호탄</b> — 한 판에 정해진 개수만. 터뜨리면 그 자리에서 즉시 지표로, 캔 광석은 전부 가지고 나온다.</li>
+    <li><b>깊을수록</b> — 광석은 무게 대비 값이 훨씬 좋아진다. 깊이 가서 좋은 것만 담는 것이 잘 버는 길.</li>
+  </ul>
+  <button class="btn primary" data-close type="button">닫기</button>
+</div></div>
+
+<div class="pop hidden" id="rankPop" hidden><div class="box">
+  <h2>순위표<small class="mute">한 판 최고 수익</small></h2>
+  <div class="rank" id="rankList"></div>
+  <button class="btn primary" data-close type="button">닫기</button>
+</div></div>
+
+<div class="pop hidden" id="nickPop" hidden><div class="box">
+  <h2>이름</h2>
+  <div class="mute">순위표에 올라갈 이름. 한글 2~8자. 게임 상자의 다른 게임과 같이 쓴다.</div>
+  <input id="nickIn" maxlength="8" placeholder="예: 막장아재">
+  <div class="err" id="nickErr"></div>
+  <button class="btn primary" id="nickGo" type="button">정하기</button>
+  <button class="btn" id="nickLater" type="button">나중에</button>
+</div></div>
+
+<div id="toast"></div>
+<div id="crt"></div>
+<script src="app.ecd16df2.js"></script>
+</body>
+</html>
