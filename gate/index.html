@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#181425">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>성문의 파수꾼</title>
+<meta name="description" content="영웅을 모아 다섯 자리(앞줄 2·뒷줄 3)를 채우고 60관문을 뚫는 도트 육성 RPG. 쓰러진 영웅은 며칠 부상으로 빠지기 때문에, 강한 다섯보다 쓸 만한 열다섯이 필요하다.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="style.2c88d850.css">
+</head>
+<body>
+<div id="app">
+
+    <section id="title" class="screen">
+    <div class="hero">
+      <div class="sub">- GATE KEEPERS -</div>
+      <h1>성문의<br><em>파수꾼</em></h1>
+      <div class="tag">모으고, 세우고, <b>성문을 지킨다</b></div>
+      <div><a class="back" href="../">◀ 게임 상자</a></div>
+    </div>
+    <div class="parade" id="parade" aria-hidden="true"></div>
+    <div class="panel">
+      <div class="who">파수대장 <b id="titleName">무명</b> <button id="btnName" class="btn sm" type="button">이름</button></div>
+      <div id="titleInfo" class="mute"></div>
+      <div class="row">
+        <button id="btnContinue" class="btn primary hidden" type="button">이어서 하기</button>
+        <button id="btnNew" class="btn primary" type="button">새로 시작</button>
+      </div>
+    </div>
+    <div class="howto">
+      <div><b>다섯 자리</b><span>앞줄 2 · 뒷줄 3. 기사·창병·도적은 앞에서 맞고, 궁수·마법사·사제는 뒤에서 일한다.</span></div>
+      <div><b>부상</b><span>쓰러진 영웅은 며칠 못 나간다. 강한 다섯보다 <em>쓸 만한 열다섯</em>이 필요하다.</span></div>
+      <div><b>60관문</b><span>여섯 지역, 열 번째마다 우두머리. 막히면 뚫어 둔 관문을 <em>소탕</em>해 힘을 키운다.</span></div>
+    </div>
+    <div class="meta" id="metaGrid"></div>
+    <button id="btnRank" class="btn wide" type="button">파수대 순위표</button>
+    <div id="rankPane" class="hidden"><div id="rankList"></div></div>
+  </section>
+
+    <section id="keep" class="screen hidden">
+    <div class="hud">
+      <div class="pill day"><small>일차</small><b id="dayTxt">1</b></div>
+      <div class="pill gold"><i class="ic-gold"></i><b id="goldTxt">0</b></div>
+      <div class="pill soul"><i class="ic-soul"></i><b id="soulTxt">0</b></div>
+      <div class="pill gate"><small>관문</small><b id="gateTxt">1/60</b></div>
+      <button class="iconbtn" id="btnMenu" type="button" aria-label="메뉴"><i></i><i></i><i></i></button>
+    </div>
+    <div class="views" id="views">
+      <div class="view" id="vGate"></div>
+      <div class="view hidden" id="vHeroes"></div>
+      <div class="view hidden" id="vAltar"></div>
+      <div class="view hidden" id="vForge"></div>
+      <div class="view hidden" id="vFort"></div>
+    </div>
+    <div class="tabbar" id="tabbar" role="tablist">
+      <button type="button" data-tab="gate" class="on"><span class="ti ti-gate"></span><span>성문</span></button>
+      <button type="button" data-tab="heroes"><span class="ti ti-hero"></span><span>영웅</span><i class="dotN hidden" id="dotHero">!</i></button>
+      <button type="button" data-tab="altar"><span class="ti ti-altar"></span><span>제단</span><i class="dotN hidden" id="dotAltar">!</i></button>
+      <button type="button" data-tab="forge"><span class="ti ti-forge"></span><span>대장간</span><i class="dotN hidden" id="dotForge">!</i></button>
+      <button type="button" data-tab="fort"><span class="ti ti-fort"></span><span>성채</span></button>
+    </div>
+  </section>
+
+    <section id="battle" class="screen hidden">
+    <div class="bhead"><b id="bTitle">관문</b><span id="bWave">1 / 3 파</span></div>
+    <div class="field" id="field">
+      <div class="bg" aria-hidden="true"><div class="far"></div><div class="gnd"></div></div>
+      <div class="side foes" id="foeRow"></div>
+      <div class="side mine" id="myRow"></div>
+    </div>
+    <div class="blog" id="bLog" aria-live="polite"></div>
+    <div class="row bctl">
+      <button class="btn sm" id="bSpeed" type="button">속도 1×</button>
+      <button class="btn sm" id="bSkip" type="button">건너뛰기 ▶▶</button>
+    </div>
+  </section>
+</div>
+
+<div id="sheet" class="sheet hidden" role="dialog" aria-modal="true"><div class="box" id="sheetBox"></div></div>
+<div id="pop" class="pop hidden"><div class="box" id="popBox"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.36bfd6f9.js"></script>
+</body>
+</html>
