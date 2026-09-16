@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0a0f22">
+<link rel="icon" href="data:,">
+<title>반디 울타리</title>
+<meta name="description" content="여름밤 들판에 빛의 실을 끌어 울타리를 친다. 닫은 울타리 안의 반딧불이가 내 것이 된다. 나방은 실을 끊고 거미는 가장자리를 쫓는다.">
+<link rel="stylesheet" href="style.b121d510.css">
+</head>
+<body class="nocrt">
+<div id="app">
+  <header class="head"><h1>반디 울타리<small>여름밤 들판의 빛 울타리</small></h1><a href="../">◀ 게임 상자</a></header>
+
+    <section class="screen" id="scrTitle">
+    <canvas id="titleArt" width="300" height="150"></canvas>
+    <div class="box">
+      <div class="kv"><span>이름</span><b id="tNick">무명</b></div>
+      <div class="kv"><span>최고 점수</span><b id="tBest">0</b></div>
+      <div class="kv"><span>가장 깊은 밤</span><b id="tNight">-</b></div>
+      <div class="kv"><span>공용 지갑</span><b id="tWallet">0 G</b></div>
+      <p class="mute lead">들판으로 걸어 나가면 빛의 실이 따라 나온다. 다시 내 땅에 닿아 <b>울타리를 닫으면</b> 그 안이 통째로 내 것이 되고, 갇힌 반딧불이가 점수가 된다. 들판의 <b>75%</b>를 두르면 다음 밤.</p>
+    </div>
+    <button class="btn primary" id="btnStart" type="button">들판으로</button>
+    <div class="row"><button class="btn" id="btnHelp" type="button">어떻게 하나</button><button class="btn" id="btnRank" type="button">순위표</button></div>
+    <div class="row"><button class="btn" id="btnNick" type="button">이름 바꾸기</button><button class="btn" id="btnCrt" type="button">주사선 켜기</button></div>
+  </section>
+
+    <section class="screen hidden" id="scrPlay" hidden>
+    <div class="hud">
+      <div><span>밤</span><b id="hStage">1</b></div>
+      <div><span>새벽까지</span><b id="hTime">100</b></div>
+      <div><span>점수</span><b id="hScore">0</b></div>
+    </div>
+    <div class="barwrap">
+      <div class="bar"><i id="barFill"></i><u id="barGoal"></u></div>
+      <div class="barside"><span id="hPct">0%</span><span id="hLives" class="lives">●●●</span></div>
+    </div>
+    <div id="stageWrap"><canvas id="stage" width="360" height="440"></canvas><div id="pop"></div><div id="msg">아래로 걸어 나가 보자</div></div>
+    <div class="pad">
+      <button class="padbtn up" id="dUp" type="button" aria-label="위로">▲</button>
+      <button class="padbtn left" id="dLeft" type="button" aria-label="왼쪽으로">◀</button>
+      <button class="padbtn mid" id="dStop" type="button" aria-label="멈추기">멈춤</button>
+      <button class="padbtn right" id="dRight" type="button" aria-label="오른쪽으로">▶</button>
+      <button class="padbtn down" id="dDown" type="button" aria-label="아래로">▼</button>
+    </div>
+    <button class="btn slim" id="btnQuit" type="button">그만두기</button>
+  </section>
+
+    <section class="screen hidden" id="scrResult" hidden>
+    <div class="box">
+      <h2 id="rWhy">새벽이 왔다</h2>
+      <div class="big" id="rScore">0</div>
+      <div class="kv"><span>지나온 밤</span><b id="rStage">1</b></div>
+      <div class="kv"><span>가둔 반디</span><b id="rCaught">0</b></div>
+      <div class="kv"><span>놓친 반디</span><b id="rFled">0</b></div>
+      <div class="kv"><span>지갑에 넣은 골드</span><b id="rGold">0 G</b></div>
+      <div class="mute" id="rRank">순위표에 올리는 중…</div>
+    </div>
+    <button class="btn primary" id="btnAgain" type="button">한 밤 더</button>
+    <button class="btn" id="btnHome" type="button">타이틀로</button>
+  </section>
+</div>
+
+<div class="pop hidden" id="helpPop" hidden><div class="box">
+  <h2>어떻게 하나</h2>
+  <ul class="help">
+    <li><b>두르기</b> — 방향 단추(또는 방향키·화면 밀기)로 움직인다. 내 땅에서 <b>들판으로 나가면</b> 빛의 실이 따라 나오고, 다시 내 땅에 닿는 순간 울타리가 닫혀 그 안이 통째로 내 것이 된다.</li>
+    <li><b>반디</b> — 울타리 안에 갇힌 반딧불이가 점수다. 시간이 갈수록 어두워져 값이 떨어지고, 다 꺼지면 날아가 버린다. <b>세 마리 이상 한 번에 가두면 2배</b>, 다섯 마리면 3배.</li>
+    <li><b>나방</b> — 들판을 떠다니다 <b>긋는 중인 실</b>에 닿으면 실이 끊기고 한 대 맞는다. 내 땅 위에 있을 땐 건드리지 못한다. 길게 그을수록 오래 위험하다.</li>
+    <li><b>거미</b> — 내 땅의 <b>가장자리</b>를 기어 나를 쫓는다. 가장자리에서 가만히 있는 것도 안전하지 않다. 걷는 속도는 내가 더 빠르다.</li>
+    <li><b>밤</b> — 들판의 75%를 두르면 다음 밤으로 넘어간다. 새벽까지 못 두르면 거기서 끝. 세 밤마다 목숨이 하나 늘어난다.</li>
+    <li><b>멈춤</b> — 실을 끄는 중에도 멈출 수 있다. 나방이 지나가길 기다리는 값은 밤 시간이다.</li>
+  </ul>
+  <button class="btn primary" data-close type="button">닫기</button>
+</div></div>
+
+<div class="pop hidden" id="rankPop" hidden><div class="box">
+  <h2>순위표<small class="mute">한 판 최고 점수</small></h2>
+  <div class="rank" id="rankList"></div>
+  <button class="btn primary" data-close type="button">닫기</button>
+</div></div>
+
+<div class="pop hidden" id="nickPop" hidden><div class="box">
+  <h2>이름</h2>
+  <div class="mute">순위표에 올라갈 이름. 한글 2~8자. 게임 상자의 다른 게임과 같이 쓴다.</div>
+  <input id="nickIn" maxlength="8" placeholder="예: 반디꾼">
+  <div class="err" id="nickErr"></div>
+  <button class="btn primary" id="nickGo" type="button">정하기</button>
+  <button class="btn" id="nickLater" type="button">나중에</button>
+</div></div>
+
+<div id="toast"></div>
+<div id="crt"></div>
+<script src="app.75f04417.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#070d18">
+<link rel="icon" href="data:,">
+<title>밤바다 도선사</title>
+<meta name="description" content="밤 항구로 들어오는 배마다 손끝으로 항로를 그려 준다. 방파제 관문은 둘뿐이고, 물때가 바뀌면 여울이 드러나 길이 사라진다.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.81f05bdb.css">
+</head>
+<body>
+<div id="app">
+  <header class="head"><h1>밤바다 도선사<small>항로 관제</small></h1><a href="../">◀ 게임 상자</a></header>
+
+  <section class="screen" id="scrTitle">
+    <canvas id="titleArt" width="320" height="150"></canvas>
+    <div class="box">
+      <div class="kv"><span>도선사</span><b id="tNick">무명</b></div>
+      <div class="kv"><span>최고 점수</span><b id="tBest">0</b></div>
+      <div class="kv"><span>최고 계급</span><b id="tTitle">-</b></div>
+      <div class="kv"><span>공용 지갑</span><b id="tWallet">0 G</b></div>
+      <p class="lead">배를 <b>끌어서</b> 항로를 그리면 그대로 따라간다. <b>톡 치면</b> 엔진 정지.<br>
+        방파제 관문은 둘뿐이고, <b>썰물</b>이 되면 여울이 드러나 길이 사라진다.</p>
+    </div>
+        <div class="row"><button class="btn" id="btnHelp" type="button">도움말</button><button class="btn" id="btnRank" type="button">순위표</button></div>
+    <div class="row"><button class="btn" id="btnNick" type="button">이름 바꾸기</button><button class="btn" id="btnCrt" type="button">주사선 켜기</button></div>
+    <button class="btn primary" id="btnStart" type="button">출항 준비</button>
+  </section>
+
+  <section class="screen hidden" id="scrPlay" hidden>
+    <div class="hud">
+      <div><span>신뢰도</span><b id="hTrust">◆◆◆◆</b></div>
+      <div><span>점수</span><b id="hScore">0</b></div>
+      <div id="tideCell"><span id="hTideName">밀물</span><b id="hTide">26</b></div>
+    </div>
+    <div id="hint">배를 끌어 항로를 그려라</div>
+    <div id="stageWrap">
+      <canvas id="stage" width="320" height="440"></canvas>
+      <div id="fx"></div>
+    </div>
+    <button class="btn" id="btnQuit" type="button">그만두기</button>
+  </section>
+
+  <section class="screen hidden" id="scrResult" hidden>
+    <div class="box">
+      <h2>당직 종료</h2>
+      <div class="big" id="rScore">0</div>
+      <div class="kv"><span>계급</span><b id="rTitle">-</b></div>
+      <div class="kv"><span>들여보낸 배</span><b id="rDock">0척</b></div>
+      <div class="kv"><span>넘긴 물때</span><b id="rTide">0번</b></div>
+      <div class="kv"><span>최고 연속 접안</span><b id="rCombo">0척</b></div>
+      <div class="kv"><span>지갑에 넣은 골드</span><b id="rGold">0 G</b></div>
+      <div class="mute" id="rRank">순위표에 올리는 중…</div>
+    </div>
+    <button class="btn primary" id="btnAgain" type="button">한 판 더</button>
+    <button class="btn" id="btnHome" type="button">타이틀로</button>
+  </section>
+</div>
+
+<div class="pop hidden" id="helpPop" hidden><div class="box">
+  <h2>도선사 안내서</h2>
+  <p><b>항로 그리기</b> — 배를 누른 채 끌면 그 선을 따라간다. 선 끝을 <b>제 선석</b>에 대야 접안한다.
+     선이 초록이면 지금 지나갈 수 있는 길, 붉으면 어딘가에 막혀 있다는 뜻이다.</p>
+  <p><b>엔진 정지</b> — 배를 톡 치면 그 자리에 선다. 부딪칠 것 같을 때 급한 대로 쓰지만,
+     멈춘 배는 <b>조류에 떠밀린다</b>. 밀물이면 항구 쪽으로, 썰물이면 바다 쪽으로.</p>
+  <p><b>선석</b> — 고깃배는 어판장, 여객선은 여객터미널, 화물선은 화물부두, 유조선은 유류부두.
+     엉뚱한 부두에 대면 사고는 아니지만 배가 서 버려 시간을 버린다.</p>
+  <p><b>물때</b> — 26초마다 밀물과 썰물이 바뀐다. 썰물이면 여울이 드러나 <b>좌초</b>한다.
+     바뀌기 7초 전부터 여울 자리가 깜빡이고, 바뀐 뒤에도 5초는 물이 남아 있다.</p>
+  <p><b>신뢰도 넷</b> — 충돌이나 좌초 한 번에 하나씩 깎이고 다 닳으면 당직이 끝난다.
+     유조선이 낀 사고는 기름까지 유출돼 점수가 40 깎인다.</p>
+  <p><b>점수</b> — 배 값어치(고깃배 10 · 여객선 20 · 화물선 30 · 유조선 50)에
+     빨리 들인 만큼 더 얹고, 사고 없이 연달아 들일수록 한 척당 보너스가 커진다.</p>
+  <button class="btn" data-close type="button">알겠다</button>
+</div></div>
+
+<div class="pop hidden" id="rankModal" hidden><div class="box"><h2>순위표<small class="mute">한 판 최고 점수</small></h2><div class="rank" id="rankList"></div><button class="btn" data-close type="button">닫기</button></div></div>
+<div class="pop hidden" id="nickModal" hidden><div class="box"><h2>이름</h2><div class="mute">순위표에 올라갈 이름. 한글 2~8자. 다른 게임과 같이 쓴다.</div><input id="nickIn" maxlength="8" placeholder="예: 무명객"><div class="err" id="nickErr"></div><button class="btn primary" id="nickGo" type="button">정하기</button></div></div>
+<div id="toast"></div>
+<div id="crt"></div>
+<script src="app.7624965f.js"></script>
+</body>
+</html>
