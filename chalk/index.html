@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#17281f">
+<link rel="icon" href="data:,">
+<title>분필 술래</title>
+<meta name="description" content="칠판에 분필로 그린 미로를 달려 별을 줍고, 쫓아오는 지우개를 따돌린다. 막히면 벽 한 칸을 지워 길을 낸다.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.fbacf487.css">
+</head>
+<body>
+<div id="app">
+  <header class="head"><h1>분필 술래<small>칠판 미로 추격</small></h1><a href="../">◀ 게임 상자</a></header>
+
+    <section class="screen" id="scrTitle">
+    <canvas id="titleArt" width="360" height="200"></canvas>
+    <div class="box">
+      <div class="kv"><span>플레이어</span><b id="tNick">무명</b></div>
+      <div class="kv"><span>최고 점수</span><b id="tBest">0</b></div>
+      <div class="kv"><span>최고 단계</span><b id="tLevel">-</b></div>
+      <div class="kv"><span>공용 지갑</span><b id="tWallet">0 G</b></div>
+      <p class="mute">칠판을 밀거나(스와이프) 화살표를 눌러 달린다. 별을 다 주우면 다음 단계.<br>지우개에 잡히기 직전이면 <b class="chalk">벽 지우기</b>로 벽 한 칸을 지워 길을 낸다 — 조각은 단계마다 2개뿐.</p>
+    </div>
+    <button class="btn primary" id="btnStart" type="button">분필 잡기</button>
+    <div class="row"><button class="btn" id="btnHelp" type="button">도움말</button><button class="btn" id="btnRank" type="button">순위표</button></div>
+    <div class="row"><button class="btn" id="btnNick" type="button">이름 바꾸기</button><button class="btn" id="btnSound" type="button">소리 끄기</button><button class="btn" id="btnCrt" type="button">주사선 켜기</button></div>
+  </section>
+
+    <section class="screen hidden" id="scrPlay">
+    <div class="hud">
+      <div><span>점수</span><b id="hScore">0</b></div>
+      <div><span>단계</span><b id="hLevel">1</b></div>
+      <div><span>목숨</span><b id="hLives">♥♥♥</b></div>
+      <div><span>남은 별</span><b id="hStars">0</b></div>
+    </div>
+    <div id="stageWrap"><canvas id="stage" width="360" height="408"></canvas><div id="banner" class="hidden"></div></div>
+    <div class="ctl">
+      <div class="dpad" aria-label="방향">
+        <button class="pad up" id="padU" type="button" aria-label="위로">▲</button>
+        <button class="pad left" id="padL" type="button" aria-label="왼쪽으로">◀</button>
+        <button class="pad right" id="padR" type="button" aria-label="오른쪽으로">▶</button>
+        <button class="pad down" id="padD" type="button" aria-label="아래로">▼</button>
+      </div>
+      <div class="side">
+        <button class="btn wipe" id="btnWipe" type="button">벽 지우기<b id="hWipes">×3</b></button>
+        <button class="btn" id="btnQuit" type="button">그만두기</button>
+      </div>
+    </div>
+  </section>
+
+    <section class="screen hidden" id="scrResult">
+    <div class="box">
+      <h2>칠판이 지워졌다</h2>
+      <div class="big" id="rScore">0</div>
+      <div class="kv"><span>도달 단계</span><b id="rLevel">1</b></div>
+      <div class="kv"><span>주운 별 · 잡은 지우개</span><b id="rStat">0 · 0</b></div>
+      <div class="kv"><span>지갑에 넣은 골드</span><b id="rGold">0 G</b></div>
+      <div class="mute" id="rRank">순위표에 올리는 중…</div>
+    </div>
+    <button class="btn primary" id="btnAgain" type="button">한 판 더</button>
+    <button class="btn" id="btnHome" type="button">타이틀로</button>
+  </section>
+</div>
+
+<div class="pop hidden" id="helpPop"><div class="box">
+  <h2>노는 법</h2>
+  <ul class="help">
+    <li><b class="chalk">달리기</b> — 칠판을 밀거나(스와이프) 아래 화살표. 달리는 중에 반대쪽을 누르면 바로 돌아선다. 키보드는 방향키·WASD.</li>
+    <li><b class="chalk">별</b> 10점. 한 단계의 별을 다 주우면 새 미로로 넘어가고 보너스가 붙는다. 지우개는 단계마다 빨라진다.</li>
+    <li><b class="chalk">물감통</b>(모서리 넷) 50점. 먹으면 잠깐 지우개가 젖어 느려진다 — 그때 닿으면 통으로 돌려보내고 200·400·800·1600점.</li>
+    <li><b class="chalk">벽 지우기</b>(스페이스·E) — 보고 있는 방향의 벽 한 칸을 지운다. 지름길도 되고, 코너에 몰렸을 때 탈출로도 된다. 조각은 처음 3개, 단계마다 2개 보충(최대 5). 테두리와 "지워도 길이 안 나는 벽"은 못 지운다.</li>
+    <li><b class="chalk">지우개 넷</b> — 빨강은 최단 경로로 곧장, 보라는 네가 가는 방향 앞을 막고, 초록은 헤매다 가끔 쫓고, 파랑은 가까워지면 제 모서리로 도망간다.</li>
+    <li>목숨 셋. 6,000점마다 하나 더. 점수가 순위표 기준.</li>
+  </ul>
+  <button class="btn" type="button" data-close>닫기</button>
+</div></div>
+<div class="pop hidden" id="rankPop"><div class="box"><h2>순위표<small class="mute">한 판 최고 점수</small></h2><div class="rank" id="rankList"></div><button class="btn" type="button" data-close>닫기</button></div></div>
+<div class="pop hidden" id="nickPop"><div class="box"><h2>이름</h2><div class="mute">순위표에 올라갈 이름. 한글 2~8자. 다른 게임과 같이 쓴다.</div><input id="nickIn" maxlength="8" placeholder="예: 분필요정"><div class="err" id="nickErr"></div><button class="btn primary" id="nickGo" type="button">정하기</button><button class="btn" type="button" data-close>나중에</button></div></div>
+<div id="toast"></div>
+<div id="crt"></div>
+<script src="app.12d239e6.js"></script>
+</body>
+</html>

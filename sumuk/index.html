@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#efe6d2">
+<link rel="icon" href="data:,">
+<title>수묵 베기</title>
+<meta name="description" content="한지 위로 튀어 오르는 종이 요괴를 붓으로 그어 벤다. 붓에 든 먹은 한 획 분량뿐 — 손을 떼야 다시 찬다. 한 획에 여럿을 베면 일필휘지.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Sans+KR:wght@500;700&display=swap">
+<link rel="stylesheet" href="style.ef5955ae.css">
+</head>
+<body class="nocrt">
+<div id="app">
+  <header class="head"><h1>수묵 베기<small>한지 위의 요괴 사냥</small></h1><a href="../">◀ 게임 상자</a></header>
+
+  <section class="screen" id="scrTitle">
+    <canvas id="titleArt" width="360" height="200"></canvas>
+    <div class="box">
+      <div class="kv"><span>붓 잡은 이</span><b id="tNick">무명</b></div>
+      <div class="kv"><span>최고 점수</span><b id="tBest">0</b></div>
+      <div class="kv"><span>한 붓에 벤 최고</span><b id="tStroke">0마리</b></div>
+      <div class="kv"><span>공용 지갑</span><b id="tWallet">0 G</b></div>
+      <div class="mute tip">튀어 오르는 요괴를 <b>붓으로 그어</b> 벤다. 붓에 든 먹은 한 획 분량 — <b>손을 떼면 다시 찬다</b>. 한 획에 여럿을 베면 일필휘지 보너스. 노란 <b>저주 부적</b>은 베지 말 것.</div>
+    </div>
+    <button class="btn primary" id="btnStart" type="button">붓을 들다</button>
+    <div class="row"><button class="btn" id="btnHelp" type="button">설명</button><button class="btn" id="btnRank" type="button">순위표</button><button class="btn" id="btnNick" type="button">이름 바꾸기</button><button class="btn" id="btnCrt" type="button">주사선 켜기</button></div>
+  </section>
+
+  <section class="screen hidden" id="scrPlay" hidden>
+    <div class="hud">
+      <div class="score"><span>점수</span><b id="hScore">0</b></div>
+      <div class="lives"><span>낙관</span><b id="hLives"><i class="seal on"></i><i class="seal on"></i><i class="seal on"></i></b></div>
+      <div class="ink"><span>먹</span><b class="inkbar"><i id="inkFill"></i></b></div>
+    </div>
+    <div id="stageWrap"><canvas id="stage" width="360" height="560"></canvas><div id="msg">붓으로 그어 요괴를 베어라 · 손을 떼면 먹이 찬다</div></div>
+    <div class="row"><button class="btn" id="btnPause" type="button">멈춤</button><button class="btn" id="btnQuit" type="button">그만두기</button></div>
+  </section>
+
+  <section class="screen hidden" id="scrResult" hidden>
+    <div class="box">
+      <h2>붓을 놓다</h2>
+      <div class="big" id="rScore">0</div>
+      <div class="kv"><span>벤 요괴</span><b id="rCut">0마리</b></div>
+      <div class="kv"><span>한 붓에 벤 최고</span><b id="rBest">0마리</b></div>
+      <div class="kv"><span>버틴 시간</span><b id="rTime">0초</b></div>
+      <div class="kv"><span>지갑에 넣은 골드</span><b id="rGold">0 G</b></div>
+      <div class="mute" id="rRank">순위표에 올리는 중…</div>
+    </div>
+    <button class="btn primary" id="btnAgain" type="button">한 판 더</button>
+    <button class="btn" id="btnHome" type="button">타이틀로</button>
+  </section>
+</div>
+
+<div class="pop hidden" id="helpPop" hidden><div class="box">
+  <h2>붓 잡는 법</h2>
+  <ul class="help">
+    <li><b>긋는다</b> — 손가락이 지나간 자리의 요괴가 베인다. 톡 쳐도 벤다.</li>
+    <li><b>먹은 한 획 분량</b> — 긋는 길이만큼 먹이 닳고, 마르면 붓이 지나가도 안 베인다. <b>손을 떼면 0.6초에 다시 찬다.</b></li>
+    <li><b>일필휘지</b> — 한 획에 2마리 +8 · 3마리 +24 · 4마리 +48 · 5마리 +80. 같은 획으로 같은 요괴를 두 번 벨 수는 없다.</li>
+    <li><b>낙관 셋</b> — 요괴를 못 베고 떨어뜨리거나, 노란 <b>저주 부적</b>을 베면 하나가 지워진다. 셋 다 지워지면 끝.</li>
+    <li><b>요괴</b> — 종이 도깨비 10 · 두억시니(작고 빠름) 20 · 갑옷 도깨비(두 획) 30 · 금 도깨비 50 + 골드.</li>
+    <li><b>먹통</b> — 베면 먹이 가득 차고 3초 동안 먹이 닳지 않는다.</li>
+    <li>점수 40점마다 지갑에 1G(한 판 최대 100G). 순위표는 한 판 점수.</li>
+  </ul>
+  <button class="btn" type="button" data-close>닫기</button>
+</div></div>
+<div class="pop hidden" id="rankPop" hidden><div class="box"><h2>순위표<small class="mute">한 판 최고 점수</small></h2><div class="rank" id="rankList"></div><button class="btn" type="button" data-close>닫기</button></div></div>
+<div class="pop hidden" id="nickPop" hidden><div class="box">
+  <h2>이름</h2>
+  <div class="mute">순위표에 올라갈 이름. 한글 2~8자. 게임 상자의 다른 게임과 같이 쓴다.</div>
+  <input id="nickIn" maxlength="8" placeholder="예: 먹물검객">
+  <div class="err" id="nickErr"></div>
+  <button class="btn primary" id="nickGo" type="button">정하기</button>
+  <button class="btn" type="button" data-close>나중에</button>
+</div></div>
+
+<div id="toast"></div>
+<div id="crt"></div>
+<script src="app.7993af06.js"></script>
+</body>
+</html>

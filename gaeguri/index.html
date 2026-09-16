@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#9fd7f2">
+<link rel="icon" href="data:,">
+<title>개구리 귀갓길</title>
+<meta name="description" content="시골길·개울·철길을 한 칸씩 뛰어 건너 집으로. 통나무는 떠내려가고 기차는 종이 울린 뒤에 온다. 가만히 있으면 황새가 잡아간다.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.ca37b7c0.css">
+</head>
+<body>
+<div id="app">
+  <header class="head"><h1>개구리 귀갓길<small>길 건너기</small></h1><a href="../">◀ 게임 상자</a></header>
+
+    <section class="screen" id="scrTitle">
+    <canvas id="titleArt" width="360" height="190"></canvas>
+    <div class="box">
+      <div class="kv"><span>플레이어</span><b id="tNick">무명</b></div>
+      <div class="kv"><span>최고 거리</span><b id="tBest">0칸</b></div>
+      <div class="kv"><span>공용 지갑</span><b id="tWallet">0 G</b></div>
+      <p class="mute">화면을 <b>톡</b> 치면 앞으로 한 칸, <b>밀면</b> 그쪽으로 한 칸. 시골길·개울·철길을 건너 최대한 멀리 간다. 가만히 서 있으면 황새가 온다.</p>
+    </div>
+    <button class="btn primary" id="btnStart" type="button">출발!</button>
+    <div class="row"><button class="btn" id="btnHelp" type="button">어떻게 하나</button><button class="btn" id="btnRank" type="button">순위표</button></div>
+    <div class="row"><button class="btn" id="btnNick" type="button">이름 바꾸기</button><button class="btn" id="btnSound" type="button">소리 끄기</button><button class="btn" id="btnCrt" type="button">주사선 켜기</button></div>
+  </section>
+
+    <section class="screen hidden" id="scrPlay" hidden>
+    <div class="hud"><div><span>거리</span><b id="hDist">0</b></div><div><span>잠자리</span><b id="hCoin">0</b></div><div><span>최고</span><b id="hBest">0</b></div></div>
+    <div id="stageWrap"><canvas id="stage" width="360" height="520"></canvas></div>
+    <div class="pad">
+      <button class="dbtn" id="dUp" type="button" aria-label="위로 뛰기">▲</button>
+      <div class="padrow"><button class="dbtn" id="dLeft" type="button" aria-label="왼쪽으로 뛰기">◀</button><button class="dbtn" id="dDown" type="button" aria-label="아래로 뛰기">▼</button><button class="dbtn" id="dRight" type="button" aria-label="오른쪽으로 뛰기">▶</button></div>
+    </div>
+    <button class="btn small" id="btnQuit" type="button">그만두기</button>
+  </section>
+
+    <section class="screen hidden" id="scrResult" hidden>
+    <div class="box result">
+      <div class="eyebrow" id="rCause">길에서 차에 치였다</div>
+      <div class="big"><span id="rScore">0</span><small>칸</small></div>
+      <div class="title" id="rTitle">논두렁 새내기</div>
+      <div class="kv"><span>잡은 잠자리</span><b id="rCoin">0마리</b></div>
+      <div class="kv"><span>지갑에 넣은 골드</span><b id="rGold">0 G</b></div>
+      <div class="kv"><span>최고 거리</span><b id="rBest">0칸</b></div>
+      <div class="mute" id="rRank">순위표에 올리는 중…</div>
+    </div>
+    <button class="btn primary" id="btnAgain" type="button">한 판 더</button>
+    <button class="btn" id="btnHome" type="button">타이틀로</button>
+  </section>
+</div>
+
+<div class="pop hidden" id="helpPop" hidden><div class="box">
+  <h2>어떻게 하나</h2>
+  <ul class="help">
+    <li><b>뛰기</b> — 화면을 톡 치면 앞으로, 미는 방향으로 한 칸. 아래 방향 단추·키보드 방향키도 된다. 뛰는 중에 한 번 더 누르면 착지하자마자 이어 뛴다.</li>
+    <li><b>풀밭</b> — 안전하다. 나무는 못 지나가고, 앉아 있는 <b>잠자리</b>를 잡으면 공용 지갑 골드(2G).</li>
+    <li><b>시골길</b> — 경운기·트럭·버스·오토바이가 지나간다. 내려앉는 자리에 차가 없으면 산다. 공중에서는 맞지 않는다.</li>
+    <li><b>개울</b> — 통나무 위에서만 산다. 통나무는 흘러가니 화면 밖으로 나가기 전에 내려라. 연잎이 떠 있는 고요한 물은 연잎만 밟는다.</li>
+    <li><b>철길</b> — 종이 울리고 1.4초 뒤 기차가 지나간다. 종이 울리면 철길 위에 있지 마라.</li>
+    <li><b>황새</b> — 3초 넘게 가만히 있으면 그림자가 드리우고, 5초에 잡혀간다. 화면 아래로 밀려도 잡힌다. 뒤로 갈수록 손해.</li>
+    <li><b>점수</b> — 도달한 칸 수. 순위표는 한 판 최고 거리.</li>
+  </ul>
+  <button class="btn" type="button" data-close>닫기</button>
+</div></div>
+
+<div class="pop hidden" id="rankPop" hidden><div class="box">
+  <h2>순위표<small class="mute">한 판 최고 거리</small></h2>
+  <div class="rank" id="rankList"></div>
+  <button class="btn" type="button" data-close>닫기</button>
+</div></div>
+
+<div class="pop hidden" id="nickPop" hidden><div class="box">
+  <h2>이름</h2>
+  <div class="mute">순위표에 올라갈 이름. 한글 2~8자. 다른 게임과 같이 쓴다.</div>
+  <input id="nickIn" maxlength="8" placeholder="예: 청개구리">
+  <div class="err" id="nickErr"></div>
+  <div class="row"><button class="btn primary" id="nickGo" type="button">정하기</button><button class="btn" type="button" data-close>닫기</button></div>
+</div></div>
+
+<div id="toast"></div>
+<div id="crt"></div>
+<script src="app.c250ead3.js"></script>
+</body>
+</html>
