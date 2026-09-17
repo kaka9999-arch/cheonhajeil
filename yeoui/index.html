@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#07122e">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>여의주 용궁</title>
+<meta name="description" content="구슬 하나를 5초 동안 끌고 다니며 판을 정리하면 같은 색 식구들이 한꺼번에 덤빈다. 콤보·오행 상성·리더 둘·턴 스킬로 여섯 물길 30굴을 내려가 깨진 여의주를 찾는 구슬 끌기 퍼즐 RPG.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.9669fd2e.css">
+</head>
+<body>
+<div id="app">
+
+    <section id="title" class="screen">
+    <div class="tTop">
+      <a class="back" href="../">◀ 게임 상자</a>
+      <button id="btnSound" class="btn sm" type="button">소리 켬</button>
+    </div>
+    <div class="tScroll">
+      <canvas id="titleArt" width="390" height="300" aria-hidden="true"></canvas>
+      <div class="tHero">
+        <div class="sub">동해 바닷속 구슬 이야기</div>
+        <h1>여의주 <em>용궁</em></h1>
+        <div class="tag">구슬을 끌어 같은 색을 잇고, 깨진 여의주를 찾아 용궁으로</div>
+      </div>
+      <div class="tBtns">
+        <button id="btnContinue" class="btn primary big wide hidden" hidden type="button">이어서 하기</button>
+        <button id="btnNew" class="btn big wide" type="button">새로 시작</button>
+      </div>
+      <div class="tWho">
+        <span>해녀 견습생 <b id="titleName">막내</b></span>
+        <button id="btnName" class="btn sm" type="button">이름</button>
+        <button id="btnHelp" class="btn sm" type="button">도움말</button>
+      </div>
+      <div id="titleInfo"></div>
+      <button id="btnRank" class="btn wide" type="button">여의주 순위표</button>
+      <div id="rankPane" class="hidden" hidden><div id="rankList"></div></div>
+    </div>
+  </section>
+
+    <section id="story" class="screen hidden" hidden>
+    <div class="stTop"><span id="stPlace"></span><button id="stSkip" class="btn sm" type="button">건너뛰기 ▶▶</button></div>
+    <div class="stSea" aria-hidden="true"><canvas id="stArt" width="192" height="192"></canvas></div>
+    <button id="stBox" type="button">
+      <canvas id="stFace" width="128" height="128"></canvas>
+      <span class="stBody"><span id="stName"></span><span id="stText"></span><span class="stMore">누르면 다음 ▼</span></span>
+    </button>
+  </section>
+
+    <section id="starter" class="screen hidden" hidden>
+    <div class="sHead">
+      <h2>첫 식구 고르기</h2>
+      <div id="starterTalk"></div>
+    </div>
+    <div id="starterList"></div>
+    <div id="starterInfo"></div>
+    <div class="sFoot"><button id="btnStarterOk" class="btn primary big wide off" type="button">이 식구로 시작</button></div>
+  </section>
+
+    <section id="home" class="screen hidden" hidden>
+    <div id="homeHead">
+      <span class="res"><i class="ri coin"></i><b id="resCoin">0</b></span>
+      <span class="res"><i class="ri shard"></i><b id="resShard">0</b></span>
+      <span class="res"><i class="ri drop"></i><b id="resDrop">0</b></span>
+      <button id="btnHomeMenu" class="iconbtn" type="button" aria-label="메뉴"><i></i><i></i><i></i></button>
+    </div>
+    <div class="homeBody">
+      <div id="tabDungeon" class="tabbody"></div>
+      <div id="tabTeam" class="tabbody hidden" hidden></div>
+      <div id="tabBox" class="tabbody hidden" hidden></div>
+      <div id="tabEgg" class="tabbody hidden" hidden></div>
+      <div id="tabDex" class="tabbody hidden" hidden></div>
+    </div>
+    <nav id="tabs">
+      <button data-tab="dungeon" type="button"><span class="ti"></span><span class="tl">물길</span></button>
+      <button data-tab="team" type="button"><span class="ti"></span><span class="tl">팀</span></button>
+      <button data-tab="box" type="button"><span class="ti"></span><span class="tl">식구</span></button>
+      <button data-tab="egg" type="button"><span class="ti"></span><span class="tl">알</span></button>
+      <button data-tab="dex" type="button"><span class="ti"></span><span class="tl">도감</span></button>
+    </nav>
+  </section>
+
+    <section id="pick" class="screen hidden" hidden>
+    <div class="pHead">
+      <button id="btnPickBack" class="btn sm" type="button">◀ 마을</button>
+      <h2 id="pickTitle">굴</h2>
+    </div>
+    <div class="pBody">
+      <div class="secT">도우미 고르기</div>
+      <div id="pickHelpers"></div>
+      <div class="secT">내 팀</div>
+      <div id="pickTeam"></div>
+      <div id="pickSlots"></div>
+      <div id="pickLs"></div>
+    </div>
+    <div class="pFoot"><button id="btnGo" class="btn primary big wide" type="button">출발!</button></div>
+  </section>
+
+    <section id="battle" class="screen hidden" hidden>
+    <div id="bHud">
+      <button id="btnMenu" class="iconbtn" type="button" aria-label="메뉴"><i></i><i></i><i></i></button>
+      <span id="hudFloor">1/1</span>
+      <span id="hudName"></span>
+      <span id="hudDrops"><i class="egg"></i><b id="hudEgg">0</b><i class="ri coin"></i><b id="hudCoin">0</b></span>
+    </div>
+    <canvas id="stage"></canvas>
+    <div id="teamRow"></div>
+    <div id="hpBar">
+      <div id="hpFill"></div>
+      <span id="hpText">0 / 0</span>
+      <div id="buffRow"></div>
+      <div id="timeBar" class="hidden" hidden><div id="timeFill"></div><span id="timeHp"></span></div>
+    </div>
+    <div id="boardWrap"><canvas id="board"></canvas><canvas id="dragLayer"></canvas></div>
+    <div class="bPad"></div>
+    <canvas id="fxLayer"></canvas>
+    <div id="floorBanner" class="hidden" hidden></div>
+    <div id="skillBand" class="hidden" hidden></div>
+  </section>
+
+    <section id="result" class="screen hidden" hidden>
+    <div class="rBody">
+      <h1 id="resTitle">돌파!</h1>
+      <div id="resFloors"></div>
+      <div id="resDrops"></div>
+      <div id="resExp"></div>
+      <div id="resGifts"></div>
+      <div id="resUnlock"></div>
+      <div id="resHint"></div>
+    </div>
+    <div class="rFoot">
+      <button id="btnRetry" class="btn big" type="button">다시 하기</button>
+      <button id="btnResOk" class="btn primary big" type="button">마을로</button>
+    </div>
+  </section>
+
+    <div id="sheet" class="sheet hidden" hidden><div id="sheetBox" class="parch"><button data-close type="button">닫기</button></div></div>
+  <div id="pop" class="pop hidden" hidden><div id="popBox" class="parch"><button data-close type="button">닫기</button></div></div>
+  <div id="talkBox" class="hidden" hidden data-guard><span id="talkName"></span><span id="talkText"></span><span class="talkMore">눌러서 닫기 ▼</span></div>
+  <div id="hintBubble" class="hidden" hidden></div>
+  <div id="toast"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/zzfx@1.3.2/ZzFXMicro.min.js"></script>
+<script src="app.0377f3f8.js"></script>
+</body>
+</html>
