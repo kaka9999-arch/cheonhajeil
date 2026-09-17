@@ -7,9 +7,9 @@
 <link rel="icon" href="data:,">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>성문의 파수꾼</title>
-<meta name="description" content="영웅을 모아 다섯 자리(앞줄 2·뒷줄 3)를 채우고 60관문을 뚫는 도트 육성 RPG. 쓰러진 영웅은 며칠 부상으로 빠지기 때문에, 강한 다섯보다 쓸 만한 열다섯이 필요하다.">
+<meta name="description" content="영웅을 모아 다섯 자리(앞줄 2·뒷줄 3)를 채우고 열다섯 지역 150관문과 끝없는 심연의 탑을 오르는 도트 육성 RPG. 쓰러진 영웅은 며칠 부상으로 빠지기 때문에, 강한 다섯보다 쓸 만한 열다섯이 필요하다.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="stylesheet" href="style.9364dcde.css">
+<link rel="stylesheet" href="style.cf714efa.css">
 </head>
 <body>
 <div id="app">
@@ -33,7 +33,8 @@
     <div class="howto">
       <div><b>다섯 자리</b><span>앞줄 2 · 뒷줄 3. 기사·창병·도적은 앞에서 맞고, 궁수·마법사·사제는 뒤에서 일한다.</span></div>
       <div><b>부상</b><span>쓰러진 영웅은 며칠 못 나간다. 강한 다섯보다 <em>쓸 만한 열다섯</em>이 필요하다.</span></div>
-      <div><b>60관문</b><span>여섯 지역, 열 번째마다 우두머리. 막히면 뚫어 둔 관문을 <em>소탕</em>해 힘을 키운다.</span></div>
+      <div><b>150관문</b><span>열다섯 지역, 열 번째마다 우두머리와 <em>유물</em>. 막히면 뚫어 둔 관문을 <em>소탕</em>해 힘을 키운다.</span></div>
+      <div><b>끝없는 탑</b><span>60관문을 넘으면 <em>심연의 탑</em>이 열린다. 심연석으로 영웅을 10성까지 초월시키고, 쉬는 영웅은 <em>원정</em>을 보낸다.</span></div>
     </div>
     <div class="meta" id="metaGrid"></div>
     <button id="btnRank" class="btn wide" type="button">파수대 순위표</button>
@@ -45,7 +46,8 @@
       <div class="pill day"><small>일차</small><b id="dayTxt">1</b></div>
       <div class="pill gold"><i class="ic-gold"></i><b id="goldTxt">0</b></div>
       <div class="pill soul"><i class="ic-soul"></i><b id="soulTxt">0</b></div>
-      <div class="pill gate"><small>관문</small><b id="gateTxt">1/60</b></div>
+      <div class="pill gate"><small>관문</small><b id="gateTxt">0/150</b></div>
+      <div class="pill shard hidden" id="shardPill" title="심연석"><i class="ic-shard"></i><b id="shardTxt">0</b></div>
       <button class="iconbtn" id="btnMenu" type="button" aria-label="메뉴"><i></i><i></i><i></i></button>
     </div>
     <div class="views" id="views">
@@ -53,6 +55,7 @@
       <div class="view hidden" id="vHeroes"></div>
       <div class="view hidden" id="vAltar"></div>
       <div class="view hidden" id="vForge"></div>
+      <div class="view hidden" id="vExped"></div>
       <div class="view hidden" id="vFort"></div>
     </div>
     <div class="tabbar" id="tabbar" role="tablist">
@@ -60,6 +63,7 @@
       <button type="button" data-tab="heroes"><span class="ti" data-ico="hero"></span><span>영웅</span><i class="dotN hidden" id="dotHero">!</i></button>
       <button type="button" data-tab="altar"><span class="ti" data-ico="altar"></span><span>제단</span><i class="dotN hidden" id="dotAltar">!</i></button>
       <button type="button" data-tab="forge"><span class="ti" data-ico="forge"></span><span>대장간</span><i class="dotN hidden" id="dotForge">!</i></button>
+      <button type="button" data-tab="exped"><span class="ti" data-ico="exped"></span><span>원정</span><i class="dotN hidden" id="dotExped">!</i></button>
       <button type="button" data-tab="fort"><span class="ti" data-ico="fort"></span><span>성채</span></button>
     </div>
   </section>
@@ -91,6 +95,6 @@
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/zzfx@1.3.2/ZzFXMicro.min.js"></script>
-<script src="app.f14f6e18.js"></script>
+<script src="app.111ee65d.js"></script>
 </body>
 </html>
