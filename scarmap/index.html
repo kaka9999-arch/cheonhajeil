@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#3e2731">
+<link rel="icon" href="data:,">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>흉터 지도 — 아홉 골 전기</title>
+<meta name="description" content="지형이 기억하는 전술 RPG. 불·수문·다리 끊기로 이번 전투를 쉽게 이기면 그 자국이 지도에 흉터로 남고, 몇 장 뒤 그 땅에서 다시 싸우고 그 땅의 곡식으로 부대를 먹인다. 1막 8장.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.576cc05c.css">
+</head>
+<body>
+<div id="app">
+
+    <section id="title" class="screen">
+    <div class="tHead">
+      <a class="back" href="../">◀ 게임 상자</a>
+      <h1>흉터 <em>지도</em></h1>
+      <div class="tSub">아홉 골 전기 · 1막</div>
+    </div>
+    <div class="tMap" id="titleMapBox">
+      <canvas id="titleMap" aria-label="아홉 골짜기 양피지 지도"></canvas>
+      <div id="rankPane" class="hidden parch"><h3>기수 순위표</h3><div id="rankList"></div></div>
+    </div>
+    <div class="tPanel parch">
+      <div class="who">기수 <b id="titleName">무명</b> <button id="btnName" class="btn sm" type="button">이름</button>
+        <button id="btnMode" class="btn sm" type="button">고전</button></div>
+      <div id="modeNote" class="modeNote"></div>
+      <div id="titleInfo" class="tInfo"></div>
+      <div class="row2">
+        <button id="btnContinue" class="btn primary hidden" type="button">이어서 하기</button>
+        <button id="btnNew" class="btn primary" type="button">새로 시작</button>
+      </div>
+      <div class="row3">
+        <button id="btnRank" class="btn sm" type="button">순위표</button>
+        <button id="btnHelp" class="btn sm" type="button">도움말</button>
+        <button id="btnSound" class="btn sm" type="button">소리 켬</button>
+      </div>
+    </div>
+  </section>
+
+    <section id="story" class="screen hidden">
+    <div class="head">
+      <b id="stTitle" class="hTitle">이야기</b>
+      <button id="stSkip" class="btn sm" type="button">건너뛰기 ▶▶</button>
+    </div>
+    <div class="stBg"><canvas id="stBgMap" aria-hidden="true"></canvas></div>
+    <div id="stChoices" class="stChoices hidden"></div>
+    <div id="stBox" class="parch" role="button" tabindex="0" aria-label="다음 대사">
+      <canvas id="stFace" width="84" height="96" aria-hidden="true"></canvas>
+      <div class="stTxt">
+        <b id="stName"></b>
+        <p id="stText"></p>
+        <small class="stMore" id="stMore">누르면 다음 ▼</small>
+      </div>
+    </div>
+  </section>
+
+    <section id="prep" class="screen hidden">
+    <div class="body">
+      <div class="prepTop">
+        <div class="prepMapBox"><canvas id="prepMap" aria-label="전장 소형 지도"></canvas></div>
+        <div id="prepGoal" class="prepGoal"></div>
+      </div>
+      <div id="prepWarn" class="prepWarn"></div>
+      <div id="prepList" class="prepList"></div>
+    </div>
+    <div class="foot">
+      <div id="prepFood" class="prepFood"></div>
+      <button id="btnSortie" class="btn primary big" type="button">출격</button>
+    </div>
+        <div class="head top">
+      <button id="btnPrepBack" class="btn sm" type="button">◀ 지도</button>
+      <b id="prepTitle" class="hTitle">출격 준비</b>
+    </div>
+  </section>
+
+    <section id="battle" class="screen hidden">
+    <div id="hud">
+      <button id="btnMenu" class="ib" type="button" aria-label="메뉴"><i></i><i></i><i></i></button>
+      <b id="hudTurn">1</b>
+      <span id="hudGoal"></span>
+      <span id="hudWind">봄 ↑</span>
+      <button id="btnThreat" class="ib" type="button" aria-label="위협 보기"></button>
+    </div>
+    <div id="mapWrap">
+      <canvas id="map" aria-label="전장"></canvas>
+      <div id="scarTag" class="hidden" hidden></div>
+      <div id="hintBubble" class="hidden" hidden></div>
+      <div id="talkBox" class="hidden" hidden role="button" tabindex="0" aria-label="대사 — 누르면 다음">
+        <canvas id="talkFace" width="56" height="56" aria-hidden="true"></canvas>
+        <div class="tkTxt"><b id="talkName"></b><p id="talkText"></p></div>
+      </div>
+    </div>
+    <div id="panel">
+      <div id="uCard"></div>
+      <div id="actRow"></div>
+    </div>
+  </section>
+
+    <section id="report" class="screen hidden">
+    <div class="head"><b id="repTitle" class="hTitle">땅 보고서</b></div>
+    <div class="body">
+      <div class="repMaps">
+        <figure><div class="rmBox"><canvas id="repBefore" aria-label="전투 전 땅"></canvas></div><figcaption id="repCapA">전</figcaption></figure>
+        <figure><div class="rmBox"><canvas id="repAfter" aria-label="전투 뒤 땅"></canvas></div><figcaption id="repCapB">후</figcaption></figure>
+      </div>
+      <div id="repList" class="repList"></div>
+      <div id="repHarvest" class="repHarvest"></div>
+      <div id="repExp" class="repExp"></div>
+    </div>
+    <div class="foot">
+      <button id="btnRepOk" class="btn primary big" type="button">확인</button>
+      <div id="repLose" class="row2 hidden">
+        <button id="btnRetry" class="btn primary" type="button">다시 도전</button>
+        <button id="btnRetreat" class="btn" type="button">지도로 물러나기</button>
+      </div>
+    </div>
+  </section>
+
+    <section id="world" class="screen hidden">
+    <div id="worldHead" class="head">
+      <b id="worldCh" class="hTitle"></b>
+      <span id="worldRes" class="pills"></span>
+      <button id="btnWorldMenu" class="ib" type="button" aria-label="메뉴"><i></i><i></i><i></i></button>
+    </div>
+    <div class="worldBox" id="worldBox"><canvas id="worldMap" aria-label="흉터 지도 — 지역을 누르면 카드"></canvas></div>
+    <div class="grid4">
+      <button id="btnRecord" class="btn" type="button">기록</button>
+      <button id="btnArmy" class="btn" type="button">부대</button>
+      <button id="btnCamp" class="btn" type="button">야영지</button>
+      <button id="btnNextCh" class="btn primary" type="button">다음 장</button>
+    </div>
+  </section>
+
+    <section id="camp" class="screen hidden">
+    <div id="campTabs" class="tabs2" role="tablist">
+      <button type="button" data-tab="supply">보급</button>
+      <button type="button" data-tab="rebuild">재건</button>
+      <button type="button" data-tab="train">훈련</button>
+      <button type="button" data-tab="bond">유대</button>
+      <button type="button" data-tab="shop">상점</button>
+    </div>
+    <div id="campBody" class="body" role="tabpanel"></div>
+    <div id="campHead" class="head top">
+      <button id="btnCampBack" class="btn sm" type="button">◀ 지도</button>
+      <b class="hTitle">야영지</b>
+      <span id="campRes" class="pills"></span>
+    </div>
+  </section>
+
+    <section id="army" class="screen hidden">
+    <div id="armyList" class="body"></div>
+    <div class="head top">
+      <button id="btnArmyBack" class="btn sm" type="button">◀ 지도</button>
+      <b class="hTitle">부대</b>
+      <span id="armyCount" class="pills"></span>
+    </div>
+  </section>
+
+    <section id="record" class="screen hidden">
+    <div id="recTabs" class="tabs2" role="tablist">
+      <button type="button" data-tab="chron">연대기</button>
+      <button type="button" data-tab="dex">흉터 도감</button>
+      <button type="button" data-tab="card">연대기 카드</button>
+    </div>
+    <div id="recBody" class="body" role="tabpanel"></div>
+    <div id="recCard" class="body hidden"><div class="cardWrap"><canvas id="shareCard" aria-hidden="true"></canvas><img id="shareImg" data-menu alt="연대기 카드 — 길게 눌러 저장"></div><p class="note">카드를 길게 눌러 그림으로 저장할 수 있어요.</p></div>
+    <div class="head top">
+      <button id="btnRecBack" class="btn sm" type="button">◀ 지도</button>
+      <b class="hTitle">기록</b>
+    </div>
+  </section>
+
+    <section id="end1" class="screen hidden">
+    <div class="endBox parch">
+      <div class="eyebrow">1막 끝 · 갈림재</div>
+      <h2 id="endRoute">갈래를 골랐다</h2>
+      <div id="endScore" class="endScore"></div>
+      <p class="note">2막은 준비 중이에요. 지금까지의 흉터와 연대기는 그대로 남아요.</p>
+      <button id="btnSubmit" class="btn primary wide" type="button">순위표에 올리기</button>
+      <button id="btnEndWorld" class="btn wide" type="button">흉터 지도 보기</button>
+    </div>
+  </section>
+</div>
+
+<div id="sheet" class="sheet hidden" hidden role="dialog" aria-modal="true"><div class="box parch" id="sheetBox"></div></div>
+<div id="pop" class="pop hidden" hidden role="dialog" aria-modal="true"><div class="box parch" id="popBox"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/zzfx@1.3.2/ZzFXMicro.min.js"></script>
+<script src="app.ec8ec611.js"></script>
+</body>
+</html>
