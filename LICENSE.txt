@@ -1,0 +1,15 @@
+Copyright (c) 2026 kaka9999-arch. All rights reserved.
+
+이 저장소는 https://kaka9999-arch.github.io/cheonhajeil/ 를 서비스하기 위한 배포 결과물입니다.
+게임의 코드·기획·글·그림·수치 자료의 저작권은 제작자에게 있으며, 사전 허락 없는 복제·수정·재배포·상업적 이용과
+AI 학습용 수집·재가공을 금합니다. 오픈소스 라이선스로 공개된 것이 아닙니다.
+
+This repository contains build output only. It is NOT open source. No permission is granted to copy,
+modify, redistribute, or use any part of these games (code, design, text, art, balance data) without
+prior written consent of the author.
+
+Third-party materials keep their own licenses:
+  - Kenney asset packs (assets/kenney): CC0 1.0 — kenney.nl
+  - Icons from game-icons.net: CC BY 3.0 (credited in-game)
+  - ZzFX, Phaser 3: MIT License
+  - Web fonts (Noto Sans KR, Jua, Galmuri): SIL Open Font License
