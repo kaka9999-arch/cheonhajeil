@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.a6447cf2.css">
+<link rel="stylesheet" href="style.695fc48c.css">
 </head>
 <body>
 <div id="app">
@@ -26,7 +26,7 @@
     </div>
     <div class="panel">
       <div class="eyebrow">궁수 <b id="titleName" style="color:var(--paper)">무명</b> <button id="btnName" class="btn dark sm" type="button" style="margin-left:6px">이름</button></div>
-      <p style="margin-top:8px"><b>누르고 있으면 조준이 움직이고</b>, 오래 누를수록 화살이 강해져 바람을 덜 타지만 <b>너무 오래 당기면 손이 떨린다</b>. 놓으면 발사. 완전히 빗나가면 하트가 줄고, 하트 3개를 잃으면 끝난다. 5발마다 표적이 좁아지고 바람이 세지며, 6순마다 <b style="color:var(--gold)">황금 표적</b>(점수 3배)이 나타난다.</p>
+      <p style="margin-top:8px">먼저 <b>사대(자리)</b>를 고른다 — 가까운 사대는 잘 안 놓치지만 점수가 짜고, 먼 사대는 잘 놓치지만 <b>관중하면 하트가 돌아온다</b>. 표적을 누르면 <b>조준점</b>과 <b>예상 착탄</b>이 보인다. 오래 당길수록 화살이 곧게 날아 바람을 덜 타지만 <b>너무 오래 당기면 손이 떨린다</b>. 놓으면 발사. 완전히 빗나가면 하트가 줄고 3개를 잃으면 끝. 5발마다 한 순, 6순마다 <b style="color:var(--gold)">황금 표적</b>(3배)이다.</p>
       <div class="row" style="margin-top:6px"><button id="btnStart" class="btn primary wide" type="button">활 잡기</button></div>
     </div>
     <div class="meta-grid" id="metaGrid"></div>
@@ -40,8 +40,9 @@
       <div class="mid"><div class="hearts" id="hHearts"></div><div class="roundtag" id="hRound">1순</div></div>
       <div class="wind">바람 <b id="hWind">0</b></div>
     </div>
-    <div class="stagewrap" id="stagewrap"><canvas id="stage" width="360" height="380"></canvas><div class="banner" id="banner"></div></div>
-    <p class="hint">눌러서 조준 · 오래 당길수록 강함 · 놓으면 발사</p>
+    <div class="stagewrap" id="stagewrap"><canvas id="stage" width="360" height="520"></canvas><div class="banner" id="banner"></div></div>
+        <div class="lanebar" id="laneBar"></div>
+    <p class="hint">표적을 누르면 <b>조준점</b>과 <b>예상 착탄</b>이 뜬다 · 끌어서 맞추고 · 놓으면 발사</p>
   </section>
 
     <section id="result" class="screen hidden">
@@ -53,6 +54,7 @@
     <div class="result-grid" id="resultGrid"></div>
     <div id="resultRank" class="eyebrow" style="margin:6px 0 10px"></div>
     <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 서다</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
+    <div class="row" style="margin-top:6px"><button id="btnNameResult" class="btn dark wide" type="button" hidden>명부에 이름 올리기</button></div>
   </section>
 
 </div>
@@ -61,6 +63,6 @@
 <div id="toast"></div>
 <div id="crt"></div>
 
-<script src="app.c2d0a5c9.js"></script>
+<script src="app.837b6756.js"></script>
 </body>
 </html>
