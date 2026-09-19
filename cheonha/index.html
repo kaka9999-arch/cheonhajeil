@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.2f7cc960.css">
+<link rel="stylesheet" href="style.ba2ab202.css">
 </head>
 <body>
 <div id="app">
@@ -93,10 +93,18 @@
 
 <div id="duel" class="duel hidden" data-guard>
   <div class="scroll">
-    <div class="head"><span class="vs" id="duelVs"></span><span style="font-size:11px;color:var(--tx2)">比武</span></div>
+    <div class="head"><span class="vs" id="duelVs"></span><span style="font-size:12px;color:var(--tx2)">比武</span></div>
         <canvas id="duelStage"></canvas>
+    <div class="gauge hidden" id="duelGauge"></div>
     <div class="lines" id="duelLines"></div>
-    <div class="foot"><button id="duelSkip" type="button">건너뛰기</button><button id="duelClose" class="primary hidden" type="button">돌아가기</button></div>
+    <div class="tell hidden" id="duelTell"></div>
+    <div class="picks hidden" id="duelPicks">
+      <button data-s="gang" type="button"><b>강공</b><small>剛 · 허초를 꿰뚫는다</small></button>
+      <button data-s="bang" type="button"><b>방어</b><small>防 · 강공을 되받는다</small></button>
+      <button data-s="heo" type="button"><b>허초</b><small>虛 · 방어를 무너뜨린다</small></button>
+      <button data-s="jeol" class="jeol hidden" type="button"><b>절초</b><small>絶 · 기세 셋을 태운다</small></button>
+    </div>
+    <div class="foot"><button id="duelAuto" type="button">맡기고 보기</button><button id="duelSkip" type="button">건너뛰기</button><button id="duelClose" class="primary hidden" type="button">돌아가기</button></div>
   </div>
 </div>
 
@@ -104,6 +112,6 @@
 <div id="toast"></div>
 <div id="crt"></div>
 
-<script src="app.e5e34d04.js"></script>
+<script src="app.69ef561a.js"></script>
 </body>
 </html>

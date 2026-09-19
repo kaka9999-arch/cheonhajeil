@@ -7,10 +7,10 @@
 <link rel="icon" href="data:,">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>명검 두드리기</title>
-<meta name="description" content="떨어지는 박자에 맞춰 망치를 내려쳐 검을 벼린다. 정확할수록 좋은 검, 좋은 검일수록 비싸게 팔린다. 박자는 검마다 더 빨라진다.">
+<meta name="description" content="무엇을 벼릴지 고르고, 박자마다 경타와 강타 중에서 고른다. 강타는 품질이 두 배지만 빗나가면 검에 금이 간다. 금이 다 차면 검이 부러진다.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.bb445a11.css">
+<link rel="stylesheet" href="style.f53d7784.css">
 </head>
 <body>
 <div id="app">
@@ -19,12 +19,20 @@
     <div class="hero">
       <div class="sub">- 리듬 액션 -</div>
       <h1>명검<em>두드리기</em></h1>
-      <div class="eyebrow">박자에 맞춰 두드려 검을 벼리는 대장장이</div>
+      <div class="eyebrow">무엇을 벼릴지 고르고, 박자마다 세기를 고른다</div>
       <div class="eyebrow" style="margin-top:4px"><a href="../" style="color:var(--ylw)">◀ 게임 상자</a></div>
     </div>
     <div class="parch">
-      <div class="eyebrow">이름 <b id="titleName">무명</b> <button id="btnName" class="btn dark" type="button" style="margin-left:6px;padding:4px 8px">이름</button></div>
-      <p style="margin-top:8px">노란 <b>타격존</b>에 파란 박자가 닿는 순간 <b>망치</b>를 눌러라. 정확할수록(완벽 &gt; 좋음) 검 품질이 오른다. <b>박자를 놓치면 내구도(♥)가 줄고</b>, 0이 되면 검이 깨져 그 자리에서 끝난다. 검을 완성할 때마다 내구도가 하나 돌아오지만, 다음 검은 <b>더 빨라진다</b> — 언젠가는 반드시 깨진다.</p>
+      <div class="eyebrow">이름 <b id="titleName">무명</b>
+        <button id="btnName" class="btn dark" type="button" style="margin-left:6px;padding:4px 8px">이름</button>
+        <button id="btnSfx" class="btn dark" type="button" style="margin-left:4px;padding:4px 8px">소리</button>
+      </div>
+      <p style="margin-top:8px">검 하나를 시작하기 전에 <b>무엇을 벼릴지</b> 카드로 고른다. 박자가 노란 <b>타격존</b>에 닿는 순간
+        <b class="cLight">경타</b>(안전·품질 1)나 <b class="cHeavy">강타</b>(품질 2.2·창이 훨씬 좁다) 중 하나를 누른다.</p>
+      <p>빗맞으면 검에 <b class="cCrack">금</b>이 간다 — 강타로 헛치면 두 배. 금이 다 차면 검이 <b>부러지고 <span class="cEmber">불씨</span>가 하나 꺼진다</b>.
+        불씨가 없을 때 부러지면 그 자리에서 끝. 금 하나 없이 검을 완성하면 불씨가 하나 돌아온다.</p>
+      <p><b>어느 검을 고를까</b> — 짧은 검(단검)은 창이 넓어 <b>무결점</b>이 잘 나온다. 즉 <span class="cEmber">불씨</span>를 버는 장사다.
+        긴 검(대도·명검)은 무결점은 거의 못 내지만 <b>대금이 두 배</b>다. 불씨가 넉넉할 때 크게 지르는 것이 이 게임의 큰 선택이다.</p>
       <div class="row" style="margin-top:8px"><button id="btnStart" class="btn primary wide" type="button">대장간 열기</button></div>
     </div>
     <div class="meta-grid" id="metaGrid"></div>
@@ -41,16 +49,27 @@
       <div class="fl"><small>제</small><span id="swordNo">1</span><small>검</small></div>
       <div class="stat-line"><span>판매 대금 <b id="lootNow">0</b>냥</span></div>
     </div>
-    <div class="hearts" id="hearts"></div>
-    <div class="bpmline">박자 <b id="bpmNow">92</b>BPM · <span id="beatProg">0/16</span></div>
+    <div class="embers" id="embers"></div>
 
-    <div class="lanewrap" id="lane">
-      <div class="hitzone" id="hitzone"></div>
-      <div class="judgefx" id="judgefx"></div>
+        <div id="pick" class="pick hidden">
+      <div class="pickhead"><b id="pickTitle">무엇을 벼릴까</b><span id="pickNote"></span></div>
+      <div id="pickCards" class="pickcards"></div>
+      <div id="pickFoot" class="pickfoot"></div>
     </div>
 
-    <button id="hammer" class="hammer" type="button">쾅! 두드리기</button>
-    <div class="swordinfo"><span>완벽 <b id="cPerfect">0</b></span><span>좋음 <b id="cGood">0</b></span><span>빗맞음 <b id="cMiss">0</b></span></div>
+        <div id="stage" class="stage hidden">
+      <div class="bpmline"><b id="kindNow">도검</b> · 박자 <b id="bpmNow">92</b>BPM · <span id="beatProg">0/18</span> · 금 <b id="crackNow">0</b>/<span id="crackMax">3</span></div>
+      <div class="lanewrap" id="lane">
+        <div class="hitzone" id="hitzone"></div>
+        <div class="lead" id="lead"></div>
+        <div class="judgefx" id="judgefx"></div>
+      </div>
+      <canvas id="anvil" class="anvil"></canvas>
+      <div class="strikes">
+        <button id="btnLight" class="strike light" type="button"><b>경타</b><small>안전 · 품질 1</small></button>
+        <button id="btnHeavy" class="strike heavy" type="button"><b>강타</b><small>품질 2.2 · 헛치면 금 2</small></button>
+      </div>
+    </div>
 
     <div class="row giveup"><button id="btnGiveup" class="btn dark" type="button">여기까지 팔고 마치기</button></div>
   </section>
@@ -62,6 +81,7 @@
       <div class="big"><span id="resultLoot">0</span><small>냥</small></div>
     </div>
     <div class="result-grid" id="resultGrid"></div>
+    <div id="resultLog" class="forgelog"></div>
     <div id="resultRank" class="eyebrow" style="margin:6px 0 12px"></div>
     <div class="row"><button id="btnAgain" class="btn primary" type="button">다시 벼린다</button><button id="btnHome" class="btn dark" type="button">처음으로</button></div>
   </section>
@@ -73,6 +93,7 @@
 <div id="flash" class="flash"></div>
 <div id="crt"></div>
 
-<script src="app.c0dbc032.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/zzfx@1.3.2/ZzFXMicro.min.js"></script>
+<script src="app.0e491702.js"></script>
 </body>
 </html>

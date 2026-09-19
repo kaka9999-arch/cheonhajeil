@@ -9,7 +9,7 @@
 <title>성문의 파수꾼</title>
 <meta name="description" content="영웅을 모아 다섯 자리(앞줄 2·뒷줄 3)를 채우고 열다섯 지역 150관문과 끝없는 심연의 탑을 오르는 도트 육성 RPG. 쓰러진 영웅은 며칠 부상으로 빠지기 때문에, 강한 다섯보다 쓸 만한 열다섯이 필요하다.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="stylesheet" href="style.23828379.css">
+<link rel="stylesheet" href="style.3affe6cf.css">
 </head>
 <body>
 <div id="app">
@@ -26,16 +26,18 @@
       <div class="who">파수대장 <b id="titleName">무명</b> <button id="btnName" class="btn sm" type="button">이름</button></div>
       <div id="titleInfo" class="mute"></div>
       <div class="row">
-        <button id="btnContinue" class="btn primary hidden" type="button">이어서 하기</button>
-        <button id="btnNew" class="btn primary" type="button">새로 시작</button>
+        <button id="btnContinue" class="btn primary wide hidden" type="button">이어서 하기</button>
+        <button id="btnNew" class="btn primary wide" type="button">새로 시작</button>
       </div>
     </div>
-    <div class="howto">
+        <details class="howto">
+      <summary>어떻게 하는 게임인가 <span class="mute">— 안 읽어도 된다</span></summary>
       <div><b>다섯 자리</b><span>앞줄 2 · 뒷줄 3. 기사·창병·도적은 앞에서 맞고, 궁수·마법사·사제는 뒤에서 일한다.</span></div>
+      <div><b>호령</b><span>전투 중 <em>기세</em>가 차면 화면이 멈춘다. 카드 석 장 중 하나를 골라 그 턴을 뒤집는다.</span></div>
       <div><b>부상</b><span>쓰러진 영웅은 며칠 못 나간다. 강한 다섯보다 <em>쓸 만한 열다섯</em>이 필요하다.</span></div>
       <div><b>150관문</b><span>열다섯 지역, 열 번째마다 우두머리와 <em>유물</em>. 막히면 뚫어 둔 관문을 <em>소탕</em>해 힘을 키운다.</span></div>
       <div><b>끝없는 탑</b><span>60관문을 넘으면 <em>심연의 탑</em>이 열린다. 심연석으로 영웅을 10성까지 초월시키고, 쉬는 영웅은 <em>원정</em>을 보낸다.</span></div>
-    </div>
+    </details>
     <div class="meta" id="metaGrid"></div>
     <button id="btnRank" class="btn wide" type="button">파수대 순위표</button>
     <div id="rankPane" class="hidden"><div id="rankList"></div></div>
@@ -74,6 +76,7 @@
       <span class="pips" id="bWave"></span>
       <span class="tacchip" id="bTac"></span>
     </div>
+        <div class="mombar" id="bMom"><span>기세</span><em><i></i></em></div>
     <div class="turnbar" id="turnBar" aria-hidden="true"></div>
     <div class="bcap" id="bCap"></div>
     <div class="field" id="field">
@@ -83,6 +86,7 @@
       <div class="side mine" id="myRow"></div>
     </div>
     <div class="blog" id="bLog" aria-live="polite"></div>
+        <div class="callbar hidden" id="callBar" data-guard></div>
     <div class="row bctl">
       <button class="btn sm" id="bSpeed" type="button">속도 1×</button>
       <button class="btn sm" id="bSkip" type="button">건너뛰기 ▶▶</button>
@@ -95,6 +99,6 @@
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/zzfx@1.3.2/ZzFXMicro.min.js"></script>
-<script src="app.c3ba5a13.js"></script>
+<script src="app.1a97d655.js"></script>
 </body>
 </html>

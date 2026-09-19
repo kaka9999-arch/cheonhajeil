@@ -6,11 +6,11 @@
 <meta name="theme-color" content="#0b0e1a">
 <link rel="icon" href="data:,">
 <title>한밤 드리프트</title>
-<meta name="description" content="한밤 네온 도시를 내려다보는 탑다운 드리프트 레이싱. 단추 두 개로 조향, 붙들면 드리프트, 손을 떼면 부스트. 잔디에 닿으면 게이지를 잃는다.">
+<meta name="description" content="한밤 네온 도시를 내려다보는 탑다운 드리프트 레이싱. 단추 두 개로 조향, 붙들면 드리프트, 떼면 붙든 시간만큼 점수가 적립된다. 적립은 패드에서 절반·결승선에서 전부 확정되고, 벽에 부딪히면 날아간다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.f06d282f.css">
+<link rel="stylesheet" href="style.dd7893e4.css">
 </head>
 <body class="nocrt">
 <div id="app">
@@ -21,6 +21,7 @@
     <div class="box stats">
       <div class="kv"><span>드라이버</span><b id="tNick">무명</b></div>
       <div class="kv"><span>최고 점수</span><b id="tBest">0</b></div>
+      <div class="kv"><span>한 판 최고 드리프트</span><b id="tBestDrift">0</b></div>
       <div class="kv"><span>코인 <small class="mute">(튜닝에 쓴다)</small></span><b id="tCoin">0</b></div>
       <div class="kv"><span>공용 지갑</span><b id="tWallet">0 G</b></div>
     </div>
@@ -31,24 +32,24 @@
     <button class="btn primary" id="btnStart" type="button">출발</button>
     <div class="row"><button class="btn" id="btnGarage" type="button">정비소</button><button class="btn" id="btnHelp" type="button">어떻게 하나</button><button class="btn" id="btnRank" type="button">순위표</button></div>
     <div class="row"><button class="btn" id="btnNick" type="button">이름 바꾸기</button><button class="btn" id="btnSound" type="button">소리 끄기</button><button class="btn" id="btnCrt" type="button">주사선 켜기</button></div>
-    <div class="mute tiny">단추 두 개가 전부다. 붙들면 미끄러지고, 손을 떼면 부스트. 잔디는 게이지를 지운다.</div>
+    <div class="mute tiny">단추 두 개가 전부다. 붙들면 미끄러지고, 떼면 <b>붙든 시간만큼</b> 점수가 적립된다. 적립은 <b>패드에서 절반 · 결승선에서 전부</b> 확정 — 그 전에 벽에 부딪히면 날아간다.</div>
   </section>
 
     <section class="screen hidden" id="scrPlay">
-    <div class="hud">
-      <div><span>바퀴</span><b id="hLap">1/3</b></div>
+        <div class="hud">
+      <div><span>바퀴 <i id="hMul">×1</i></span><b id="hLap">1/3</b></div>
       <div><span>순위</span><b id="hPos">6위</b></div>
-      <div><span>속도</span><b id="hSpd">0</b></div>
-      <div><span>드리프트</span><b id="hDrift">0</b></div>
+      <div><span>적립</span><b id="hBank">0</b></div>
+      <div><span>확정</span><b id="hSafe">0</b></div>
     </div>
     <div id="stageWrap">
       <canvas id="stage" width="360" height="480"></canvas>
       <div id="count" class="hidden">3</div>
       <div id="pop"></div>
       <div id="chainTag" class="hidden">연쇄 ×2</div>
-      <div id="msg">붙들면 드리프트 · 떼면 부스트</div>
+      <div id="msg">붙들면 드리프트 · 떼면 적립 · 패드에서 확정</div>
     </div>
-    <div class="gauge"><div id="gaugeFill"></div><i style="left:22.5%"></i><i style="left:50%"></i><i style="left:85%"></i></div>
+        <div class="gauge"><div id="gaugeFill"></div><i style="left:22.5%"></i><i style="left:42.5%"></i><i style="left:75%"></i></div>
     <div class="ctl">
       <button class="pad" id="btnLeft" type="button" aria-label="왼쪽으로">◀</button>
       <button class="btn quit" id="btnQuit" type="button">그만두기</button>
@@ -63,11 +64,13 @@
       <div class="big" id="rScore">0</div>
       <div class="kv"><span>순위</span><b id="rPos">-</b></div>
       <div class="kv"><span>완주 시간 · 최고 랩</span><b id="rTime">-</b></div>
-      <div class="kv"><span>드리프트 점수 · 최고 연쇄</span><b id="rDrift">-</b></div>
+      <div class="kv"><span>확정 드리프트 점수 · 최고 연쇄</span><b id="rDrift">-</b></div>
+      <div class="kv"><span>확정 횟수 · 벽에 날린 점수</span><b id="rLost">-</b></div>
       <div class="kv"><span>순위 보너스 · 시간 보너스 · 배율</span><b id="rBonus">-</b></div>
       <div class="kv"><span>코인 · 지갑 골드</span><b id="rCoin">-</b></div>
       <div class="ok" id="rUnlock"></div>
       <div class="mute" id="rRank">순위표에 올리는 중…</div>
+      <button class="btn hidden" id="btnNickHere" type="button">이름 정하고 순위표에 올리기</button>
     </div>
     <button class="btn primary" id="btnAgain" type="button">한 판 더</button>
     <div class="row"><button class="btn hidden" id="btnNext" type="button">다음 트랙 ▶</button><button class="btn" id="btnHome" type="button">타이틀로</button></div>
@@ -85,11 +88,14 @@
   <h2>어떻게 하나</h2>
   <div class="help">
     <p><b>조작</b> 화면 아래 ◀ ▶ 단추(또는 화면 왼쪽·오른쪽 반, 키보드 ←→ · A D). 가속은 자동.</p>
-    <p><b>드리프트</b> 속도가 붙은 채 한쪽을 <b>0.3초 넘게 붙들면</b> 뒷바퀴가 미끄러진다. 붙드는 동안 아래 게이지가 찬다. 붙들면 급하게, 반대쪽을 누르면(카운터) 넓게 돈다.</p>
-    <p><b>부스트</b> 드리프트 중 <b>손을 떼는 순간</b> 게이지 등급(1·2·3)만큼 부스트. 연달아 성공하면 연쇄 ×2·×3… 점수 배수(최대 ×5).</p>
-    <p><b>잔디</b> 드리프트 중 잔디에 닿으면 <b>게이지를 통째로 잃고 연쇄가 끊긴다.</b> 벽에 부딪혀도 마찬가지. 이 판의 긴장은 전부 여기 있다.</p>
-    <p><b>그 밖에</b> 노란 화살표 패드를 밟으면 짧은 부스트. 앞차 꽁무니에 붙으면 슬립스트림으로 조금 빨라진다. 3바퀴, 여섯 대.</p>
-    <p><b>점수</b> 순위 보너스 + 시간 보너스 + 드리프트 점수, 뒤 트랙일수록 배율. 코인은 점수/20 + 25 — 꼴찌여도 몇 판이면 첫 튜닝을 산다.</p>
+    <p><b>드리프트</b> 속도가 붙은 채 한쪽을 <b>0.3초 넘게 붙들면</b> 뒷바퀴가 미끄러진다. 붙드는 동안 아래 게이지가 찬다. 반대쪽을 <b>0.3초 안쪽으로 톡 치면</b> 카운터(코를 밀어 넓게 돌기), 그보다 <b>오래 붙들면</b> 그쪽으로 방향이 바뀐다(S자 잇기).</p>
+    <p><b>적립</b> 드리프트 중 <b>손을 떼는 순간</b> 부스트가 걸리고 점수가 <b>적립</b>된다. 적립은 <b>붙들고 있던 시간에 비례</b>한다 — 짧게 여러 번보다 <b>한 번을 길게</b>가 더 번다. 0.45초를 못 채우면 아무것도 없다.</p>
+    <p><b>등급과 연쇄</b> 게이지 눈금은 <b>0.45 · 0.85 · 1.5초.</b> <b>2등급(0.85초) 이상</b>을 끝낼 때만 연쇄가 이어져 배수가 붙는다(최대 ×2.6). 톡톡 치는 손은 잔돈만 번다.</p>
+    <p><b>확정</b> 적립은 <b>노란 화살표 패드</b>에서 <b>절반</b>, <b>결승선</b>에서 <b>전부</b> 내 점수로 굳는다. 확정 배수는 바퀴마다 다르다 — <b>1바퀴 ×1 · 2바퀴 ×1.5 · 3바퀴 ×2.</b> 마지막 바퀴가 두 배다.</p>
+    <p><b>벽</b> 벽에 부딪히면 <b>확정 안 한 적립을 통째로 잃는다.</b> 연쇄도 끊긴다. 이 판의 긴장은 전부 여기 있다 — 더 끌까, 지금 패드까지 안전하게 갈까.</p>
+    <p><b>잔디</b> 잔디는 느려지고 게이지를 갉아먹는다(오래 물면 그 드리프트는 날아간다). 하지만 <b>적립과 연쇄는 안 뺏는다.</b> 무서운 건 벽뿐이다.</p>
+    <p><b>그 밖에</b> 앞차 꽁무니에 붙으면 슬립스트림으로 조금 빨라진다. 3바퀴, 여섯 대.</p>
+    <p><b>점수</b> 드리프트 점수(확정분)가 몸통, 거기에 순위·시간 보너스. 드리프트는 속도를 깎아 순위를 잃는다 — <b>미끄러질까 앞설까</b>가 이 판의 저울이다. 뒤 트랙일수록 배율. 코인은 점수/20 + 25.</p>
     <p><b>개방</b> 3위 안에 들거나 같은 트랙을 세 번 완주하면 다음 트랙이 열린다.</p>
   </div>
   <button class="btn" type="button" data-close>닫기</button>
@@ -112,6 +118,6 @@
 
 <div id="toast"></div>
 <div id="crt"></div>
-<script src="app.1e4bd113.js"></script>
+<script src="app.f21ab9a1.js"></script>
 </body>
 </html>
