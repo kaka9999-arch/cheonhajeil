@@ -9,7 +9,7 @@
 <meta name="description" content="그림자 인형 다섯을 세워 남의 극단 그림자와 겨루는 수집 대전. 내가 없는 동안에도 내 그림자가 싸운다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@500;700&display=swap">
-<link rel="stylesheet" href="style.4a8cdfd4.css">
+<link rel="stylesheet" href="style.3cd809d0.css">
 </head>
 <body>
 <div id="app">
@@ -42,6 +42,7 @@
         <div><span>전적</span><b id="sRecord">0승 0패</b></div>
         <div><span>시즌</span><b id="sSeason">-</b></div>
       </div>
+      <div class="card guide" id="guideCard" hidden></div>
       <button class="btn primary big" id="btnDuel" type="button">결투</button>
       <div class="mute center" id="tixNext"></div>
       <div class="card" id="awayCard" hidden></div>
@@ -56,6 +57,7 @@
       </div>
       <div class="card">
         <h3>인형 도감 <small class="mute" id="colCount"></small></h3>
+        <div class="colbar" id="colBar" hidden></div>
         <div class="fams" id="famChips"></div>
         <div class="grid" id="colGrid"></div>
       </div>
@@ -65,6 +67,7 @@
       <div class="stage lantern" id="gachaArt"></div>
       <div class="card center">
         <p class="mute" id="gachaInfo"></p>
+        <button class="btn primary" id="btnFree" type="button" hidden>오늘의 무료 뽑기 <small>하루 한 번</small></button>
         <div class="btnrow">
           <button class="btn" id="btnDraw1" type="button">한 번 <small>기름 100</small></button>
           <button class="btn primary" id="btnDraw10" type="button">열 번 <small>기름 900</small></button>
@@ -93,6 +96,6 @@
 <div id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/zzfx@1.3.2/ZzFXMicro.min.js"></script>
-<script src="app.b31f2a39.js"></script>
+<script src="app.6e376274.js"></script>
 </body>
 </html>
