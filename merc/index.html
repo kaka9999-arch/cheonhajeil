@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.5194e410.css">
+<link rel="stylesheet" href="style.0dff9683.css">
 </head>
 <body>
 <div id="app">
@@ -82,6 +82,7 @@
     <header class="mc-head"><h1>투기<em>장</em></h1><button class="mc-back" id="btnArenaBack" type="button">◀ 마을</button></header>
     <p class="mc-mood" id="arenaMood" hidden></p>
     <p class="mc-lead">이기면 그 난이도의 첫 승리 장비를 받아요. 하루에 한 번은 보너스도 받아요.</p>
+        <p class="mc-tally" id="arenaTally" hidden></p>
     <div class="mc-arenas" id="arenaList"></div>
   </section>
 
@@ -160,6 +161,15 @@
     <div class="mc-diffs" id="diffList"></div>
     <p class="mc-err" id="goErr" role="alert"></p>
     <button class="mc-btn mc-wide" id="btnGoBack" type="button">다른 곳 고르기</button>
+  </div>
+</div>
+<div class="mc-dim" id="rankSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="rankTitle">
+    <h2 class="mc-sheet-h" id="rankTitle">전선 순위</h2>
+    <p class="mc-sheet-p">끝없는 전선에서 가장 멀리 간 용병들이에요.</p>
+    <ol class="mc-rank" id="rankList"></ol>
+    <p class="mc-rank-me" id="rankMine"></p>
+    <button class="mc-btn mc-wide" id="btnRankBack" type="button">닫기</button>
   </div>
 </div>
 <div class="mc-dim" id="endSheet" hidden>
@@ -253,6 +263,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.74b50beb.js"></script>
+<script src="app.cb64d681.js"></script>
 </body>
 </html>
