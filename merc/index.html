@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0b0a24">
+<link rel="icon" href="data:,">
+<title>깃발 없는 용병</title>
+<meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.f929ec13.css">
+</head>
+<body>
+<div id="app">
+
+    <section class="screen" id="scrLoad">
+    <div class="mc-center">
+      <div class="mc-crest" aria-hidden="true"><svg width="84" height="84" viewBox="0 0 24 24"><path d="M12 1.8 21 4.8V12c0 5.2-3.9 8.6-9 10.2C6.9 20.6 3 17.2 3 12V4.8z" fill="#221b40" stroke="#ffc857" stroke-width="1.2"/><path d="M8.4 17.2V6.8" stroke="#ffc857" stroke-width="1.4" stroke-linecap="round"/><path d="M8.4 7.4h6.8l-1.6 2.3 1.6 2.3H8.4" fill="none" stroke="#ffc857" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="1.6 1.2"/></svg></div>
+      <h1>깃발 없는 <em>용병</em></h1>
+      <p class="mc-sub" id="loadMsg">용병단 문을 두드리는 중이에요…</p>
+    </div>
+  </section>
+
+    <section class="screen" id="scrWait" hidden>
+    <div class="mc-center">
+      <div class="mc-crest dim" aria-hidden="true"><svg width="84" height="84" viewBox="0 0 24 24"><path d="M12 1.8 21 4.8V12c0 5.2-3.9 8.6-9 10.2C6.9 20.6 3 17.2 3 12V4.8z" fill="#221b40" stroke="#b9b0d8" stroke-width="1.2"/><path d="M12 7.2v5.6" stroke="#b9b0d8" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16" r="1.1" fill="#b9b0d8"/></svg></div>
+      <h2 id="waitTitle">서버 준비 중이에요</h2>
+      <p class="mc-sub" id="waitMsg">곧 문을 열어요. 조금 뒤에 다시 확인해 주세요.</p>
+      <button class="mc-btn gold" id="btnRetry" type="button">다시 확인</button>
+      <a class="mc-back" href="../">◀ 게임 상자</a>
+    </div>
+  </section>
+
+    <section class="screen" id="scrMake" hidden>
+    <header class="mc-head"><h1>용병 <em>등록</em></h1><a class="mc-back" href="../">◀ 게임 상자</a></header>
+    <p class="mc-lead">어느 종족으로 싸울까요? 카드를 누르면 자세히 볼 수 있어요.</p>
+    <div class="mc-races" id="raceList" role="radiogroup" aria-label="종족 고르기"></div>
+    <p class="mc-foot">종족과 이름은 나중에 바꿀 수 없어요.</p>
+  </section>
+
+    <section class="screen" id="scrTown" hidden>
+    <header class="mc-head"><h1>용병 <em>마을</em></h1><a class="mc-back" href="../">◀ 게임 상자</a></header>
+    <div class="mc-panel mc-me">
+      <div class="mc-face" id="meFace"></div>
+      <div class="mc-who"><b id="meNick"></b><span id="meFrom"></span></div>
+      <div class="mc-lv"><small>레벨</small><b id="meLv">1</b></div>
+            <div class="mc-bar xp mc-me-xp" id="meXp"><i></i><span><b>경험</b><u id="meXpTxt"></u></span></div>
+    </div>
+    <div class="mc-row2">
+            <div class="mc-panel mc-stat"><small>은전</small><b id="meSilver">0</b><span class="mc-note" id="meBlood" hidden></span></div>
+      <div class="mc-panel mc-stat mc-stam">
+                <small>기력 <span class="mc-tag" id="stamGreat" hidden>의욕 넘침</span></small>
+        <b><span id="stamNow">0</span><i>/<span id="stamMax">0</span></i></b>
+        <div class="mc-gauge" aria-hidden="true"><i id="stamBar"></i><u id="stamMark"></u></div>
+        <span class="mc-note" id="stamNote"></span>
+      </div>
+    </div>
+        <button class="mc-notice" id="townWear" type="button" hidden></button>
+    <h3 class="mc-h3">갈 곳</h3>
+    <div class="mc-menu" id="menuList"></div>
+    <p class="mc-foot" id="townFoot"></p>
+  </section>
+
+    <section class="screen" id="scrShop" hidden>
+    <header class="mc-head"><h1>상<em>점</em></h1><button class="mc-back" id="btnShopBack" type="button">◀ 마을</button></header>
+    <div class="mc-panel mc-pts"><div><small>가진 은전</small><span class="mc-note">장비는 장비 화면에서 팔아요.</span></div><b id="shopSilver">0</b></div>
+    <h3 class="mc-h3">물약</h3>
+    <p class="mc-lead">싸우는 중에는 살 수 없어요. 미리 채워 두세요.</p>
+    <div class="mc-shop" id="shopList"></div>
+  </section>
+
+    <section class="screen" id="scrArena" hidden>
+    <header class="mc-head"><h1>투기<em>장</em></h1><button class="mc-back" id="btnArenaBack" type="button">◀ 마을</button></header>
+    <p class="mc-mood" id="arenaMood" hidden></p>
+    <p class="mc-lead">이기면 그 난이도의 첫 승리 장비를 받아요. 하루에 한 번은 보너스도 받아요.</p>
+    <div class="mc-arenas" id="arenaList"></div>
+  </section>
+
+    <section class="screen" id="scrStats" hidden>
+    <header class="mc-head"><h1>능력<em>치</em></h1><button class="mc-back" id="btnStatsBack" type="button">◀ 마을</button></header>
+    <div class="mc-panel mc-pts"><div><small>남은 능력치 점수</small><span class="mc-note" id="ptsNote"></span></div><b id="ptsNow">0</b></div>
+    <div class="mc-stlist" id="statList"></div>
+        <div class="mc-resetrow"><span id="resetNote"></span><button class="mc-fchip" id="btnReset" type="button">다시 나누기</button></div>
+    <h3 class="mc-h3">싸움 수치</h3>
+    <p class="mc-lead">줄을 누르면 어디서 온 수치인지 볼 수 있어요.</p>
+    <div class="mc-dlist" id="deriveList"></div>
+        <h3 class="mc-h3">숙련</h3>
+    <p class="mc-lead">그 방식으로 싸운 만큼 올라요. 내 레벨까지 오를 수 있어요.</p>
+    <div class="mc-proflist" id="profList"></div>
+        <h3 class="mc-h3">저항</h3>
+    <p class="mc-lead">초록 칸은 덜 맞고, 붉은 칸은 더 아파요.</p>
+    <div class="mc-reslist" id="resList"></div>
+    <h3 class="mc-h3">종족</h3>
+    <div class="mc-panel mc-rc" id="myRace"></div>
+  </section>
+
+    <section class="screen" id="scrGear" hidden>
+    <header class="mc-head"><h1>장<em>비</em></h1><button class="mc-back" id="btnGearBack" type="button">◀ 마을</button></header>
+    <div class="mc-slots" id="slotList"></div>
+        <div class="mc-panel mc-fixbox" id="fixBox" hidden></div>
+        <div class="mc-panel mc-style" id="styleBox"></div>
+    <div class="mc-gsum" id="gearSum"></div>
+    <h3 class="mc-h3">장비 묶음</h3>
+    <p class="mc-lead">차림을 저장해 두면 한 번에 갈아입어요.</p>
+    <div class="mc-sets" id="setList"></div>
+    <h3 class="mc-h3">전투 가방</h3>
+    <p class="mc-lead">싸움에서는 여기 올린 물건만 쓸 수 있어요.</p>
+    <div class="mc-bslots" id="beltSet"></div>
+        <h3 class="mc-h3" id="bagHead">가방 <small id="bagCount"></small><button class="mc-fchip sell" id="btnBagSell" type="button">정리</button><button class="mc-fchip sort" id="btnGSort" type="button"></button></h3>
+    <div class="mc-filters" id="bagFilter" role="group" aria-label="가방 거르기"></div>
+    <div class="mc-bag" id="bagList"></div>
+  </section>
+
+    <section class="screen" id="scrBattle" hidden>
+    <header class="mc-head mc-bt-head"><h1 id="btTitle">훈련<em>장</em></h1><span class="mc-head-r">
+      <span class="mc-bt-info"><span id="btInfo"></span><span class="mc-bar xp mini" id="barXp"><i></i><span><b>경험</b><u id="txtXp"></u></span></span></span>
+      <button class="mc-help" id="btnHelp" type="button" aria-label="전투 도움말 보기">?</button>
+      <button class="mc-back mc-flee" id="btnFlee" type="button">물러나기</button></span></header>
+    <div class="mc-foes" id="foeList" role="radiogroup" aria-label="겨눌 적 고르기"></div>
+    <p class="mc-hint" id="foeHint"></p>
+    <div class="mc-log" id="btLog" role="log" aria-live="polite" aria-label="전투 기록"></div>
+    <div class="mc-bt-foot">
+      <div class="mc-panel mc-mine" id="myBars">
+        <div class="mc-sts mine" id="mySts"></div>
+        <div class="mc-bar hp big" id="barHp"><i></i><span><b>체력</b><u id="txtHp"></u></span><em class="mc-guard" id="tagGuard" hidden>방어 중</em></div>
+                <div class="mc-bar3" id="bar3">
+          <div class="mc-bar mp" id="barMp"><i></i><span><b>마력</b><u id="txtMp"></u></span></div>
+          <div class="mc-bar sp" id="barSp"><i></i><span><b>기세</b><u id="txtSp"></u></span></div>
+          <div class="mc-bar fl" id="barFlag" hidden><i></i><span><b>깃발</b><u id="txtFlag"></u></span></div>
+        </div>
+      </div>
+            <div class="mc-quick" id="quickRow" role="group" aria-label="전투 가방과 연계 기술"><div class="mc-quick-in" id="beltList"></div><div class="mc-quick-in" id="skillList"></div></div>
+      <div class="mc-acts">
+        <button class="mc-btn gold mc-act" id="btnAtk" type="button"><kbd>1</kbd>공격<small id="atkTo"></small></button>
+        <button class="mc-btn mc-act" id="btnGuard" type="button"><kbd>2</kbd>방어<small id="guardSub">피해 절반</small></button>
+        <button class="mc-btn mc-act" id="btnAgain" type="button" disabled><kbd>R</kbd>한 번 더<small id="againWhat">같은 행동</small></button>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div class="mc-dim" id="goSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="goTitle">
+    <h2 class="mc-sheet-h" id="goTitle">훈련장</h2>
+    <p class="mc-sheet-p" id="goSub"></p>
+    <p class="mc-warn" id="goTired" hidden></p>
+        <p class="mc-warn" id="goFull" hidden></p>
+        <p class="mc-warn" id="goWear" hidden></p>
+    <div class="mc-diffs" id="diffList"></div>
+    <p class="mc-err" id="goErr" role="alert"></p>
+    <button class="mc-btn mc-wide" id="btnGoBack" type="button">다른 곳 고르기</button>
+  </div>
+</div>
+<div class="mc-dim" id="endSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="endTitle">
+    <h2 class="mc-sheet-h" id="endTitle"></h2>
+    <p class="mc-sheet-p" id="endSub"></p>
+    <div class="mc-gains" id="endGains"></div>
+        <div class="mc-rewards" id="endReward" hidden></div>
+    <p class="mc-lvup" id="endLv" hidden></p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnEndTown" type="button">마을로</button><button class="mc-btn gold" id="btnEndAgain" type="button">한 판 더</button></div>
+  </div>
+</div>
+<div class="mc-dim" id="helpSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+    <h2 class="mc-sheet-h" id="helpTitle">전투 도움말</h2>
+    <div class="mc-help-style" id="helpStyle"></div>
+        <div class="mc-help-style" id="helpRace"></div>
+        <div class="mc-help-style" id="helpMood"></div>
+    <h3 class="mc-help-h" id="helpStH">상태 이상</h3>
+    <dl class="mc-helps" id="helpList"></dl>
+    <button class="mc-btn mc-wide" id="btnHelpBack" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="fleeSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="fleeTitle">
+    <h2 class="mc-sheet-h" id="fleeTitle">물러날까요?</h2>
+    <p class="mc-sheet-p" id="fleeSub">이 판은 여기서 끝나요. 지금까지 번 것은 가져가요.</p>
+    <div class="mc-btnrow"><button class="mc-btn gold" id="btnFleeNo" type="button">계속 싸우기</button><button class="mc-btn" id="btnFleeYes" type="button">물러나기</button></div>
+  </div>
+</div>
+<div class="mc-dim" id="gearSheet" hidden>
+  <div class="mc-panel mc-sheet mc-gsheet" role="dialog" aria-modal="true" aria-labelledby="gsName">
+    <h2 class="mc-gs-name" id="gsName"></h2>
+    <p class="mc-gs-sub" id="gsSub"></p>
+    <div class="mc-gs-desc" id="gsDesc"></div>
+    <div class="mc-gl-head"><span>줄</span><span>굴림</span><span>값 / 최고</span></div>
+    <div class="mc-gls" id="gsLines"></div>
+    <div class="mc-gs-cmp" id="gsCmp"></div>
+        <div class="mc-gs-dur"><div class="mc-bar dur" id="gsDur"><i></i><span><b>내구도</b><u id="gsDurTxt"></u></span></div><button class="mc-fchip" id="btnGearFix" type="button">수리</button></div>
+    <p class="mc-gs-durnote" id="gsDurNote" hidden></p>
+        <div class="mc-gs-sell"><span id="gsPrice"></span><button class="mc-fchip" id="btnGearKeep" type="button">지키기</button><button class="mc-fchip" id="btnGearSell" type="button">팔기</button></div>
+    <p class="mc-err" id="gsErr" role="alert"></p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnGearClose" type="button">닫기</button><button class="mc-btn gold" id="btnGearOn" type="button">끼기</button></div>
+  </div>
+</div>
+<div class="mc-dim" id="sellSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="sellTitle">
+    <h2 class="mc-sheet-h mc-sell-h" id="sellTitle"></h2>
+    <p class="mc-sheet-p" id="sellSub"></p>
+    <div class="mc-filters mc-sellq" id="sellTier" role="group" aria-label="어느 품질까지 팔지 고르기" hidden></div>
+    <div class="mc-gains two" id="sellSum"></div>
+    <p class="mc-err" id="sellErr" role="alert"></p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnSellNo" type="button">그만두기</button><button class="mc-btn gold" id="btnSellYes" type="button">팔기</button></div>
+  </div>
+</div>
+<div class="mc-dim" id="paySheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="payTitle">
+    <h2 class="mc-sheet-h" id="payTitle"></h2>
+    <p class="mc-sheet-p" id="paySub"></p>
+    <div class="mc-gains two" id="paySum"></div>
+    <p class="mc-err" id="payErr" role="alert"></p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnPayNo" type="button">그만두기</button><button class="mc-btn gold" id="btnPayYes" type="button">확인</button></div>
+  </div>
+</div>
+<div class="mc-dim" id="setSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="setTitle">
+    <h2 class="mc-sheet-h" id="setTitle"></h2>
+    <p class="mc-sheet-p">저장해 둔 차림이 지금 차림으로 바뀌어요.</p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnSetNo" type="button">그만두기</button><button class="mc-btn gold" id="btnSetYes" type="button">덮어쓰기</button></div>
+  </div>
+</div>
+<div class="mc-dim" id="beltSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="beltTitle">
+    <h2 class="mc-sheet-h" id="beltTitle"></h2>
+    <p class="mc-sheet-p">이 칸에 올릴 물건을 골라요.</p>
+    <div class="mc-picks" id="beltPick"></div>
+    <p class="mc-err" id="beltErr" role="alert"></p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnBeltClose" type="button">닫기</button><button class="mc-btn" id="btnBeltClear" type="button">칸 비우기</button></div>
+  </div>
+</div>
+<div class="mc-dim" id="joinSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="joinTitle">
+    <div class="mc-sheet-top"><i class="mc-pf" id="joinFace"></i><div><h2 id="joinTitle"></h2><span id="joinSub"></span></div></div>
+    <div class="mc-nickrow"><label for="nickIn">용병 이름</label><input id="nickIn" maxlength="8" placeholder="한글 2~8자" autocomplete="off" spellcheck="false"></div>
+    <p class="mc-err" id="makeErr" role="alert"></p>
+    <p class="mc-warn">종족과 이름은 나중에 바꿀 수 없어요.</p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnJoinBack" type="button">다시 고르기</button><button class="mc-btn gold" id="btnJoin" type="button">등록하기</button></div>
+  </div>
+</div>
+<div id="toast" class="mc-toast" role="status" hidden></div>
+
+<script src="app.72f3ea45.js"></script>
+</body>
+</html>
