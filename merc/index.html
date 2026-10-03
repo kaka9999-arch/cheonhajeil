@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.d2af8a06.css">
+<link rel="stylesheet" href="style.99d59888.css">
 </head>
 <body>
 <div id="app">
@@ -123,14 +123,14 @@
 
     <section class="screen" id="scrPal" hidden>
     <header class="mc-head"><h1>전우 동<em>행</em> <i class="mc-beta">시험 중</i></h1><button class="mc-back" id="btnPalBack" type="button">◀ 마을</button></header>
-    <p class="mc-coop-beta">시험 중이라 규칙과 수치가 바뀔 수 있어요.</p>
+    <p class="mc-coop-beta mc-coop-betah"><span>시험 중이라 규칙과 수치가 바뀔 수 있어요.</span><button class="mc-back" id="btnPalHelp" type="button">도움말</button></p>
     <p class="mc-lead">다른 용병과 같이 싸워요. 전우는 스스로 움직여요.</p>
     <div class="mc-coop" id="palBody"></div>
   </section>
 
     <section class="screen" id="scrCoop" hidden>
     <header class="mc-head"><h1>합동 토<em>벌</em> <i class="mc-beta">시험 중</i></h1><button class="mc-back" id="btnCoopBack" type="button">◀ 마을</button></header>
-    <p class="mc-coop-beta">시험 중이라 규칙과 수치가 바뀔 수 있어요.</p>
+    <p class="mc-coop-beta mc-coop-betah"><span>시험 중이라 규칙과 수치가 바뀔 수 있어요.</span><button class="mc-back" id="btnCoopHelp" type="button">도움말</button></p>
     <div class="mc-panel mc-pts"><div><small>오늘 남은 출격</small><span class="mc-note" id="coopLeftNote"></span></div><b id="coopLeft">0</b></div>
     <p class="mc-lead">넷이 한 재앙을 이어 싸워요. 차례는 없어요. 언제든 출격해요.</p>
     <div class="mc-coop" id="coopBody"></div>
@@ -268,6 +268,20 @@
     <p class="mc-sheet-p" id="coopShSub"></p>
     <div class="mc-rewards" id="coopShBody"></div>
     <button class="mc-btn mc-wide" id="btnCoopShClose" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="coHelpSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="coHelpTitle">
+    <h2 class="mc-sheet-h" id="coHelpTitle">함께 싸우기 도움말</h2>
+    <div class="mc-cohelp" id="coHelpBody"></div>
+    <button class="mc-btn mc-wide" id="btnCoHelpBack" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="coopOutSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="coopOutTitle">
+    <h2 class="mc-sheet-h" id="coopOutTitle">토벌대에서 나갈까요?</h2>
+    <p class="mc-sheet-p">내 자리는 NPC 용병이 이어받아요. 이 토벌대의 마지막 보상은 못 받아요.</p>
+    <div class="mc-btnrow"><button class="mc-btn gold" id="btnCoopOutNo" type="button">남기</button><button class="mc-btn" id="btnCoopOutYes" type="button">나가기</button></div>
   </div>
 </div>
 <div class="mc-dim" id="endSheet" hidden>
@@ -422,6 +436,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.8ddb5df3.js"></script>
+<script src="app.2d2329fe.js"></script>
 </body>
 </html>
