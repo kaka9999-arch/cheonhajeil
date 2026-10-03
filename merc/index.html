@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.a60e45d7.css">
+<link rel="stylesheet" href="style.4704982d.css">
 </head>
 <body>
 <div id="app">
@@ -169,6 +169,12 @@
         <button class="mc-btn mc-act" id="btnGuard" type="button"><kbd>2</kbd>방어<small id="guardSub">피해 절반</small></button>
         <button class="mc-btn mc-act" id="btnAgain" type="button" disabled><kbd>R</kbd>한 번 더<small id="againWhat">같은 행동</small></button>
       </div>
+            <div class="mc-auto" id="autoBar" hidden>
+        <button class="mc-btn" id="btnAuto" type="button" aria-pressed="false">자동 켜기</button>
+        <button class="mc-btn" id="btnAutoSet" type="button">규칙</button>
+        <p class="mc-auto-st" id="autoSt" role="status" hidden></p>
+      </div>
+      <p class="mc-note mc-auto-no" id="autoNo" hidden></p>
     </div>
   </section>
 
@@ -250,6 +256,14 @@
     <h3 class="mc-help-h" id="helpStH">상태 이상</h3>
     <dl class="mc-helps" id="helpList"></dl>
     <button class="mc-btn mc-wide" id="btnHelpBack" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="autoSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="autoTitle">
+    <h2 class="mc-sheet-h" id="autoTitle">자동 규칙</h2>
+    <p class="mc-sheet-p">직접 이긴 곳에서만 자동으로 싸워요. 행동 단추를 누르면 바로 멈춰요.</p>
+    <div class="mc-autos" id="autoRules"></div>
+    <button class="mc-btn gold mc-wide" id="btnAutoBack" type="button">닫기</button>
   </div>
 </div>
 <div class="mc-dim" id="fleeSheet" hidden>
@@ -336,6 +350,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.11e48628.js"></script>
+<script src="app.a15d264b.js"></script>
 </body>
 </html>
