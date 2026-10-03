@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.927614d0.css">
+<link rel="stylesheet" href="style.27bdadfa.css">
 </head>
 <body>
 <div id="app">
@@ -264,6 +264,16 @@
     <button class="mc-btn mc-wide" id="btnCodexBack" type="button">닫기</button>
   </div>
 </div>
+<div class="mc-dim" id="questSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="questTitle">
+    <h2 class="mc-sheet-h" id="questTitle">의뢰</h2>
+    <p class="mc-sheet-p" id="questSub">의뢰를 골라 이기면 그 세력의 평판이 올라요. 의뢰는 매일 새로 와요.</p>
+    <div class="mc-qs" id="questList"></div>
+    <p class="mc-err" id="questErr" role="alert"></p>
+    <div class="mc-cxs" id="repList"></div>
+    <button class="mc-btn mc-wide" id="btnQuestBack" type="button">닫기</button>
+  </div>
+</div>
 <div class="mc-dim" id="rankSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="rankTitle">
     <h2 class="mc-sheet-h" id="rankTitle">전선 순위</h2>
@@ -508,6 +518,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.b20a7bac.js"></script>
+<script src="app.f14c00bd.js"></script>
 </body>
 </html>
