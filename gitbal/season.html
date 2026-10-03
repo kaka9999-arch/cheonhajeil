@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1d3144">
+<link rel="icon" href="data:,">
+<title>여덟 깃발 — 시즌 안내</title>
+<meta name="description" content="여덟 깃발 시즌 1 이 끝났어요. 시즌 2 를 준비하고 있어요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<!-- =====================================================================
+     여덟 깃발 — 시즌 안내 페이지 (2026-10-03 급히 만듦)
+     왜: 시즌과 시즌 사이(새 전쟁 준비 중)에는 게임 상자의 여덟 깃발 카드를 이 페이지로 돌린다(hub/game.js 의 path).
+     하는 일: ① 시즌 1 이 끝났고 시즌 2 를 준비 중이라는 안내
+              ② 시즌 1 공적 순위(서버 war_rank — 읽기 전용이라 시계를 안 돌린다)
+              ③ 서버 시즌이 2 로 넘어가면(war_peek — 역시 읽기 전용) 스스로 "입장하기" 단추를 보인다
+     혼자 서는 페이지: 게임 스크립트를 하나도 안 쓴다. 빌드는 build.js gitbal assets 로 그대로 복사한다.
+     수정 포인트: 안내 글은 아래 #lead · #sub, 순위 줄 수는 TOP_N, 다시 확인하는 간격은 RECHECK_MS.
+     되돌리기: 시즌 2 가 열리면 hub/game.js 의 path 를 'gitbal/' 로 되돌린다(이 파일은 남겨 둬도 된다).
+     ===================================================================== -->
+<style>
+  /* 색: 여덟 깃발 본편과 같은 옛 지도풍(짙은 남색 바탕 + 금빛 테 + 크림 종이) */
+  :root { --bg: #1d3144; --bg2: #16263a; --gold: #d8b25a; --cream: #f3e7c9; --ink: #3a2f1c; --dim: #b9c4cf; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: radial-gradient(120% 80% at 50% 0%, #2a4660 0%, var(--bg) 45%, var(--bg2) 100%) fixed; color: var(--cream);
+         font-family: 'Noto Sans KR', sans-serif; font-weight: 500; font-size: 15px; line-height: 1.55; min-height: 100vh;
+         padding: 20px 16px calc(28px + env(safe-area-inset-bottom)); }
+  .wrap { max-width: 460px; margin: 0 auto; }
+  .back { display: inline-block; color: var(--dim); text-decoration: none; font-size: 14px; padding: 6px 0; }
+  /* 머리: 방패 문양 + 제목 */
+  .head { text-align: center; margin: 6px 0 16px; }
+  .head h1 { font-family: 'Jua', sans-serif; font-weight: 400; font-size: 30px; margin: 6px 0 2px; color: var(--gold); letter-spacing: 1px; }
+  .head .tagline { font-size: 14px; color: var(--dim); }
+  /* 안내 상자(크림 종이) */
+  .card { background: var(--cream); color: var(--ink); border: 2px solid var(--gold); border-radius: 14px; padding: 16px 16px 14px; margin: 0 0 14px;
+          box-shadow: 0 6px 0 rgba(0, 0, 0, .25); }
+  .card h2 { font-family: 'Jua', sans-serif; font-weight: 400; font-size: 20px; margin: 0 0 6px; }
+  .card p { margin: 0 0 8px; font-size: 15px; }
+  .card p:last-child { margin-bottom: 0; }
+  .pill { display: inline-block; font-size: 13px; padding: 2px 10px; border-radius: 999px; background: #3a2f1c; color: var(--cream); margin-bottom: 8px; }
+  .pill.open { background: #2e7d4f; }
+  /* 입장 단추: 시즌 2 가 열렸을 때만 보인다 */
+  .btn { display: block; text-align: center; text-decoration: none; font-family: 'Jua', sans-serif; font-size: 19px; color: #fff;
+         background: #c0392b; border-radius: 12px; padding: 12px; margin-top: 10px; box-shadow: 0 4px 0 #7d2219; }
+  .hidden { display: none; }
+  /* 순위 표 */
+  .rank { list-style: none; margin: 8px 0 0; padding: 0; }
+  .rank li { display: flex; align-items: center; gap: 8px; padding: 7px 2px; border-top: 1px solid rgba(58, 47, 28, .18); font-size: 15px; }
+  .rank .no { width: 26px; text-align: center; font-family: 'Jua', sans-serif; font-size: 17px; }
+  .rank .dot { width: 12px; height: 12px; border-radius: 3px; flex: none; border: 1px solid rgba(0, 0, 0, .35); }
+  .rank .who { flex: 1; min-width: 0; }
+  .rank .who b { display: block; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rank .who small { font-size: 13px; color: #6b5a3a; }
+  .rank .pt { font-family: 'Jua', sans-serif; font-size: 16px; white-space: nowrap; }
+  .rank li.m1 .no { color: #b8860b; } .rank li.m2 .no { color: #7b8794; } .rank li.m3 .no { color: #a0623a; }
+  .muted { font-size: 13px; color: #6b5a3a; }
+  .foot { text-align: center; font-size: 13px; color: var(--dim); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../">◀ 게임 상자</a>
+
+  <div class="head">
+    <svg width="64" height="64" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8 21 4.8V12c0 5.2-3.9 8.6-9 10.2C6.9 20.6 3 17.2 3 12V4.8z" fill="#3a2f1c" stroke="#d8b25a" stroke-width="1.2"/><path d="M9 17V7.2l7 2.4-7 2.6" fill="#d8b25a" stroke="#d8b25a" stroke-width="1" stroke-linejoin="round"/></svg>
+    <h1>여덟 깃발</h1>
+    <div class="tagline">시즌 안내</div>
+  </div>
+
+  <!-- 안내 상자: 서버 시즌 번호에 따라 글이 바뀐다(아래 스크립트 showSeason) -->
+  <div class="card">
+    <span class="pill" id="pill">시즌 2 준비 중</span>
+    <h2 id="lead">시즌 1 전쟁이 끝났어요</h2>
+    <p id="sub">10월 3일 오후 3시에 첫 전쟁이 막을 내렸어요. 지금 더 넓은 새 대륙으로 시즌 2 를 준비하고 있어요. 곧 열려요.</p>
+    <p class="muted" id="note">이 화면을 열어 두면 시즌 2 가 열렸을 때 입장 단추가 나타나요.</p>
+    <a class="btn hidden" id="btnEnter" href="./">시즌 2 입장하기</a>
+  </div>
+
+  <!-- 시즌 1 공적 순위: 서버가 아직 시즌 1 기록을 들고 있을 때만 보인다 -->
+  <div class="card hidden" id="rankCard">
+    <h2>시즌 1 공적 순위</h2>
+    <p class="muted">전쟁이 끝난 때의 순위예요. 칭호는 시즌 2 가 열릴 때 주어져요.</p>
+    <ol class="rank" id="rankList"></ol>
+  </div>
+
+  <div class="foot">깃발 아래에서 다시 만나요.</div>
+</div>
+
+<script>
+/* 시즌 안내 페이지 스크립트 — 서버에서 읽기만 한다(war_peek · war_rank 는 세계 시계를 돌리지 않는 읽기 전용 함수) */
+(function () {
+  'use strict';
+  // 접속 설정: gitbal/config.js 와 같은 값(publishable 키 — 공개되어도 되는 키)
+  var URL_ = 'https://rarfrvmqibgfbwduzayn.supabase.co', KEY = 'sb_publishable_Z_gyrD4uUAC-DZmA-2D5Qw__wgUhN0f';
+  var TOP_N = 10;            // 순위 줄 수
+  var RECHECK_MS = 60000;    // 시즌이 열렸는지 다시 보는 간격
+  // 세력 이름·색(rules.js FACTIONS 와 같게)
+  var FAC = { 1: ['강철 제국', '#c0392b'], 2: ['세계수 연합', '#27ae60'], 3: ['모루 왕국', '#b8733d'], 4: ['큰 천막 부족', '#6b8e23'],
+              5: ['침묵의 군세', '#7d5ba6'], 6: ['모래바람 씨족', '#e0a526'], 7: ['산호 궁정', '#16a5a5'], 8: ['별탑 공화국', '#3a7bd5'] };
+  var $ = function (id) { return document.getElementById(id); };
+
+  // 이 브라우저의 ID(있으면 그것, 없으면 아무 장수도 아닌 고정 값 — 읽기 전용 함수라 무엇을 넣어도 안전하다)
+  function clientId() {
+    try { var v = localStorage.getItem('cheonha.clientId'); if (v && /^[0-9a-f-]{36}$/i.test(v)) return v; } catch (e) {}
+    return '00000000-0000-4000-8000-000000000001';
+  }
+  // 서버 함수 부르기. 실패해도 던지지 않고 null
+  function rpc(fn) {
+    return fetch(URL_ + '/rest/v1/rpc/' + fn, { method: 'POST', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ p_client_id: clientId() }) })
+      .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+  }
+
+  // 시즌 번호에 맞춰 안내 글과 입장 단추를 바꾼다
+  function showSeason(season) {
+    if (season >= 2) {
+      $('pill').textContent = '시즌 ' + season + ' 진행 중'; $('pill').classList.add('open');
+      $('lead').textContent = '시즌 ' + season + ' 가 열렸어요';
+      $('sub').textContent = '새 대륙에서 새 전쟁이 시작됐어요. 세력을 골라 다시 참전하세요.';
+      $('note').classList.add('hidden'); $('btnEnter').textContent = '시즌 ' + season + ' 입장하기'; $('btnEnter').classList.remove('hidden');
+      $('rankCard').classList.add('hidden');
+      return true;
+    }
+    return false;
+  }
+
+  // 시즌 1 공적 순위 그리기(닉네임은 유저가 적은 글이라 textContent 로만 넣는다)
+  function showRank(top) {
+    var ol = $('rankList'); ol.textContent = '';
+    top.slice(0, TOP_N).forEach(function (p, i) {
+      var fac = FAC[p.f] || ['', '#8a8272'];
+      var li = document.createElement('li'); if (i < 3) li.className = 'm' + (i + 1);
+      var no = document.createElement('span'); no.className = 'no'; no.textContent = String(i + 1);
+      var dot = document.createElement('span'); dot.className = 'dot'; dot.style.background = fac[1];
+      var who = document.createElement('span'); who.className = 'who';
+      var b = document.createElement('b'); b.textContent = p.nick;
+      var s = document.createElement('small'); s.textContent = fac[0] + ' · Lv ' + p.lv + ' · ' + p.wins + '승';
+      who.appendChild(b); who.appendChild(s);
+      var pt = document.createElement('span'); pt.className = 'pt'; pt.textContent = Number(p.merit).toLocaleString('ko-KR');
+      li.appendChild(no); li.appendChild(dot); li.appendChild(who); li.appendChild(pt); ol.appendChild(li);
+    });
+    $('rankCard').classList.toggle('hidden', !top.length);
+  }
+
+  // 한 번 확인: 시즌이 넘어갔으면 입장 단추, 아니면 시즌 1 순위
+  function check() {
+    return rpc('war_peek').then(function (pk) {
+      if (pk && pk.ok && showSeason(pk.season | 0)) return true;
+      return rpc('war_rank').then(function (rk) { if (rk && rk.ok && Array.isArray(rk.top)) showRank(rk.top); return false; });
+    });
+  }
+  // 열려 있는 동안 1분마다 다시 본다(시즌이 열리면 멈춘다). 탭이 가려져 있으면 건너뛴다
+  check().then(function (open) {
+    if (open) return;
+    var timer = setInterval(function () {
+      if (document.hidden) return;
+      rpc('war_peek').then(function (pk) { if (pk && pk.ok && showSeason(pk.season | 0)) clearInterval(timer); });
+    }, RECHECK_MS);
+  });
+})();
+</script>
+</body>
+</html>
