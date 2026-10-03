@@ -46,12 +46,12 @@
             <div class="mc-who"><b id="meNick"></b><span id="meFrom"></span><button class="mc-fchip mc-mycard" id="btnMyCard" type="button" hidden>내 카드 ▸</button>
                 <button class="mc-fchip mc-mycard" id="btnMyBuild" type="button" hidden>내 빌드 ▸</button></div>
       <div class="mc-lv"><small>레벨</small><b id="meLv">1</b></div>
-            <div class="mc-bar xp mc-me-xp" id="meXp"><i></i><span><b>경험</b><u id="meXpTxt"></u></span></div>
+            <div class="mc-bar xp mc-me-xp" id="meXp"><i></i><span><b>경험치</b><u id="meXpTxt"></u></span></div>
     </div>
     <div class="mc-row2">
-            <div class="mc-panel mc-stat"><small>은전</small><b id="meSilver">0</b><span class="mc-note" id="meBlood" hidden></span></div>
+            <div class="mc-panel mc-stat"><small>골드</small><b id="meSilver">0</b><span class="mc-note" id="meBlood" hidden></span></div>
       <div class="mc-panel mc-stat mc-stam">
-                <small>기력 <span class="mc-tag" id="stamGreat" hidden>의욕 넘침</span></small>
+                <small>스태미나 <span class="mc-tag" id="stamGreat" hidden>컨디션 좋음</span></small>
         <b><span id="stamNow">0</span><i>/<span id="stamMax">0</span></i></b>
         <div class="mc-gauge" aria-hidden="true"><i id="stamBar"></i><u id="stamMark"></u></div>
         <span class="mc-note" id="stamNote"></span>
@@ -66,7 +66,7 @@
 
     <section class="screen" id="scrShop" hidden>
     <header class="mc-head"><h1>상<em>점</em></h1><button class="mc-back" id="btnShopBack" type="button">◀ 마을</button></header>
-    <div class="mc-panel mc-pts"><div><small>가진 은전</small><span class="mc-note">장비는 장비 화면에서 팔아요.</span></div><b id="shopSilver">0</b></div>
+    <div class="mc-panel mc-pts"><div><small>가진 골드</small><span class="mc-note">장비는 장비 화면에서 팔아요.</span></div><b id="shopSilver">0</b></div>
     <h3 class="mc-h3">물약</h3>
     <p class="mc-lead">싸우는 중에는 살 수 없어요. 미리 채워 두세요.</p>
     <div class="mc-shop" id="shopList"></div>
@@ -74,7 +74,7 @@
 
     <section class="screen" id="scrForge" hidden>
     <header class="mc-head"><h1>대장<em>간</em></h1><button class="mc-back" id="btnForgeBack" type="button">◀ 마을</button></header>
-    <div class="mc-panel mc-pts"><div><small>가진 은전</small><span class="mc-note" id="forgeBind"></span></div><b id="forgeSilver">0</b></div>
+    <div class="mc-panel mc-pts"><div><small>가진 골드</small><span class="mc-note" id="forgeBind"></span></div><b id="forgeSilver">0</b></div>
     <h3 class="mc-h3">재료 가방</h3>
     <div class="mc-mats" id="forgeMats"></div>
     <div class="mc-ftabs mc-forget" id="forgeTabs" role="group" aria-label="대장간에서 할 일"></div>
@@ -90,16 +90,16 @@
   </section>
 
     <section class="screen" id="scrFeat" hidden>
-    <header class="mc-head"><h1>특<em>기</em></h1><button class="mc-back" id="btnFeatBack" type="button">◀ 마을</button></header>
-    <div class="mc-panel mc-pts"><div><small>남은 특기 점수</small><span class="mc-note" id="featNote"></span></div><b id="featPts">0</b></div>
+    <header class="mc-head"><h1>특<em>성</em></h1><button class="mc-back" id="btnFeatBack" type="button">◀ 마을</button></header>
+    <div class="mc-panel mc-pts"><div><small>남은 특성 포인트</small><span class="mc-note" id="featNote"></span></div><b id="featPts">0</b></div>
     <p class="mc-lead" id="featLead"></p>
-    <h3 class="mc-h3">끼운 특기 <small id="featCount"></small></h3>
+    <h3 class="mc-h3">끼운 특성 <small id="featCount"></small></h3>
     <div class="mc-fslots" id="featSlots"></div>
         <div id="featResonBox" hidden>
-      <h3 class="mc-h3">공명 <small>같은 갈래 셋을 끼우면 덤이 붙어요</small></h3>
+      <h3 class="mc-h3">세트 효과 <small>같은 계열 3개를 끼우면 보너스가 생겨요</small></h3>
       <div class="mc-reson" id="featReson"></div>
     </div>
-    <h3 class="mc-h3">특기 책</h3>
+    <h3 class="mc-h3">특성 목록</h3>
         <div class="mc-ftabs" id="featTabs"></div>
     <div class="mc-shop" id="featList"></div>
     <div id="featLockBox" hidden>
@@ -107,11 +107,11 @@
       <div class="mc-shop" id="featLockList" hidden></div>
     </div>
         <div id="coreBox" hidden>
-      <h3 class="mc-h3">핵심 특기 <small id="coreNote"></small></h3>
+      <h3 class="mc-h3">핵심 특성 <small id="coreNote"></small></h3>
       <p class="mc-lead" id="coreLead"></p>
       <div class="mc-shop" id="coreList"></div>
     </div>
-    <div class="mc-resetrow"><button class="mc-btn" id="btnFeatReset" type="button">특기 되돌리기</button></div>
+    <div class="mc-resetrow"><button class="mc-btn" id="btnFeatReset" type="button">특성 초기화</button></div>
   </section>
 
     <section class="screen" id="scrRaid" hidden>
@@ -145,14 +145,14 @@
   </section>
 
     <section class="screen" id="scrStats" hidden>
-    <header class="mc-head"><h1>능력<em>치</em></h1><button class="mc-back" id="btnStatsBack" type="button">◀ 마을</button></header>
-    <div class="mc-panel mc-pts"><div><small>남은 능력치 점수</small><span class="mc-note" id="ptsNote"></span></div><b id="ptsNow">0</b></div>
+    <header class="mc-head"><h1>스<em>탯</em></h1><button class="mc-back" id="btnStatsBack" type="button">◀ 마을</button></header>
+    <div class="mc-panel mc-pts"><div><small>남은 스탯 포인트</small><span class="mc-note" id="ptsNote"></span></div><b id="ptsNow">0</b></div>
     <div class="mc-stlist" id="statList"></div>
-        <div class="mc-resetrow"><span id="resetNote"></span><button class="mc-fchip" id="btnReset" type="button">다시 나누기</button></div>
-    <h3 class="mc-h3">싸움 수치</h3>
-    <p class="mc-lead">줄을 누르면 어디서 온 수치인지 볼 수 있어요.</p>
+        <div class="mc-resetrow"><span id="resetNote"></span><button class="mc-fchip" id="btnReset" type="button">스탯 초기화</button></div>
+    <h3 class="mc-h3">전투 능력치</h3>
+    <p class="mc-lead">항목을 누르면 어디서 온 수치인지 볼 수 있어요.</p>
     <div class="mc-dlist" id="deriveList"></div>
-        <h3 class="mc-h3">숙련</h3>
+        <h3 class="mc-h3">숙련도</h3>
     <p class="mc-lead" id="profLead">쓰는 만큼 올라요. 내 레벨까지 오를 수 있어요.</p>
     <div class="mc-proflist" id="profList"></div>
         <h3 class="mc-h3">저항</h3>
@@ -170,11 +170,11 @@
         <div class="mc-panel mc-style" id="styleBox"></div>
     <div class="mc-gsum" id="gearSum"></div>
         <p class="mc-pottip" id="potTip" hidden></p>
-    <h3 class="mc-h3">장비 묶음</h3>
-    <p class="mc-lead">차림을 저장해 두면 한 번에 갈아입어요.</p>
+    <h3 class="mc-h3">장비 프리셋</h3>
+    <p class="mc-lead">세팅을 저장해 두면 한 번에 갈아입어요.</p>
     <div class="mc-sets" id="setList"></div>
-    <h3 class="mc-h3">전투 가방</h3>
-    <p class="mc-lead">싸움에서는 여기 올린 물건만 쓸 수 있어요.</p>
+    <h3 class="mc-h3">물약 슬롯</h3>
+    <p class="mc-lead">전투에서는 여기 올린 아이템만 쓸 수 있어요.</p>
     <div class="mc-bslots" id="beltSet"></div>
         <h3 class="mc-h3" id="bagHead">가방 <small id="bagCount"></small><button class="mc-fchip sell" id="btnBagSell" type="button">정리</button><button class="mc-fchip sort" id="btnGSort" type="button"></button></h3>
         <div class="mc-aims" id="aimRow" role="group" aria-label="추천 기준" hidden></div>
@@ -185,7 +185,7 @@
 
     <section class="screen" id="scrBattle" hidden>
     <header class="mc-head mc-bt-head"><h1 id="btTitle">훈련<em>장</em></h1><span class="mc-head-r">
-      <span class="mc-bt-info"><span id="btInfo"></span><span class="mc-bar xp mini" id="barXp"><i></i><span><b>경험</b><u id="txtXp"></u></span></span></span>
+      <span class="mc-bt-info"><span id="btInfo"></span><span class="mc-bar xp mini" id="barXp"><i></i><span><b>경험치</b><u id="txtXp"></u></span></span></span>
       <button class="mc-help" id="btnHelp" type="button" aria-label="전투 도움말 보기">?</button>
       <button class="mc-back mc-flee" id="btnFlee" type="button">물러나기</button></span></header>
     <div class="mc-foes" id="foeList" role="radiogroup" aria-label="겨눌 적 고르기"></div>
@@ -195,15 +195,15 @@
     <div class="mc-bt-foot">
       <div class="mc-panel mc-mine" id="myBars">
         <div class="mc-sts mine" id="mySts"></div>
-        <div class="mc-bar hp big" id="barHp"><i></i><span><b>체력</b><u id="txtHp"></u></span><em class="mc-guard" id="tagGuard" hidden>방어 중</em></div>
+        <div class="mc-bar hp big" id="barHp"><i></i><span><b>HP</b><u id="txtHp"></u></span><em class="mc-guard" id="tagGuard" hidden>방어 중</em></div>
                 <div class="mc-bar3" id="bar3">
-          <div class="mc-bar mp" id="barMp"><i></i><span><b>마력</b><u id="txtMp"></u></span></div>
-          <div class="mc-bar sp" id="barSp"><i></i><span><b>기세</b><u id="txtSp"></u></span></div>
-          <div class="mc-bar fl" id="barFlag" hidden><i></i><span><b>깃발</b><u id="txtFlag"></u></span></div>
+          <div class="mc-bar mp" id="barMp"><i></i><span><b>MP</b><u id="txtMp"></u></span></div>
+          <div class="mc-bar sp" id="barSp"><i></i><span><b>SP</b><u id="txtSp"></u></span></div>
+          <div class="mc-bar fl" id="barFlag" hidden><i></i><span><b>분노</b><u id="txtFlag"></u></span></div>
         </div>
       </div>
             <p class="mc-coach" id="coachBar" role="status" hidden></p>
-            <div class="mc-quick" id="quickRow" role="group" aria-label="전투 가방과 연계 기술"><div class="mc-quick-in" id="beltList"></div><div class="mc-quick-in" id="skillList"></div>
+            <div class="mc-quick" id="quickRow" role="group" aria-label="물약 슬롯과 스킬"><div class="mc-quick-in" id="beltList"></div><div class="mc-quick-in" id="skillList"></div>
                 <div class="mc-quick-in" id="spellList"></div></div>
       <div class="mc-acts">
         <button class="mc-btn gold mc-act" id="btnAtk" type="button"><kbd>1</kbd>공격<small id="atkTo"></small></button>
@@ -244,7 +244,7 @@
 <div class="mc-dim" id="bragSheet" hidden>
   <div class="mc-panel mc-sheet mc-brag" role="dialog" aria-modal="true" aria-labelledby="bragTitle">
     <h2 class="mc-sheet-h" id="bragTitle">자랑 게시판</h2>
-    <p class="mc-sheet-p">용병들이 자랑한 장비예요. 눌러서 줄을 봐요.</p>
+    <p class="mc-sheet-p">용병들이 자랑한 장비예요. 눌러서 옵션을 봐요.</p>
     <ul class="mc-brag-list" id="bragList"></ul>
     <button class="mc-btn mc-wide" id="btnBragBack" type="button">닫기</button>
   </div>
@@ -252,7 +252,7 @@
 <div class="mc-dim" id="cardSheet" hidden>
   <div class="mc-panel mc-sheet mc-card" role="dialog" aria-modal="true" aria-labelledby="cardNick">
     <div class="mc-card-head"><div class="mc-face" id="cardFace"></div><div class="mc-who"><b id="cardNick"></b><span id="cardSub"></span></div><div class="mc-lv"><small>레벨</small><b id="cardLv">1</b></div></div>
-    <p class="mc-card-me" id="cardMe" hidden>남들에게 이렇게 보여요. 은전과 가방은 안 보여요.</p>
+    <p class="mc-card-me" id="cardMe" hidden>남들에게 이렇게 보여요. 골드와 가방은 안 보여요.</p>
     <h4 class="mc-card-h">낀 장비</h4>
     <div class="mc-slots" id="cardEq"></div>
     <h4 class="mc-card-h">대표 기록</h4>
@@ -296,7 +296,7 @@
 </div>
 <div class="mc-dim" id="skmSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="skmTitle">
-    <h2 class="mc-sheet-h" id="skmTitle">기술 나무</h2>
+    <h2 class="mc-sheet-h" id="skmTitle">스킬 트리</h2>
     <p class="mc-sheet-p" id="skmLead"></p>
         <p class="mc-skm-grain" id="skmGrain" hidden></p>
     <div class="mc-skms" id="skmList"></div>
@@ -309,7 +309,7 @@
     <h2 class="mc-sheet-h" id="buildTitle">내 빌드</h2>
     <p class="mc-sheet-p" id="buildSum"></p>
     <div class="mc-bld" id="buildBody"></div>
-    <div class="mc-btnrow" id="buildGo"><button class="mc-btn" id="btnBuildSkm" type="button">기술 나무</button><button class="mc-btn" id="btnBuildFeat" type="button">특기 판</button></div>
+    <div class="mc-btnrow" id="buildGo"><button class="mc-btn" id="btnBuildSkm" type="button">스킬 트리</button><button class="mc-btn" id="btnBuildFeat" type="button">특성 창</button></div>
     <button class="mc-btn gold mc-wide" id="btnBuildClose" type="button">닫기</button>
   </div>
 </div>
@@ -356,19 +356,19 @@
     <p class="mc-gs-sub" id="gsSub"></p>
         <div class="mc-gs-who" id="gsWho" hidden><span id="gsWhoTxt"></span><button class="mc-fchip" id="btnGsWho" type="button">용병 카드 ▸</button></div>
     <div class="mc-gs-desc" id="gsDesc"></div>
-    <div class="mc-gl-head"><span>줄</span><span>굴림</span><span>값 / 최고</span></div>
+    <div class="mc-gl-head"><span>옵션</span><span>수치</span><span>값 / 최고</span></div>
     <div class="mc-gls" id="gsLines"></div>
         <div class="mc-gs-pot" id="gsPot" hidden>
-      <div class="mc-pot-h"><b>잠재</b><span id="gsPotLv"></span></div>
-      <div class="mc-bar pot" id="gsPotBar"><i></i><span><b>잠재 경험</b><u id="gsPotXp"></u></span></div>
+      <div class="mc-pot-h"><b>잠재력</b><span id="gsPotLv"></span></div>
+      <div class="mc-bar pot" id="gsPotBar"><i></i><span><b>잠재력 경험치</b><u id="gsPotXp"></u></span></div>
       <div class="mc-pot-tl" id="gsPotTl"></div>
       <div class="mc-gs-dual" id="gsPotRow"><span id="gsPotNote"></span><button class="mc-fchip" id="btnGearWorld" type="button">속으로 들어가기</button></div>
-      <div class="mc-gs-dual" id="gsForgetRow" hidden><span id="gsForgetNote"></span><button class="mc-fchip" id="btnGearForget" type="button">잠재 되돌리기</button></div>
+      <div class="mc-gs-dual" id="gsForgetRow" hidden><span id="gsForgetNote"></span><button class="mc-fchip" id="btnGearForget" type="button">잠재력 초기화</button></div>
     </div>
     <div class="mc-gs-cmp" id="gsCmp"></div>
         <div class="mc-gs-dur"><div class="mc-bar dur" id="gsDur"><i></i><span><b>내구도</b><u id="gsDurTxt"></u></span></div><button class="mc-fchip" id="btnGearFix" type="button">수리</button></div>
     <p class="mc-gs-durnote" id="gsDurNote" hidden></p>
-        <div class="mc-gs-sell"><span id="gsPrice"></span><button class="mc-fchip" id="btnGearKeep" type="button">지키기</button><button class="mc-fchip" id="btnGearSell" type="button">팔기</button></div>
+        <div class="mc-gs-sell"><span id="gsPrice"></span><button class="mc-fchip" id="btnGearKeep" type="button">잠금</button><button class="mc-fchip" id="btnGearSell" type="button">팔기</button></div>
         <div class="mc-gs-dual" id="gsUpRow" hidden><span id="gsUpNote"></span><button class="mc-fchip" id="btnGearUp" type="button">강화하기</button></div>
     <div class="mc-gs-dual" id="gsBrkRow" hidden><span id="gsBrkNote"></span><button class="mc-fchip" id="btnGearBrk" type="button">분해</button></div>
     <p class="mc-err" id="gsErr" role="alert"></p>
@@ -382,7 +382,7 @@
     <h2 class="mc-sheet-h" id="bestTitle">좋은 것 모두 끼기</h2>
     <p class="mc-sheet-p" id="bestSub"></p>
     <ul class="mc-bestl" id="bestList"></ul>
-    <h4 class="mc-best-h">달라지는 줄</h4>
+    <h4 class="mc-best-h">달라지는 옵션</h4>
     <div class="mc-best-sum" id="bestSum"></div>
     <p class="mc-err" id="bestErr" role="alert"></p>
     <div class="mc-btnrow"><button class="mc-btn" id="btnBestNo" type="button">그만두기</button><button class="mc-btn gold" id="btnBestYes" type="button">모두 끼기</button></div>
@@ -392,7 +392,7 @@
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="sellTitle">
     <h2 class="mc-sheet-h mc-sell-h" id="sellTitle"></h2>
     <p class="mc-sheet-p" id="sellSub"></p>
-    <div class="mc-filters mc-sellq" id="sellTier" role="group" aria-label="어느 품질까지 팔지 고르기" hidden></div>
+    <div class="mc-filters mc-sellq" id="sellTier" role="group" aria-label="어느 등급까지 팔지 고르기" hidden></div>
     <div class="mc-gains two" id="sellSum"></div>
     <div class="mc-matrow" id="sellMats" hidden></div>
     <p class="mc-err" id="sellErr" role="alert"></p>
@@ -412,14 +412,14 @@
 <div class="mc-dim" id="setSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="setTitle">
     <h2 class="mc-sheet-h" id="setTitle"></h2>
-    <p class="mc-sheet-p">저장해 둔 차림이 지금 차림으로 바뀌어요.</p>
+    <p class="mc-sheet-p">저장해 둔 세팅이 지금 세팅으로 바뀌어요.</p>
     <div class="mc-btnrow"><button class="mc-btn" id="btnSetNo" type="button">그만두기</button><button class="mc-btn gold" id="btnSetYes" type="button">덮어쓰기</button></div>
   </div>
 </div>
 <div class="mc-dim" id="beltSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="beltTitle">
     <h2 class="mc-sheet-h" id="beltTitle"></h2>
-    <p class="mc-sheet-p">이 칸에 올릴 물건을 골라요.</p>
+    <p class="mc-sheet-p">이 칸에 올릴 아이템을 골라요.</p>
     <div class="mc-picks" id="beltPick"></div>
     <p class="mc-err" id="beltErr" role="alert"></p>
     <div class="mc-btnrow"><button class="mc-btn" id="btnBeltClose" type="button">닫기</button><button class="mc-btn" id="btnBeltClear" type="button">칸 비우기</button></div>
@@ -436,6 +436,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.78cc6d05.js"></script>
+<script src="app.caa9410b.js"></script>
 </body>
 </html>
