@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.7aff6e70.css">
+<link rel="stylesheet" href="style.63076448.css">
 </head>
 <body>
 <div id="app">
@@ -59,8 +59,8 @@
     </div>
         <button class="mc-notice" id="townWear" type="button" hidden></button>
         <button class="mc-notice good" id="townSkm" type="button" hidden></button>
-    <h3 class="mc-h3">갈 곳</h3>
-    <div class="mc-menu" id="menuList"></div>
+        <button class="mc-notice good" id="townTrain" type="button" hidden></button>
+        <div class="mc-menu" id="menuList"></div>
     <p class="mc-foot" id="townFoot"></p>
   </section>
 
@@ -242,6 +242,17 @@
     <p class="mc-slab-got" id="altarGot" hidden></p>
     <p class="mc-err" id="altarErr" role="alert"></p>
     <button class="mc-btn mc-wide" id="btnAltarBack" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="trainSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="trainTitle">
+    <h2 class="mc-sheet-h" id="trainTitle">연구소</h2>
+    <p class="mc-sheet-p" id="trainSub">골드와 시간을 들여 영구 효과를 올려요. 한 번에 하나만 연구해요.</p>
+    <div class="mc-trq" id="trainNow"></div>
+    <p class="mc-slab-got" id="trainGot" hidden></p>
+    <p class="mc-err" id="trainErr" role="alert"></p>
+    <div class="mc-trs" id="trainList"></div>
+    <button class="mc-btn mc-wide" id="btnTrainBack" type="button">닫기</button>
   </div>
 </div>
 <div class="mc-dim" id="rankSheet" hidden>
@@ -488,6 +499,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.d0153925.js"></script>
+<script src="app.b24eaad4.js"></script>
 </body>
 </html>
