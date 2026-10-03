@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.83ff5edd.css">
+<link rel="stylesheet" href="style.1f6d6697.css">
 </head>
 <body>
 <div id="app">
@@ -70,6 +70,15 @@
     <h3 class="mc-h3">물약</h3>
     <p class="mc-lead">싸우는 중에는 살 수 없어요. 미리 채워 두세요.</p>
     <div class="mc-shop" id="shopList"></div>
+  </section>
+
+    <section class="screen" id="scrForge" hidden>
+    <header class="mc-head"><h1>대장<em>간</em></h1><button class="mc-back" id="btnForgeBack" type="button">◀ 마을</button></header>
+    <div class="mc-panel mc-pts"><div><small>가진 은전</small><span class="mc-note" id="forgeBind"></span></div><b id="forgeSilver">0</b></div>
+    <h3 class="mc-h3">재료 가방</h3>
+    <div class="mc-mats" id="forgeMats"></div>
+    <div class="mc-ftabs mc-forget" id="forgeTabs" role="group" aria-label="대장간에서 할 일"></div>
+    <div class="mc-forge" id="forgeBody"></div>
   </section>
 
     <section class="screen" id="scrSpell" hidden>
@@ -320,6 +329,8 @@
         <div class="mc-gs-dur"><div class="mc-bar dur" id="gsDur"><i></i><span><b>내구도</b><u id="gsDurTxt"></u></span></div><button class="mc-fchip" id="btnGearFix" type="button">수리</button></div>
     <p class="mc-gs-durnote" id="gsDurNote" hidden></p>
         <div class="mc-gs-sell"><span id="gsPrice"></span><button class="mc-fchip" id="btnGearKeep" type="button">지키기</button><button class="mc-fchip" id="btnGearSell" type="button">팔기</button></div>
+        <div class="mc-gs-dual" id="gsUpRow" hidden><span id="gsUpNote"></span><button class="mc-fchip" id="btnGearUp" type="button">강화하기</button></div>
+    <div class="mc-gs-dual" id="gsBrkRow" hidden><span id="gsBrkNote"></span><button class="mc-fchip" id="btnGearBrk" type="button">분해</button></div>
     <p class="mc-err" id="gsErr" role="alert"></p>
         <div class="mc-gs-dual" id="gsDualRow" hidden><span id="gsDualNote"></span><button class="mc-fchip" id="btnGearDual" type="button">보조 칸에 끼기</button></div>
         <div class="mc-gs-dual" id="gsBragRow" hidden><span id="gsBragNote"></span><button class="mc-fchip" id="btnGearBrag" type="button">자랑하기</button></div>
@@ -340,9 +351,11 @@
 <div class="mc-dim" id="sellSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="sellTitle">
     <h2 class="mc-sheet-h mc-sell-h" id="sellTitle"></h2>
+        <div class="mc-filters mc-sellm" id="sellMode" role="group" aria-label="팔기와 분해 가운데 고르기" hidden></div>
     <p class="mc-sheet-p" id="sellSub"></p>
     <div class="mc-filters mc-sellq" id="sellTier" role="group" aria-label="어느 품질까지 팔지 고르기" hidden></div>
     <div class="mc-gains two" id="sellSum"></div>
+    <div class="mc-matrow" id="sellMats" hidden></div>
     <p class="mc-err" id="sellErr" role="alert"></p>
     <div class="mc-btnrow"><button class="mc-btn" id="btnSellNo" type="button">그만두기</button><button class="mc-btn gold" id="btnSellYes" type="button">팔기</button></div>
   </div>
@@ -383,6 +396,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.bf27fe15.js"></script>
+<script src="app.3f79822b.js"></script>
 </body>
 </html>
