@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.91d4572f.css">
+<link rel="stylesheet" href="style.424294b1.css">
 </head>
 <body>
 <div id="app">
@@ -43,7 +43,7 @@
     <header class="mc-head"><h1>용병 <em>마을</em></h1><a class="mc-back" href="../">◀ 게임 상자</a></header>
     <div class="mc-panel mc-me">
       <div class="mc-face" id="meFace"></div>
-      <div class="mc-who"><b id="meNick"></b><span id="meFrom"></span></div>
+            <div class="mc-who"><b id="meNick"></b><span id="meFrom"></span><button class="mc-fchip mc-mycard" id="btnMyCard" type="button" hidden>내 카드 ▸</button></div>
       <div class="mc-lv"><small>레벨</small><b id="meLv">1</b></div>
             <div class="mc-bar xp mc-me-xp" id="meXp"><i></i><span><b>경험</b><u id="meXpTxt"></u></span></div>
     </div>
@@ -191,6 +191,17 @@
     <button class="mc-btn mc-wide" id="btnRankBack" type="button">닫기</button>
   </div>
 </div>
+<div class="mc-dim" id="cardSheet" hidden>
+  <div class="mc-panel mc-sheet mc-card" role="dialog" aria-modal="true" aria-labelledby="cardNick">
+    <div class="mc-card-head"><div class="mc-face" id="cardFace"></div><div class="mc-who"><b id="cardNick"></b><span id="cardSub"></span></div><div class="mc-lv"><small>레벨</small><b id="cardLv">1</b></div></div>
+    <p class="mc-card-me" id="cardMe" hidden>남들에게 이렇게 보여요. 은전과 가방은 안 보여요.</p>
+    <h4 class="mc-card-h">낀 장비</h4>
+    <div class="mc-slots" id="cardEq"></div>
+    <h4 class="mc-card-h">대표 기록</h4>
+    <ul class="mc-card-rec" id="cardRec"></ul>
+    <button class="mc-btn mc-wide" id="btnCardBack" type="button">닫기</button>
+  </div>
+</div>
 <div class="mc-dim" id="endSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="endTitle">
     <h2 class="mc-sheet-h" id="endTitle"></h2>
@@ -295,6 +306,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.a766f45d.js"></script>
+<script src="app.36451f6a.js"></script>
 </body>
 </html>
