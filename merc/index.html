@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.852bb050.css">
+<link rel="stylesheet" href="style.e82e2bd3.css">
 </head>
 <body>
 <div id="app">
@@ -125,6 +125,7 @@
     <section class="screen" id="scrGear" hidden>
     <header class="mc-head"><h1>장<em>비</em></h1><button class="mc-back" id="btnGearBack" type="button">◀ 마을</button></header>
     <div class="mc-slots" id="slotList"></div>
+        <div class="mc-panel mc-bestbox" id="bestBox" hidden><div><b>좋은 것 모두 끼기</b><span id="bestTxt"></span></div><button class="mc-btn gold" id="btnWearBest" type="button">모두 끼기</button></div>
         <div class="mc-panel mc-fixbox" id="fixBox" hidden></div>
         <div class="mc-panel mc-style" id="styleBox"></div>
     <div class="mc-gsum" id="gearSum"></div>
@@ -221,6 +222,8 @@
 </div>
 <div class="mc-dim" id="gearSheet" hidden>
   <div class="mc-panel mc-sheet mc-gsheet" role="dialog" aria-modal="true" aria-labelledby="gsName">
+        <div class="mc-gs-nav"><button class="mc-fchip" id="btnGsPrev" type="button" aria-label="이전 장비">◀ 이전</button><span id="gsPos"></span><button class="mc-fchip" id="btnGsNext" type="button" aria-label="다음 장비">다음 ▶</button></div>
+        <div class="mc-gs-done" id="gsDone" role="status" hidden></div>
     <h2 class="mc-gs-name" id="gsName"></h2>
     <p class="mc-gs-sub" id="gsSub"></p>
     <div class="mc-gs-desc" id="gsDesc"></div>
@@ -233,6 +236,17 @@
     <p class="mc-err" id="gsErr" role="alert"></p>
         <div class="mc-gs-dual" id="gsDualRow" hidden><span id="gsDualNote"></span><button class="mc-fchip" id="btnGearDual" type="button">보조 칸에 끼기</button></div>
     <div class="mc-btnrow"><button class="mc-btn" id="btnGearClose" type="button">닫기</button><button class="mc-btn gold" id="btnGearOn" type="button">끼기</button></div>
+  </div>
+</div>
+<div class="mc-dim" id="bestSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="bestTitle">
+    <h2 class="mc-sheet-h" id="bestTitle">좋은 것 모두 끼기</h2>
+    <p class="mc-sheet-p" id="bestSub"></p>
+    <ul class="mc-bestl" id="bestList"></ul>
+    <h4 class="mc-best-h">달라지는 줄</h4>
+    <div class="mc-best-sum" id="bestSum"></div>
+    <p class="mc-err" id="bestErr" role="alert"></p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnBestNo" type="button">그만두기</button><button class="mc-btn gold" id="btnBestYes" type="button">모두 끼기</button></div>
   </div>
 </div>
 <div class="mc-dim" id="sellSheet" hidden>
@@ -281,6 +295,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.a2879c5b.js"></script>
+<script src="app.98be9061.js"></script>
 </body>
 </html>
