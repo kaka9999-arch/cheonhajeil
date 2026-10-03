@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.ddfc7b74.css">
+<link rel="stylesheet" href="style.aed58483.css">
 </head>
 <body>
 <div id="app">
@@ -193,6 +193,14 @@
     <button class="mc-btn mc-wide" id="btnRankBack" type="button">닫기</button>
   </div>
 </div>
+<div class="mc-dim" id="bragSheet" hidden>
+  <div class="mc-panel mc-sheet mc-brag" role="dialog" aria-modal="true" aria-labelledby="bragTitle">
+    <h2 class="mc-sheet-h" id="bragTitle">자랑 게시판</h2>
+    <p class="mc-sheet-p">용병들이 자랑한 장비예요. 눌러서 줄을 봐요.</p>
+    <ul class="mc-brag-list" id="bragList"></ul>
+    <button class="mc-btn mc-wide" id="btnBragBack" type="button">닫기</button>
+  </div>
+</div>
 <div class="mc-dim" id="cardSheet" hidden>
   <div class="mc-panel mc-sheet mc-card" role="dialog" aria-modal="true" aria-labelledby="cardNick">
     <div class="mc-card-head"><div class="mc-face" id="cardFace"></div><div class="mc-who"><b id="cardNick"></b><span id="cardSub"></span></div><div class="mc-lv"><small>레벨</small><b id="cardLv">1</b></div></div>
@@ -239,6 +247,7 @@
         <div class="mc-gs-done" id="gsDone" role="status" hidden></div>
     <h2 class="mc-gs-name" id="gsName"></h2>
     <p class="mc-gs-sub" id="gsSub"></p>
+        <div class="mc-gs-who" id="gsWho" hidden><span id="gsWhoTxt"></span><button class="mc-fchip" id="btnGsWho" type="button">용병 카드 ▸</button></div>
     <div class="mc-gs-desc" id="gsDesc"></div>
     <div class="mc-gl-head"><span>줄</span><span>굴림</span><span>값 / 최고</span></div>
     <div class="mc-gls" id="gsLines"></div>
@@ -248,6 +257,7 @@
         <div class="mc-gs-sell"><span id="gsPrice"></span><button class="mc-fchip" id="btnGearKeep" type="button">지키기</button><button class="mc-fchip" id="btnGearSell" type="button">팔기</button></div>
     <p class="mc-err" id="gsErr" role="alert"></p>
         <div class="mc-gs-dual" id="gsDualRow" hidden><span id="gsDualNote"></span><button class="mc-fchip" id="btnGearDual" type="button">보조 칸에 끼기</button></div>
+        <div class="mc-gs-dual" id="gsBragRow" hidden><span id="gsBragNote"></span><button class="mc-fchip" id="btnGearBrag" type="button">자랑하기</button></div>
     <div class="mc-btnrow"><button class="mc-btn" id="btnGearClose" type="button">닫기</button><button class="mc-btn gold" id="btnGearOn" type="button">끼기</button></div>
   </div>
 </div>
@@ -308,6 +318,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.797e17bf.js"></script>
+<script src="app.53c6bd0a.js"></script>
 </body>
 </html>
