@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.3c7f958c.css">
+<link rel="stylesheet" href="style.5981719c.css">
 </head>
 <body>
 <div id="app">
@@ -121,6 +121,13 @@
     <div class="mc-arenas" id="raidList"></div>
   </section>
 
+    <section class="screen" id="scrPal" hidden>
+    <header class="mc-head"><h1>전우 동<em>행</em> <i class="mc-beta">시험 중</i></h1><button class="mc-back" id="btnPalBack" type="button">◀ 마을</button></header>
+    <p class="mc-coop-beta">시험 중이라 규칙과 수치가 바뀔 수 있어요.</p>
+    <p class="mc-lead">다른 용병과 같이 싸워요. 전우는 스스로 움직여요.</p>
+    <div class="mc-coop" id="palBody"></div>
+  </section>
+
     <section class="screen" id="scrCoop" hidden>
     <header class="mc-head"><h1>합동 토<em>벌</em> <i class="mc-beta">시험 중</i></h1><button class="mc-back" id="btnCoopBack" type="button">◀ 마을</button></header>
     <p class="mc-coop-beta">시험 중이라 규칙과 수치가 바뀔 수 있어요.</p>
@@ -183,6 +190,7 @@
       <button class="mc-back mc-flee" id="btnFlee" type="button">물러나기</button></span></header>
     <div class="mc-foes" id="foeList" role="radiogroup" aria-label="겨눌 적 고르기"></div>
     <p class="mc-hint" id="foeHint"></p>
+        <div class="mc-pals" id="palRow" aria-label="같이 싸우는 전우" hidden></div>
     <div class="mc-log" id="btLog" role="log" aria-live="polite" aria-label="전투 기록"></div>
     <div class="mc-bt-foot">
       <div class="mc-panel mc-mine" id="myBars">
@@ -250,6 +258,7 @@
     <h4 class="mc-card-h">대표 기록</h4>
     <ul class="mc-card-rec" id="cardRec"></ul>
         <button class="mc-btn gold mc-wide mc-card-coop" id="btnCardCoop" type="button" hidden>같이 토벌 가기</button>
+        <button class="mc-btn mc-wide mc-card-coop" id="btnCardPal" type="button" hidden>전우로 데려가기</button>
     <button class="mc-btn mc-wide" id="btnCardBack" type="button">닫기</button>
   </div>
 </div>
@@ -413,6 +422,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.cfd33839.js"></script>
+<script src="app.5035e48a.js"></script>
 </body>
 </html>
