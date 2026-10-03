@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.8d1dd430.css">
+<link rel="stylesheet" href="style.bc751282.css">
 </head>
 <body>
 <div id="app">
@@ -177,6 +177,7 @@
     <p class="mc-lead">전투에서는 여기 올린 아이템만 쓸 수 있어요.</p>
     <div class="mc-bslots" id="beltSet"></div>
         <h3 class="mc-h3" id="bagHead">가방 <small id="bagCount"></small><button class="mc-fchip sell" id="btnBagSell" type="button">정리</button><button class="mc-fchip sort" id="btnGSort" type="button"></button></h3>
+        <div class="mc-bagbar" id="bagBar" hidden><button class="mc-fchip" id="btnBagCfg" type="button">가방 설정</button><span id="bagRuleTxt"></span><button class="mc-fchip stash" id="btnStash" type="button" hidden></button></div>
         <div class="mc-aims" id="aimRow" role="group" aria-label="추천 기준" hidden></div>
     <div class="mc-filters" id="bagFilter" role="group" aria-label="가방 거르기"></div>
         <div class="mc-filters sub" id="bagSub" role="group" aria-label="종류로 거르기" hidden></div>
@@ -398,6 +399,30 @@
     <div class="mc-btnrow"><button class="mc-btn" id="btnBestNo" type="button">그만두기</button><button class="mc-btn gold" id="btnBestYes" type="button">모두 끼기</button></div>
   </div>
 </div>
+<div class="mc-dim" id="bagSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="bagTitle">
+    <h2 class="mc-sheet-h" id="bagTitle">가방 설정</h2>
+    <p class="mc-sheet-p" id="bagSub"></p>
+    <div class="mc-panel mc-fixbox mc-bagbuy"><div><b id="bagBuyT"></b><span id="bagBuyS"></span></div><button class="mc-btn" id="btnBagBuy" type="button"></button></div>
+    <h3 class="mc-h3 mc-bagh">가방이 가득 찰 때</h3>
+    <div class="mc-filters mc-sellm" id="bagMode" role="group" aria-label="가득 찰 때 팔지 분해할지 고르기"></div>
+    <p class="mc-bagk">이 등급부터는 보관함에 남겨요.</p>
+    <div class="mc-filters mc-bagkeep" id="bagKeep" role="group" aria-label="보관함에 남길 등급 고르기"></div>
+    <p class="mc-sellcmp" id="bagRuleNote"></p>
+    <p class="mc-err" id="bagErr" role="alert"></p>
+    <button class="mc-btn gold mc-wide" id="btnBagBack" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="stashSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="stashTitle">
+    <h2 class="mc-sheet-h" id="stashTitle">보관함</h2>
+    <p class="mc-sheet-p" id="stashSub"></p>
+    <div class="mc-stash" id="stashList"></div>
+    <p class="mc-sellcmp" id="stashNote"></p>
+    <p class="mc-err" id="stashErr" role="alert"></p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnStashNo" type="button">닫기</button><button class="mc-btn gold" id="btnStashAll" type="button">모두 받기</button></div>
+  </div>
+</div>
 <div class="mc-dim" id="sellSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="sellTitle">
     <h2 class="mc-sheet-h mc-sell-h" id="sellTitle"></h2>
@@ -405,6 +430,7 @@
     <div class="mc-filters mc-sellq" id="sellTier" role="group" aria-label="어느 등급까지 팔지 고르기" hidden></div>
     <div class="mc-gains two" id="sellSum"></div>
     <div class="mc-matrow" id="sellMats" hidden></div>
+        <p class="mc-sellcmp" id="sellCmp" hidden></p>
     <p class="mc-err" id="sellErr" role="alert"></p>
         <div class="mc-filters mc-sellm" id="sellMode" role="group" aria-label="팔기와 분해 가운데 고르기" hidden></div>
     <div class="mc-btnrow"><button class="mc-btn" id="btnSellNo" type="button">그만두기</button><button class="mc-btn gold" id="btnSellYes" type="button">팔기</button></div>
@@ -446,6 +472,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.4fb3b481.js"></script>
+<script src="app.60d10a2c.js"></script>
 </body>
 </html>
