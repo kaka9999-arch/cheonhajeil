@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.e991a118.css">
+<link rel="stylesheet" href="style.dba4a6f0.css">
 </head>
 <body>
 <div id="app">
@@ -62,6 +62,7 @@
         <button class="mc-notice good" id="townSkm" type="button" hidden></button>
         <button class="mc-notice good" id="townTrain" type="button" hidden></button>
         <button class="mc-notice good" id="townLotto" type="button" hidden></button>
+        <button class="mc-notice good" id="townMail" type="button" hidden></button>
         <div class="mc-menu" id="menuList"></div>
     <p class="mc-foot" id="townFoot"></p>
   </section>
@@ -270,6 +271,64 @@
     <button class="mc-btn mc-wide" id="btnLottoBack" type="button">닫기</button>
   </div>
 </div>
+<div class="mc-dim" id="mktSheet" hidden>
+  <div class="mc-panel mc-sheet mc-mkt" role="dialog" aria-modal="true" aria-labelledby="mktTitle">
+    <h2 class="mc-sheet-h" id="mktTitle">거래소</h2>
+    <p class="mc-sheet-p" id="mktSub"></p>
+    <div class="mc-ftabs" id="mktTabs" role="group" aria-label="거래소 갈래"></div>
+    <p class="mc-slab-got" id="mktGot" hidden></p>
+    <p class="mc-err" id="mktErr" role="alert"></p>
+    <div id="mktFind">
+      <div class="mc-filters" id="mktSlots" role="group" aria-label="칸으로 거르기"></div>
+      <div class="mc-filters sub" id="mktKinds" role="group" aria-label="종류로 거르기" hidden></div>
+      <div class="mc-filters sub" id="mktOpts" role="group" aria-label="등급·특수 옵션·정렬"></div>
+    </div>
+    <ul class="mc-brag-list" id="mktList"></ul>
+    <button class="mc-btn mc-wide" id="btnMktBack" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="mktSellSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="mksName">
+    <h2 class="mc-sheet-h" id="mksName"></h2>
+    <p class="mc-sheet-p" id="mksSub"></p>
+    <div class="mc-gains" id="mksSum"></div>
+    <div class="mc-numrow"><label for="mksIn">값(골드)</label><input id="mksIn" type="number" inputmode="numeric" min="1" step="1" autocomplete="off"></div>
+    <div class="mc-mkq" id="mksQuick" role="group" aria-label="값 고르기"><button class="mc-fchip" type="button" data-mksq="lo">가장 싸게</button><button class="mc-fchip" type="button" data-mksq="dn">−10%</button><button class="mc-fchip" type="button" data-mksq="ref">기준가</button><button class="mc-fchip" type="button" data-mksq="up">+10%</button><button class="mc-fchip" type="button" data-mksq="hi">가장 비싸게</button></div>
+    <p class="mc-sellcmp" id="mksNote"></p>
+    <p class="mc-err" id="mksErr" role="alert"></p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnMksClose" type="button">닫기</button><button class="mc-btn gold" id="btnMksGo" type="button">올리기</button></div>
+  </div>
+</div>
+<div class="mc-dim" id="mailSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="mailTitle">
+    <h2 class="mc-sheet-h" id="mailTitle">우편함</h2>
+    <p class="mc-sheet-p" id="mailSub"></p>
+    <p class="mc-slab-got" id="mailGot" hidden></p>
+    <p class="mc-err" id="mailErr" role="alert"></p>
+    <div class="mc-cxs" id="mailList"></div>
+    <button class="mc-btn gold mc-wide" id="btnMailAll" type="button" hidden>모두 받기</button>
+    <button class="mc-btn mc-wide" id="btnMailWrite" type="button">우편 보내기</button>
+    <p class="mc-cxnote" id="mailNote"></p>
+    <button class="mc-btn mc-wide" id="btnMailBack" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="mailSendSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="msTitle">
+    <h2 class="mc-sheet-h" id="msTitle">우편 보내기</h2>
+    <p class="mc-sheet-p" id="msSub"></p>
+    <div class="mc-numrow"><label for="msPid">용병 번호</label><input id="msPid" type="number" inputmode="numeric" min="1" step="1" autocomplete="off"></div>
+    <p class="mc-cxnote" id="msWho"></p>
+    <h4 class="mc-trh">인사말</h4>
+    <div class="mc-msgs" id="msMsgs" role="group" aria-label="인사말 고르기"></div>
+    <h4 class="mc-trh">장비 <small>한 점</small></h4>
+    <div class="mc-msg-gear"><span id="msGearTxt"></span><button class="mc-fchip" id="btnMsGear" type="button">고르기</button></div>
+    <ul class="mc-brag-list" id="msGearList" hidden></ul>
+    <div class="mc-numrow"><label for="msGold">골드</label><input id="msGold" type="number" inputmode="numeric" min="0" step="1" autocomplete="off" placeholder="0"></div>
+    <p class="mc-sellcmp" id="msNote"></p>
+    <p class="mc-err" id="msErr" role="alert"></p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnMsClose" type="button">닫기</button><button class="mc-btn gold" id="btnMsGo" type="button">보내기</button></div>
+  </div>
+</div>
 <div class="mc-dim" id="achSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="achTitle">
     <h2 class="mc-sheet-h" id="achTitle">업적</h2>
@@ -344,12 +403,14 @@
   <div class="mc-panel mc-sheet mc-card" role="dialog" aria-modal="true" aria-labelledby="cardNick">
     <div class="mc-card-head"><div class="mc-face" id="cardFace"></div><div class="mc-who"><b id="cardNick"></b><span id="cardSub"></span></div><div class="mc-lv"><small>레벨</small><b id="cardLv">1</b></div></div>
     <p class="mc-card-me" id="cardMe" hidden>남들에게 이렇게 보여요. 골드와 가방은 안 보여요.</p>
+        <p class="mc-card-pid" id="cardPid" hidden></p>
     <h4 class="mc-card-h">낀 장비</h4>
     <div class="mc-slots" id="cardEq"></div>
     <h4 class="mc-card-h">대표 기록</h4>
     <ul class="mc-card-rec" id="cardRec"></ul>
         <button class="mc-btn gold mc-wide mc-card-coop" id="btnCardCoop" type="button" hidden>같이 토벌 가기</button>
         <button class="mc-btn mc-wide mc-card-coop" id="btnCardPal" type="button" hidden>전우로 데려가기</button>
+        <button class="mc-btn mc-wide mc-card-coop" id="btnCardMail" type="button" hidden>우편 보내기</button>
     <button class="mc-btn mc-wide" id="btnCardBack" type="button">닫기</button>
   </div>
 </div>
@@ -456,6 +517,7 @@
     <h2 class="mc-gs-name" id="gsName"></h2>
     <p class="mc-gs-sub" id="gsSub"></p>
         <div class="mc-gs-who" id="gsWho" hidden><span id="gsWhoTxt"></span><button class="mc-fchip" id="btnGsWho" type="button">용병 카드 ▸</button></div>
+        <div class="mc-gs-mkt" id="gsMkt" hidden><p id="gsMktTxt"></p><div class="mc-gs-mkc" id="gsMktCmp"></div><p class="mc-err" id="gsMktErr" role="alert"></p><button class="mc-btn gold mc-wide" id="btnGsMkt" type="button">사기</button></div>
         <div class="mc-gs-uq" id="gsUq" hidden></div>
     <div class="mc-gs-desc" id="gsDesc"></div>
     <div class="mc-gl-head"><span>옵션</span><span>수치</span><span>값 / 최고</span></div>
@@ -566,6 +628,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.0bfee0b0.js"></script>
+<script src="app.c7468b6b.js"></script>
 </body>
 </html>
