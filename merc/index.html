@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.fadcb2d5.css">
+<link rel="stylesheet" href="style.6c56c3cf.css">
 </head>
 <body>
 <div id="app">
@@ -316,7 +316,9 @@
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="msTitle">
     <h2 class="mc-sheet-h" id="msTitle">우편 보내기</h2>
     <p class="mc-sheet-p" id="msSub"></p>
-    <div class="mc-numrow"><label for="msPid">용병 번호</label><input id="msPid" type="number" inputmode="numeric" min="1" step="1" autocomplete="off"></div>
+        <div class="mc-numrow" id="msNickRow"><label for="msNick">받는 용병 이름</label><input id="msNick" type="text" maxlength="8" autocomplete="off" enterkeyhint="search"><button class="mc-btn" id="btnMsFind" type="button">찾기</button></div>
+    <ul class="mc-pal-list" id="msFound" hidden></ul>
+    <div class="mc-numrow" id="msPidRow" hidden><label for="msPid">용병 번호</label><input id="msPid" type="number" inputmode="numeric" min="1" step="1" autocomplete="off"></div>
     <p class="mc-cxnote" id="msWho"></p>
     <h4 class="mc-trh">인사말</h4>
     <div class="mc-msgs" id="msMsgs" role="group" aria-label="인사말 고르기"></div>
@@ -628,6 +630,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.058f47fb.js"></script>
+<script src="app.41a95b3b.js"></script>
 </body>
 </html>
