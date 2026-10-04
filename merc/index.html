@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.aba15f98.css">
+<link rel="stylesheet" href="style.16bf6f31.css">
 </head>
 <body>
 <div id="app">
@@ -61,6 +61,7 @@
     <button class="mc-notice" id="townWear" type="button" hidden></button>
         <button class="mc-notice good" id="townSkm" type="button" hidden></button>
         <button class="mc-notice good" id="townTrain" type="button" hidden></button>
+        <button class="mc-notice good" id="townLotto" type="button" hidden></button>
         <div class="mc-menu" id="menuList"></div>
     <p class="mc-foot" id="townFoot"></p>
   </section>
@@ -254,6 +255,32 @@
     <p class="mc-err" id="trainErr" role="alert"></p>
     <div class="mc-trs" id="trainList"></div>
     <button class="mc-btn mc-wide" id="btnTrainBack" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="lottoSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="lottoTitle">
+    <h2 class="mc-sheet-h" id="lottoTitle">주간 추첨</h2>
+    <p class="mc-sheet-p" id="lottoSub">골드로 응모권을 사요. 월요일 0시에 경품마다 한 명을 뽑아요.</p>
+    <div class="mc-gains two" id="lottoSum"></div>
+    <div class="mc-lotp" id="lottoPrize" hidden></div>
+    <p class="mc-slab-got" id="lottoGot" hidden></p>
+    <p class="mc-err" id="lottoErr" role="alert"></p>
+    <div class="mc-cxs" id="lottoList"></div>
+    <div class="mc-cxs" id="lottoLast"></div>
+    <button class="mc-btn mc-wide" id="btnLottoBack" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="achSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="achTitle">
+    <h2 class="mc-sheet-h" id="achTitle">업적</h2>
+    <p class="mc-sheet-p" id="achSub">기록을 세우면 업적을 달성해요. 받은 훈장으로 특전을 사요.</p>
+    <div class="mc-gains two" id="achSum"></div>
+    <div class="mc-filters mc-achtabs" id="achTabs" role="group" aria-label="업적과 특전 고르기"></div>
+    <p class="mc-slab-got" id="achGot" hidden></p>
+    <p class="mc-err" id="achErr" role="alert"></p>
+    <button class="mc-btn gold mc-wide" id="btnAchAll" type="button" hidden>모두 받기</button>
+    <div class="mc-cxs" id="achList"></div>
+    <button class="mc-btn mc-wide" id="btnAchBack" type="button">닫기</button>
   </div>
 </div>
 <div class="mc-dim" id="codexSheet" hidden>
@@ -539,6 +566,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.7594c871.js"></script>
+<script src="app.d96c4270.js"></script>
 </body>
 </html>
