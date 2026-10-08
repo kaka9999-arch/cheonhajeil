@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.32354370.css">
+<link rel="stylesheet" href="style.2f492a40.css">
 </head>
 <body>
 <div id="app">
@@ -370,6 +370,18 @@
     <button class="mc-btn mc-wide" id="btnAchBack" type="button">닫기</button>
   </div>
 </div>
+<div class="mc-dim" id="wqSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="wqTitle">
+    <h2 class="mc-sheet-h" id="wqTitle">주간 임무</h2>
+    <p class="mc-sheet-p" id="wqSub">이번 주에 한 일을 세요. 임무를 끝내면 점수가 쌓이고, 점수로 상자를 열어요. 월요일에 새로 열려요.</p>
+    <div class="mc-gains two" id="wqSum"></div>
+    <i class="mc-cxbar mc-wq-bar" id="wqBar"></i>
+    <p class="mc-slab-got" id="wqGot" hidden></p>
+    <p class="mc-err" id="wqErr" role="alert"></p>
+    <div class="mc-cxs" id="wqList"></div>
+    <button class="mc-btn mc-wide" id="btnWqBack" type="button">닫기</button>
+  </div>
+</div>
 <div class="mc-dim" id="codexSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="codexTitle">
     <h2 class="mc-sheet-h" id="codexTitle">도감</h2>
@@ -658,6 +670,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.d10a08dc.js"></script>
+<script src="app.993b4b39.js"></script>
 </body>
 </html>
