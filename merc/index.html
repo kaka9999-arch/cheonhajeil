@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.18517074.css">
+<link rel="stylesheet" href="style.fa18a450.css">
 </head>
 <body>
 <div id="app">
@@ -170,6 +170,7 @@
     <section class="screen" id="scrGear" hidden>
     <header class="mc-head"><h1>장<em>비</em></h1><button class="mc-back" id="btnGearBack" type="button">◀ 마을</button></header>
     <div class="mc-slots" id="slotList"></div>
+        <div class="mc-trkbox" id="trkBox" hidden></div>
         <div class="mc-panel mc-bestbox" id="bestBox" hidden><div><b>좋은 것 모두 끼기</b><span id="bestTxt"></span></div><button class="mc-btn gold" id="btnWearBest" type="button">모두 끼기</button></div>
         <div class="mc-panel mc-fixbox" id="fixBox" hidden></div>
         <div class="mc-panel mc-style" id="styleBox"></div>
@@ -601,6 +602,15 @@
     <div class="mc-btnrow"><button class="mc-btn" id="btnGearClose" type="button">닫기</button><button class="mc-btn gold" id="btnGearOn" type="button">끼기</button></div>
   </div>
 </div>
+<div class="mc-dim" id="trkSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="trkTitle">
+    <h2 class="mc-sheet-h" id="trkTitle">장신구</h2>
+    <p class="mc-sheet-p" id="trkSub"></p>
+    <div class="mc-trkl" id="trkList"></div>
+    <p class="mc-err" id="trkErr" role="alert"></p>
+    <div class="mc-btnrow"><button class="mc-btn" id="btnTrkClose" type="button">닫기</button></div>
+  </div>
+</div>
 <div class="mc-dim" id="bestSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="bestTitle">
     <h2 class="mc-sheet-h" id="bestTitle">좋은 것 모두 끼기</h2>
@@ -685,6 +695,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.03d6678d.js"></script>
+<script src="app.c7c30ff5.js"></script>
 </body>
 </html>
