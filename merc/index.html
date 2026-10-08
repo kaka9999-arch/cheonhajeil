@@ -9,7 +9,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.ac642c4f.css">
+<link rel="stylesheet" href="style.10897870.css">
 </head>
 <body>
 <div id="app">
@@ -264,11 +264,24 @@
     <h2 class="mc-sheet-h" id="sideTitle">외전 전장 <i class="mc-beta">시험 중</i></h2>
     <p class="mc-sheet-p" id="sideSub"></p>
     <ul class="mc-siderules" id="sideRules"></ul>
+        <details class="mc-uqall mc-sidehelp" id="sideHelp" hidden></details>
     <div class="mc-sidewho" id="sideWho"></div>
     <p class="mc-err" id="sideErr" role="alert"></p>
     <button class="mc-btn gold mc-wide" id="btnSideGo" type="button" hidden></button>
         <button class="mc-btn mc-wide" id="btnSideTop" type="button" hidden>시즌 순위</button>
+        <button class="mc-btn mc-wide" id="btnSidePast" type="button" hidden>지난 시즌 기록</button>
     <button class="mc-btn mc-wide" id="btnSideBack" type="button">닫기</button>
+  </div>
+</div>
+<div class="mc-dim" id="sideEndSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="sideEndTitle">
+    <h2 class="mc-sheet-h" id="sideEndTitle">외전 시즌 정산</h2>
+    <p class="mc-sheet-p" id="sideEndSub"></p>
+    <div class="mc-sidewho" id="sideEndWho"></div>
+    <div class="mc-gains" id="sideEndSum"></div>
+    <ul class="mc-siderules mc-sidepay" id="sideEndPay"></ul>
+    <p class="mc-slab-got" id="sideEndTtl" hidden></p>
+    <button class="mc-btn gold mc-wide" id="btnSideEndOk" type="button">확인</button>
   </div>
 </div>
 <div class="mc-dim" id="lottoSheet" hidden>
@@ -643,6 +656,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.bc625417.js"></script>
+<script src="app.81c54553.js"></script>
 </body>
 </html>
