@@ -19,7 +19,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.1443b0af.css">
+<link rel="stylesheet" href="style.4838f274.css">
 </head>
 <body>
 <div id="app">
@@ -50,7 +50,7 @@
   </section>
 
     <section class="screen" id="scrTown" hidden>
-            <header class="mc-head"><h1>용병 <em>마을</em> <i class="mc-beta mc-sidetag" id="townSideTag" hidden></i></h1><button class="mc-back" id="btnTownMore" type="button">더 보기</button></header>
+            <header class="mc-head"><h1>용병 <em>마을</em> <i class="mc-beta mc-sidetag" id="townSideTag" hidden></i></h1><span class="mc-headr"><button class="mc-back" id="btnGuide" type="button">안내서</button><button class="mc-back" id="btnTownMore" type="button">더 보기</button></span></header>
     <div class="mc-panel mc-me">
       <div class="mc-face" id="meFace"></div>
             <div class="mc-who"><b id="meNick"></b><span id="meFrom"></span><button class="mc-fchip mc-mycard" id="btnMyCard" type="button" hidden>내 카드 ▸</button>
@@ -550,6 +550,14 @@
     <a class="mc-btn mc-wide mc-more-out" href="../">게임 상자로 나가기</a>
   </div>
 </div>
+<div class="mc-dim" id="guideSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+    <h2 class="mc-sheet-h" id="guideTitle">용병 안내서</h2>
+    <p class="mc-sheet-p">마을 메뉴와 같은 차례예요. 제목을 누르면 하는 일과 받는 것이 펴져요.</p>
+    <div class="mc-unl" id="guideList"></div>
+    <button class="mc-btn gold mc-wide" id="btnGuideBack" type="button">닫기</button>
+  </div>
+</div>
 <div class="mc-dim" id="unlockSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="unlockTitle">
     <h2 class="mc-sheet-h" id="unlockTitle">새로 열렸어요</h2>
@@ -725,6 +733,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.4ebe71ae.js"></script>
+<script src="app.06846a5a.js"></script>
 </body>
 </html>
