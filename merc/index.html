@@ -19,7 +19,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.0a56d18f.css">
+<link rel="stylesheet" href="style.58a98557.css">
 </head>
 <body>
 <div id="app">
@@ -567,6 +567,15 @@
     <button class="mc-btn gold mc-wide" id="btnUnlockBack" type="button">확인</button>
   </div>
 </div>
+<div class="mc-dim" id="swSheet" hidden>
+  <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="swTitle">
+    <h2 class="mc-sheet-h" id="swTitle">시작 무기 선택권</h2>
+    <p class="mc-sheet-p" id="swLead"></p>
+    <div class="mc-sw" id="swKinds"></div>
+    <div class="mc-sw-out" id="swOut" hidden></div>
+    <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnSwBack" type="button">나중에 고르기</button></div>
+  </div>
+</div>
 <div class="mc-dim" id="helpSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
     <h2 class="mc-sheet-h" id="helpTitle">전투 도움말</h2>
@@ -734,6 +743,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.5096d8e6.js"></script>
+<script src="app.6a8b71d7.js"></script>
 </body>
 </html>
