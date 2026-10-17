@@ -19,7 +19,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.766bb435.css">
+<link rel="stylesheet" href="style.e8fa79cd.css">
 </head>
 <body>
 <div id="app">
@@ -279,6 +279,7 @@
     <h2 class="mc-sheet-h" id="trainTitle">연구소</h2>
     <p class="mc-sheet-p" id="trainSub">골드와 시간을 들여 영구 효과를 올려요. 한 번에 하나만 연구해요.</p>
     <div class="mc-trq" id="trainNow"></div>
+        <div class="mc-panel mc-trf" id="trainFocus" hidden></div>
     <p class="mc-slab-got" id="trainGot" hidden></p>
     <p class="mc-err" id="trainErr" role="alert"></p>
     <div class="mc-trs" id="trainList"></div>
@@ -292,6 +293,7 @@
     <ul class="mc-siderules" id="sideRules"></ul>
         <details class="mc-uqall mc-sidehelp" id="sideHelp" hidden></details>
     <div class="mc-sidewho" id="sideWho"></div>
+        <p class="mc-cxnote mc-sideleg" id="sideLeg" hidden></p>
     <p class="mc-err" id="sideErr" role="alert"></p>
     <button class="mc-btn gold mc-wide" id="btnSideGo" type="button" hidden></button>
         <button class="mc-btn mc-wide" id="btnSideTop" type="button" hidden>시즌 순위</button>
@@ -346,6 +348,7 @@
     <div class="mc-gains" id="mksSum"></div>
     <div class="mc-numrow"><label for="mksIn">값(골드)</label><input id="mksIn" type="number" inputmode="numeric" min="1" step="1" autocomplete="off"></div>
     <div class="mc-mkq" id="mksQuick" role="group" aria-label="값 고르기"><button class="mc-fchip" type="button" data-mksq="lo">가장 싸게</button><button class="mc-fchip" type="button" data-mksq="dn">−10%</button><button class="mc-fchip" type="button" data-mksq="ref">기준가</button><button class="mc-fchip" type="button" data-mksq="up">+10%</button><button class="mc-fchip" type="button" data-mksq="hi">가장 비싸게</button></div>
+        <div class="mc-filters sub" id="mksDrop" hidden></div>
     <p class="mc-sellcmp" id="mksNote"></p>
     <p class="mc-err" id="mksErr" role="alert"></p>
     <div class="mc-btnrow"><button class="mc-btn" id="btnMksClose" type="button">닫기</button><button class="mc-btn gold" id="btnMksGo" type="button">올리기</button></div>
@@ -377,6 +380,10 @@
     <h4 class="mc-trh">장비 <small>한 점</small></h4>
     <div class="mc-msg-gear"><span id="msGearTxt"></span><button class="mc-fchip" id="btnMsGear" type="button">고르기</button></div>
     <ul class="mc-brag-list" id="msGearList" hidden></ul>
+        <h4 class="mc-trh" id="msMatH" hidden>재료 <small>한 종류</small></h4>
+    <div class="mc-msg-gear" id="msMatRow" hidden><span id="msMatTxt"></span><button class="mc-fchip" id="btnMsMat" type="button">고르기</button></div>
+    <div class="mc-filters sub" id="msMatList" hidden></div>
+    <div class="mc-numrow" id="msMatNRow" hidden><label for="msMatN">개수</label><input id="msMatN" type="number" inputmode="numeric" min="1" step="1" autocomplete="off" placeholder="1"></div>
     <div class="mc-numrow"><label for="msGold">골드</label><input id="msGold" type="number" inputmode="numeric" min="0" step="1" autocomplete="off" placeholder="0"></div>
     <p class="mc-sellcmp" id="msNote"></p>
     <p class="mc-err" id="msErr" role="alert"></p>
@@ -417,6 +424,7 @@
     <p class="mc-err" id="attErr" role="alert"></p>
     <div class="mc-att-grid" id="attGrid"></div>
     <p class="mc-att-peek" id="attPeek"></p>
+        <div class="mc-panel mc-att-streak" id="attStreak" hidden></div>
     <button class="mc-btn gold mc-wide" id="btnAttClaim" type="button">보상 받기</button>
     <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnAttBack" type="button">닫기</button></div>
   </div>
@@ -750,6 +758,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.90e32523.js"></script>
+<script src="app.37786c8a.js"></script>
 </body>
 </html>
