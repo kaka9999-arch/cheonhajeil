@@ -19,7 +19,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.e8fa79cd.css">
+<link rel="stylesheet" href="style.a343afff.css">
 </head>
 <body>
 <div id="app">
@@ -86,6 +86,7 @@
     <div class="mc-panel mc-pts"><div><small>가진 골드</small><span class="mc-note">장비는 장비 화면에서 팔아요.</span></div><b id="shopSilver">0</b></div>
         <div class="mc-ftabs" id="shopTabs" hidden></div>
     <div id="shopHead">
+        <div class="mc-panel mc-stamp" id="shopStamp" hidden></div>
     <h3 class="mc-h3">물약</h3>
     <p class="mc-lead">싸우는 중에는 살 수 없어요. 미리 채워 두세요.</p>
     </div>
@@ -484,6 +485,7 @@
   <div class="mc-panel mc-sheet mc-brag" role="dialog" aria-modal="true" aria-labelledby="bragTitle">
     <h2 class="mc-sheet-h" id="bragTitle">자랑 게시판</h2>
     <p class="mc-sheet-p">용병들이 자랑한 장비예요. 눌러서 옵션을 봐요.</p>
+        <p class="mc-sheet-p mc-blk-note" id="bragLikeNote" hidden></p>
     <ul class="mc-brag-list" id="bragList"></ul>
     <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnBragBack" type="button">닫기</button></div>
   </div>
@@ -758,6 +760,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.37786c8a.js"></script>
+<script src="app.e16163c4.js"></script>
 </body>
 </html>
