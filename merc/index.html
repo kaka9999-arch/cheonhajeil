@@ -19,7 +19,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.a343afff.css">
+<link rel="stylesheet" href="style.5f9dbf06.css">
 </head>
 <body>
 <div id="app">
@@ -237,7 +237,9 @@
                 <div class="mc-quick-in" id="spellList"></div></div>
       <div class="mc-acts">
         <button class="mc-btn gold mc-act" id="btnAtk" type="button"><kbd>1</kbd>공격<small id="atkTo"></small></button>
-        <button class="mc-btn mc-act" id="btnGuard" type="button"><kbd>2</kbd>방어<small id="guardSub">피해 절반</small></button>
+                <div class="mc-gdw"><button class="mc-btn mc-act" id="btnGuard" type="button"><kbd>2</kbd>방어<small id="guardSub">피해 절반</small></button>
+          <button class="mc-gdk" id="btnGdk" type="button" aria-label="방어 갈래 고르기" aria-expanded="false" hidden>▾</button>
+          <div class="mc-gdpop" id="gdkPop" role="menu" hidden></div></div>
         <button class="mc-btn mc-act" id="btnAgain" type="button" disabled><kbd>R</kbd>한 번 더<small id="againWhat">같은 행동</small></button>
       </div>
             <div class="mc-auto" id="autoBar" hidden>
@@ -535,6 +537,7 @@
     <div class="mc-gains" id="endGains"></div>
         <div class="mc-pick" id="endPick" hidden></div>
         <div class="mc-rewards" id="endReward" hidden></div>
+        <details class="mc-ana" id="endAna" hidden><summary>전투 분석</summary><div id="endAnaBody"></div></details>
     <p class="mc-lvup" id="endLv" hidden></p>
         <div class="mc-btnrow mc-shfoot"><p class="mc-note mc-endauto" id="endAuto" hidden></p><button class="mc-btn" id="btnEndTown" type="button">마을로</button><button class="mc-btn gold" id="btnEndAgain" type="button">한 판 더</button></div>
   </div>
@@ -638,6 +641,7 @@
       <div class="mc-pot-h"><b>잠재력</b><span id="gsPotLv"></span></div>
       <div class="mc-bar pot" id="gsPotBar"><i></i><span><b>잠재력 경험치</b><u id="gsPotXp"></u></span></div>
       <div class="mc-pot-tl" id="gsPotTl"></div>
+      <div class="mc-pot-mem" id="gsPotMem" hidden></div>
       <div class="mc-gs-dual" id="gsPotRow"><span id="gsPotNote"></span><button class="mc-fchip" id="btnGearWorld" type="button">속으로 들어가기</button></div>
       <div class="mc-gs-dual" id="gsForgetRow" hidden><span id="gsForgetNote"></span><button class="mc-fchip" id="btnGearForget" type="button">잠재력 초기화</button></div>
       <div class="mc-pot-keep" id="gsKeep" hidden></div>
@@ -654,6 +658,7 @@
     <div class="mc-gs-dual" id="gsGemRow" hidden><span id="gsGemNote"></span><button class="mc-fchip" id="btnGearGem" type="button">보석</button></div>
     <p class="mc-err" id="gsErr" role="alert"></p>
         <div class="mc-gs-dual" id="gsDualRow" hidden><span id="gsDualNote"></span><button class="mc-fchip" id="btnGearDual" type="button">보조 칸에 끼기</button></div>
+        <div class="mc-gs-dual" id="gsSwapRow" hidden><span id="gsSwapNote"></span><button class="mc-fchip" id="btnGearSwap" type="button" aria-pressed="false">바꿔 들 무기로</button></div>
         <div class="mc-gs-dual" id="gsBragRow" hidden><span id="gsBragNote"></span><button class="mc-fchip" id="btnGearBrag" type="button">자랑하기</button></div>
     <div class="mc-btnrow"><button class="mc-btn" id="btnGearClose" type="button">닫기</button><button class="mc-btn gold" id="btnGearOn" type="button">끼기</button></div>
   </div>
@@ -760,6 +765,6 @@
 </div>
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
-<script src="app.e16163c4.js"></script>
+<script src="app.bad620df.js"></script>
 </body>
 </html>
