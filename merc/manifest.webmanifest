@@ -1,0 +1,16 @@
+{
+  "name": "깃발 없는 용병",
+  "short_name": "용병",
+  "description": "여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0918",
+  "theme_color": "#0b0918",
+  "lang": "ko",
+  "icons": [
+    { "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0918'/%3E%3Cpath d='M32 9 54 16.5V32c0 12.5-9.4 20.6-22 24.5C19.4 52.6 10 44.5 10 32V16.5z' fill='%23221b40' stroke='%23ffc857' stroke-width='3'/%3E%3Cpath d='M32 20v24M22.5 31h19' stroke='%23ffc857' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b0918'/%3E%3Cpath d='M32 14 48 19.5V32c0 9-6.8 14.9-16 17.7C22.8 46.9 16 41 16 32V19.5z' fill='%23221b40' stroke='%23ffc857' stroke-width='2.4'/%3E%3Cpath d='M32 22v18M25 30h14' stroke='%23ffc857' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
