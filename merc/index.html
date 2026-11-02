@@ -23,7 +23,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병이에요. 직접 고르는 턴제 전투로 장비를 모으고 강해져요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.44501d06.css">
+<link rel="stylesheet" href="style.6a0c6737.css">
 </head>
 <body>
 <div id="app">
@@ -49,7 +49,7 @@
     <section class="screen" id="scrMake" hidden>
         <header class="mc-head"><h1 id="makeH">용병 <em>등록</em></h1><a class="mc-back" id="makeOut" href="../">◀ 게임 상자</a><button class="mc-back" id="btnMakeBack" type="button" hidden>◀ 마을</button></header>
     <p class="mc-lead" id="makeLead">어느 종족으로 싸울까요? 카드를 누르면 자세히 볼 수 있어요.</p>
-    <div class="mc-races" id="raceList" role="radiogroup" aria-label="종족 고르기"></div>
+        <div class="mc-races" id="raceList" role="group" aria-label="종족 여덟 — 위아래 방향키로 옮겨요"></div>
     <p class="mc-foot" id="makeFoot">종족과 이름은 나중에 바꿀 수 없어요.</p>
   </section>
 
@@ -798,10 +798,11 @@
 <div class="mc-dim" id="joinSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="joinTitle">
     <div class="mc-sheet-top"><i class="mc-pf" id="joinFace"></i><div><h2 id="joinTitle"></h2><span id="joinSub"></span></div></div>
-    <div class="mc-nickrow" id="nickRow"><label for="nickIn">용병 이름</label><input id="nickIn" maxlength="8" placeholder="한글 2~8자" autocomplete="off" spellcheck="false"></div>
+        <div class="mc-nickrow" id="nickRow"><label for="nickIn">용병 이름</label><input id="nickIn" maxlength="8" placeholder="한글 2~8자" autocomplete="off" spellcheck="false" enterkeyhint="done" aria-describedby="makeErr nickCount"><small class="mc-nickcount" id="nickCount" aria-live="off">0/8</small></div>
     <p class="mc-err" id="makeErr" role="alert"></p>
     <p class="mc-warn" id="joinWarn">종족과 이름은 나중에 바꿀 수 없어요.</p>
-    <div class="mc-btnrow"><button class="mc-btn" id="btnJoinBack" type="button">다시 고르기</button><button class="mc-btn gold" id="btnJoin" type="button">등록하기</button></div>
+    <div class="mc-btnrow" id="joinBtns"><button class="mc-btn" id="btnJoinBack" type="button">다시 고르기</button><button class="mc-btn gold" id="btnJoin" type="button">등록하기</button></div>
+        <div class="mc-joinok" id="joinOk" hidden aria-live="polite"></div>
   </div>
 </div>
 <div id="mcLock" class="mc-lock" hidden aria-hidden="true"><i></i></div>
@@ -809,6 +810,6 @@
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
 <script src="https://cdn.jsdelivr.net/npm/zzfx@1.3.2/ZzFXMicro.min.js"></script>
-<script src="app.4de24ae6.js"></script>
+<script src="app.4f3e3b3b.js"></script>
 </body>
 </html>
