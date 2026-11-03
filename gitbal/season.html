@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#1d3144">
 <link rel="icon" href="data:,">
 <title>여덟 깃발 — 시즌 안내</title>
-<meta name="description" content="여덟 깃발 시즌 1 이 끝났어요. 시즌 2 를 준비하고 있어요.">
+<meta name="description" content="여덟 깃발 시즌 1 이 끝났습니다. 시즌 2 를 준비하고 있습니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
 <!-- =====================================================================
@@ -72,20 +72,20 @@
   <!-- 안내 상자: 서버 시즌 번호에 따라 글이 바뀐다(아래 스크립트 showSeason) -->
   <div class="card">
     <span class="pill" id="pill">시즌 2 준비 중</span>
-    <h2 id="lead">시즌 1 전쟁이 끝났어요</h2>
-    <p id="sub">10월 3일 오후 3시에 첫 전쟁이 막을 내렸어요. 지금 더 넓은 새 대륙으로 시즌 2 를 준비하고 있어요. 곧 열려요.</p>
-    <p class="muted" id="note">이 화면을 열어 두면 시즌 2 가 열렸을 때 입장 단추가 나타나요.</p>
+    <h2 id="lead">시즌 1 전쟁이 끝났습니다</h2>
+    <p id="sub">10월 3일 오후 3시에 첫 전쟁이 막을 내렸습니다. 지금 더 넓은 새 대륙으로 시즌 2 를 준비하고 있습니다. 곧 열립니다.</p>
+    <p class="muted" id="note">이 화면을 열어 두면 시즌 2 가 열렸을 때 입장 단추가 나타납니다.</p>
     <a class="btn hidden" id="btnEnter" href="./">시즌 2 입장하기</a>
   </div>
 
   <!-- 시즌 1 공적 순위: 서버가 아직 시즌 1 기록을 들고 있을 때만 보인다 -->
   <div class="card hidden" id="rankCard">
     <h2>시즌 1 공적 순위</h2>
-    <p class="muted">전쟁이 끝난 때의 순위예요. 칭호는 시즌 2 가 열릴 때 주어져요.</p>
+    <p class="muted">전쟁이 끝난 때의 순위입니다. 칭호는 시즌 2 가 열릴 때 주어집니다.</p>
     <ol class="rank" id="rankList"></ol>
   </div>
 
-  <div class="foot">깃발 아래에서 다시 만나요.</div>
+  <div class="foot">깃발 아래에서 다시 만납니다.</div>
 </div>
 
 <script>
@@ -116,8 +116,8 @@
   function showSeason(season) {
     if (season >= 2) {
       $('pill').textContent = '시즌 ' + season + ' 진행 중'; $('pill').classList.add('open');
-      $('lead').textContent = '시즌 ' + season + ' 가 열렸어요';
-      $('sub').textContent = '새 대륙에서 새 전쟁이 시작됐어요. 세력을 골라 다시 참전하세요.';
+      $('lead').textContent = '시즌 ' + season + ' 가 열렸습니다';
+      $('sub').textContent = '새 대륙에서 새 전쟁이 시작됐습니다. 세력을 골라 다시 참전하세요.';
       $('note').classList.add('hidden'); $('btnEnter').textContent = '시즌 ' + season + ' 입장하기'; $('btnEnter').classList.remove('hidden');
       $('rankCard').classList.add('hidden');
       return true;
