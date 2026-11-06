@@ -23,7 +23,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병입니다. 직접 고르는 턴제 전투로 장비를 모으고 강해집니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.31e77aad.css">
+<link rel="stylesheet" href="style.d8f6b1f6.css">
 </head>
 <body>
 <div id="app">
@@ -130,6 +130,7 @@
       <h2 class="mc-h3">세트 효과 <small>같은 계열 3개를 끼우면 보너스가 생깁니다</small></h2>
       <div class="mc-reson" id="featReson"></div>
     </div>
+        <details class="mc-fpair" id="featPair" hidden><summary id="featPairSum">특성 짝</summary><div id="featPairList"></div></details>
     <h2 class="mc-h3">특성 목록</h2>
         <div class="mc-ftabs" id="featTabs"></div>
     <div class="mc-shop" id="featList"></div>
@@ -216,6 +217,7 @@
     <div class="mc-gsum" id="gearSum"></div>
         <div class="mc-panel mc-uqr" id="uqrBox" hidden></div>
         <p class="mc-pottip" id="potTip" hidden></p>
+        <p class="mc-pottip" id="bmoldTip" hidden></p>
     <h2 class="mc-h3">장비 프리셋</h2>
     <p class="mc-lead">세팅을 저장해 두면 한 번에 갈아입습니다.</p>
     <div class="mc-sets" id="setList"></div>
@@ -277,6 +279,8 @@
     <h2 class="mc-sheet-h" id="goTitle">훈련장</h2>
     <p class="mc-sheet-p" id="goSub"></p>
         <p class="mc-note mc-golk" id="goLk" hidden></p>
+        <div class="mc-sfoc" id="goSf" hidden></div>
+        <div class="mc-sfoc mc-awp" id="goAwp" hidden></div>
     <p class="mc-warn" id="goTired" hidden></p>
         <p class="mc-warn" id="goFull" hidden></p>
         <p class="mc-warn" id="goWear" hidden></p>
@@ -322,6 +326,7 @@
         <div class="mc-sidegoal" id="sideGoals" hidden></div>
         <div class="mc-sidegoal mc-siderule" id="sideRule" hidden></div>
         <div class="mc-sidegoal mc-siderule" id="sideBoss" hidden></div>
+        <div class="mc-sidegoal mc-siderule" id="sideOps" hidden></div>
     <p class="mc-err" id="sideErr" role="alert"></p>
     <button class="mc-btn gold mc-wide" id="btnSideGo" type="button" hidden></button>
         <button class="mc-btn mc-wide" id="btnSideTop" type="button" hidden>시즌 순위</button>
@@ -419,6 +424,13 @@
     <p class="mc-sellcmp" id="msNote"></p>
     <p class="mc-err" id="msErr" role="alert"></p>
     <div class="mc-btnrow"><button class="mc-btn" id="btnMsClose" type="button">닫기</button><button class="mc-btn gold" id="btnMsGo" type="button">보내기</button></div>
+        <div id="msAsk" hidden>
+      <h3 class="mc-trh">재료 부탁 <small>한 주 3번</small></h3>
+      <p class="mc-cxnote" id="msAskNote"></p>
+      <div class="mc-askmats" id="msAskList" role="group" aria-label="부탁할 재료 고르기"></div>
+      <div class="mc-numrow"><label for="msAskN">개수</label><input id="msAskN" type="number" inputmode="numeric" min="1" step="1" autocomplete="off" placeholder="1"></div>
+      <button class="mc-btn mc-wide" id="btnMsAsk" type="button">부탁하기</button>
+    </div>
   </div>
 </div>
 <div class="mc-dim" id="achSheet" hidden>
@@ -535,6 +547,7 @@
     <h3 class="mc-card-h">대표 기록</h3>
     <ul class="mc-card-rec" id="cardRec"></ul>
         <div class="mc-card-dch" id="cardDch" hidden></div>
+        <div class="mc-card-grt" id="cardGrt" hidden></div>
     <div class="mc-card-rv" id="cardRival" hidden></div>
         <button class="mc-btn gold mc-wide mc-card-coop" id="btnCardCoop" type="button" hidden>같이 토벌 가기</button>
         <button class="mc-btn mc-wide mc-card-coop" id="btnCardPal" type="button" hidden>전우로 데려가기</button>
@@ -820,6 +833,6 @@
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
 <script src="https://cdn.jsdelivr.net/npm/zzfx@1.3.2/ZzFXMicro.min.js"></script>
-<script src="app.86ac7d56.js"></script>
+<script src="app.0a82f621.js"></script>
 </body>
 </html>
