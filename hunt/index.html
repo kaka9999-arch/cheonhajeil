@@ -9,7 +9,7 @@
 <meta name="description" content="사냥꾼을 당겨 쏘아 몬스터를 튕겨 잡고, 사냥꾼으로 막타를 쳐 펫으로 데려옵니다. 사냥터마다 이번 주 1등이 주인입니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@500;700;900&display=swap">
-<link rel="stylesheet" href="style.29ace076.css">
+<link rel="stylesheet" href="style.9b47f0ed.css">
 </head>
 <body>
 <section class="wrap screen" id="hub">
@@ -29,7 +29,7 @@
   <div class="gearbar" id="gearbar"></div>
   <div class="sec">사냥터 <small id="leftTxt">이번 주 남은 사냥 6번</small></div>
   <div id="grounds" style="display:flex;flex-direction:column;gap:10px"></div>
-  <div class="sec">펫 보관함 <small id="dexTxt">도감</small></div>
+  <div class="sec">펫 보관함 <small id="dexTxt">0마리</small><button class="ghost dexbtn" id="btnDex" type="button">도감 ▸</button></div>
   <div class="pets" id="pets"></div>
   <details>
     <summary>규칙</summary>
@@ -46,6 +46,7 @@
       <li><b>펫 필살기</b>: ★3이 되거나 진화한 펫 · 전설 펫은 필살기를 씁니다(맹공 · 일제 사격 · 대폭발 · 수호 · 저주 · 생포 일격). 턴마다 게이지가 차고, 꽉 차면 그 펫 차례에 카드를 눌러 다음 발에 씁니다. <b>생포 일격</b>은 적을 쓰러뜨리지 않아 사냥꾼 막타를 돕습니다.</li>
       <li><b>오늘의 임무 · 출석</b>: 날마다 임무 셋이 나옵니다. 하나 끝낼 때마다 골드, 셋 다 끝내면 희귀 이상 장비를 받습니다. 하루 한 번 출석 보상을 받고, 7일째 칸은 영웅 장비입니다. 자정에 새로 바뀝니다.</li>
       <li><b>주간 순위 보상</b>: 주가 끝나면 이번 주 사냥한 사냥터마다 내 순위로 보상을 받습니다 — 1위 영웅 장비 · 2~3위 희귀 장비 · 그 밖은 골드. 깊은 사냥터일수록 장비가 셉니다.</li>
+      <li><b>도감</b>: 펫을 처음 잡거나 진화시키면 도감 칸이 찹니다. 6칸마다 보상을 받고, 30칸부터는 영웅 장비입니다.</li>
       <li><b>지형</b>: 사냥터마다 가속 판 · 문 · 가시 벽 · 기둥 · 얼음 바닥 가운데 하나가 있습니다. 조준선이 지형을 따라 꺾이니 끌면서 확인하세요.</li>
     </ul>
     <button class="reset" id="reset" type="button">처음부터 다시</button>
@@ -95,8 +96,17 @@
   <button class="ghost" id="gBulk" type="button">일반·고급 모두 분해</button>
   <button class="btn" id="gGo" type="button">닫기</button>
 </div></div>
+<div class="modal" id="mDex" hidden><div class="card">
+  <h2>도감</h2>
+  <p id="dxSum"></p>
+  <div class="dxbar"><i id="dxFill"></i></div>
+  <div class="dxms" id="dxMs"></div>
+  <p class="dxmsg" id="dxMsg" hidden></p>
+  <div class="dxlist" id="dxList"></div>
+  <button class="btn" id="dxGo" type="button">닫기</button>
+</div></div>
 <div class="modal" id="mRank" hidden><div class="card"><h2>주간 순위표</h2><p>이번 주 모든 사냥터에서 낸 사냥 점수의 합입니다.</p><div class="lb" id="rankList">불러오는 중…</div><button class="btn" id="rankClose" type="button">닫기</button></div></div>
 <div class="modal" id="mNick" hidden><div class="card"><h2>사냥꾼 이름</h2><p>순위표에 올라갈 이름입니다. 한글 2~8자, 다른 게임과 같이 씁니다.</p><input id="nickIn" maxlength="8" placeholder="예: 바람사냥꾼"><p class="err" id="nickErr"></p><button class="btn" id="nickGo" type="button">정하기</button></div></div>
-<script src="app.4f2c2962.js"></script>
+<script src="app.0e0504a5.js"></script>
 </body>
 </html>
