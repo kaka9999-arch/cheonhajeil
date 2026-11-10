@@ -9,7 +9,7 @@
 <meta name="description" content="사냥꾼을 당겨 쏘아 몬스터를 튕겨 잡고, 사냥꾼으로 막타를 쳐 펫으로 데려옵니다. 사냥터마다 이번 주 1등이 주인입니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@500;700;900&display=swap">
-<link rel="stylesheet" href="style.74da6036.css">
+<link rel="stylesheet" href="style.bb474a28.css">
 </head>
 <body>
 <section class="wrap screen" id="hub">
@@ -26,6 +26,8 @@
   <div class="teambar" id="teambar"></div>
   <div class="sec">사냥꾼 직업 <small id="jobTxt">지금 검사</small></div>
   <div class="jobbox"><div class="jobbar" id="jobbar"></div><div class="jobinfo" id="jobInfo"></div></div>
+  <div class="sec">사냥꾼 특성 <small id="talTxt">포인트 0</small></div>
+  <button class="talbar" id="btnTal" type="button" aria-label="사냥꾼 특성"></button>
   <div class="sec">사냥꾼 장비 <small id="gearTxt">전투력 0</small></div>
   <div class="gearbar" id="gearbar"></div>
   <div class="sec">사냥터 <small id="leftTxt">이번 주 남은 사냥 6번</small></div>
@@ -61,6 +63,7 @@
       <li><b>이번 주 규칙</b>: 사냥터마다 한 주 동안 규칙 하나가 붙습니다(관통형 · 반사형 강세 · 속성 바람 · 협력의 날 · 필살의 주 · 포획의 철 · 느린 사냥감 · 성난 사냥터). 주가 바뀌면 규칙도 바뀝니다. 「내 팀 n」은 규칙을 받는 팀원 수입니다. 점수가 바뀌는 규칙도 있습니다(−15% · +20%).</li>
       <li><b>라이벌</b>: 사냥터마다 나보다 바로 위 순위 사냥꾼이 라이벌입니다. 라이벌을 넘으면 그 위 사냥꾼이 새 라이벌이 되고, 한 주에 셋을 넘으면 <b>라이벌 상자</b>(골드 + 희귀 이상 장비)를 받습니다. 1위면 바로 아래 사냥꾼이 추격자로 보입니다.</li>
       <li><b>출전 준비</b>: 사냥터 단추를 누르면 준비 창이 뜹니다. 나오는 몬스터 · 보스 패턴 · 속성 · 지형을 보고, 팀 칸을 눌러 그 자리에서 펫을 바꾼 뒤 출발하세요. 한 번 다녀온 사냥터는 위의 <b>바로 출발</b>로 곧장 떠납니다.</li>
+      <li><b>사냥꾼 특성</b>: 사냥꾼 Lv 마다 특성 포인트 1점을 받습니다. 막타(포획률 · 끝내기 · 사냥꾼 공격) · 지휘(협력 공격 · 펫 공격 · 필살 게이지) · 생존(팀 HP · 받는 피해 · 웨이브 회복)에 나눠 넣고, 한 갈래에 6점을 넣으면 핵심 특성(사냥 본능 · 생포 지휘 · 버팀)이 열립니다. 첫 초기화는 무료입니다.</li>
       <li><b>지형</b>: 사냥터마다 가속 판 · 문 · 가시 벽 · 기둥 · 얼음 바닥 가운데 하나가 있습니다. 조준선이 지형을 따라 꺾이니 끌면서 확인하세요.</li>
     </ul>
     <button class="reset" id="reset" type="button">처음부터 다시</button>
@@ -122,6 +125,13 @@
   <div id="trnBody"></div>
   <button class="ghost" id="trnGo" type="button">닫기</button>
 </div></div>
+<div class="modal" id="mTal" hidden><div class="card">
+  <h2>사냥꾼 특성</h2>
+  <p id="talSum"></p>
+  <div id="talBody"></div>
+  <p class="dxmsg" id="talMsg" hidden></p>
+  <div class="hcbtns"><button class="ghost" id="talReset" type="button">초기화</button><button class="btn" id="talGo" type="button">닫기</button></div>
+</div></div>
 <div class="modal" id="mDex" hidden><div class="card">
   <h2>도감</h2>
   <p id="dxSum"></p>
@@ -161,6 +171,6 @@
 </div></div>
 <div class="modal" id="mRank" hidden><div class="card"><h2>주간 순위표</h2><p>이번 주 모든 사냥터에서 낸 사냥 점수의 합입니다.</p><div class="lb" id="rankList">불러오는 중…</div><button class="btn" id="rankClose" type="button">닫기</button></div></div>
 <div class="modal" id="mNick" hidden><div class="card"><h2>사냥꾼 이름</h2><p>순위표에 올라갈 이름입니다. 한글 2~8자, 다른 게임과 같이 씁니다.</p><input id="nickIn" maxlength="8" placeholder="예: 바람사냥꾼"><p class="err" id="nickErr"></p><button class="btn" id="nickGo" type="button">정하기</button></div></div>
-<script src="app.dd2b3ca9.js"></script>
+<script src="app.7a4612e1.js"></script>
 </body>
 </html>
