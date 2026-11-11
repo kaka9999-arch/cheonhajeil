@@ -9,7 +9,7 @@
 <meta name="description" content="사냥꾼을 당겨 쏘아 몬스터를 튕겨 잡고, 사냥꾼으로 막타를 쳐 펫으로 데려옵니다. 사냥터마다 이번 주 1등이 주인입니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@500;700;900&display=swap">
-<link rel="stylesheet" href="style.fc6585ff.css">
+<link rel="stylesheet" href="style.883b70c2.css">
 </head>
 <body>
 <section class="wrap screen" id="hub">
@@ -32,7 +32,7 @@
   <button class="talbar" id="btnTal" type="button" aria-label="사냥꾼 특성"></button>
   <div class="sec" id="secGear">사냥꾼 장비 <small id="gearTxt">전투력 0</small></div>
   <div class="gearbar" id="gearbar"></div>
-  <div class="sec">사냥터 <small id="leftTxt">이번 주 남은 사냥 6번</small></div>
+  <div class="sec">사냥터 <small id="leftTxt">새 주까지</small></div>
   <button class="quick" id="btnQuick" type="button" hidden></button>
   <div class="expbox" id="expBox" hidden></div>
   <div class="wmap" id="wmap"><canvas id="mapCv" aria-label="대륙 지도"></canvas><div class="mapcap" id="mapCap">사냥터를 누르면 그 칸으로 갑니다</div></div>
@@ -45,7 +45,7 @@
       <li>사냥꾼과 펫이 차례로 날아갑니다. 화면 어디서든 <b>당겼다 놓으세요</b>. 같은 편을 스치면 협력 공격.</li>
       <li><b style="color:var(--gold)">사냥꾼(금테 · 나)이 마지막 일격</b>을 넣으면 그 몬스터가 펫으로 따라올 수 있습니다. 약점 일격·높은 콤보면 더 잘 따라옵니다. HP가 35% 아래로 떨어진 적에는 <b style="color:#7dffae">포획 기회</b> 표시가 뜹니다.</li>
       <li>잡은 펫은 개체마다 <b>특성</b>이 하나씩 붙습니다(아홉 가지 · 금색 셋은 드묾). 같은 종을 겹치면 별이 오르고, 특성이 다르면 남길 것을 고릅니다. 보관함의 특성 꼬리표를 누르면 골드로 <b>특성 바꾸기</b>를 합니다.</li>
-      <li>사냥할 때마다 그 사냥터에 점수가 쌓입니다. <b>한 주(사냥 6번)가 끝날 때 1등이 주인</b>이 되고, 다음 주 그 사냥터에서 포획률 +15% · 통행세 120골드 · 보스 HP −15% · 장비 드롭 75%를 받습니다.</li>
+      <li>사냥할 때마다 그 사냥터에 점수가 쌓입니다. <b>한 주(월요일 0시 ~ 다음 월요일 0시)가 끝날 때 1등이 주인</b>이 되고, 다음 주 그 사냥터에서 포획률 +15% · 통행세 120골드 · 보스 HP −15% · 장비 드롭 75%를 받습니다.</li>
       <li><b style="color:#ffb58a">보스 포획</b>: 사냥터에서 이번 주 1등이거나 주인이면 주 1회 보스에 도전합니다. 빛나는 약점은 3배 피해, 사냥꾼 막타로 전설 펫을 데려올 수 있습니다. 보스마다 패턴이 있습니다 — <b>약점 둘</b> · <b>보호막</b>(약점을 맞히면 깨짐) · <b>졸개 부르기</b>(보스가 쓰러지면 달아남), 그리고 HP 40% 아래에서 <b>분노</b>(카운트 −1 · 공격 강화).</li>
       <li><b>레벨 · 진화</b>: 사냥꾼과 팀에 넣은 펫은 사냥마다 경험치를 받아 세집니다. 펫이 ★2 · Lv 5가 되면 진화합니다(진화하면 ★1부터).</li>
       <li><b>새 사냥터</b>: 사냥꾼 Lv 3 · 5 · 8 · 12에 더 깊은 사냥터가 열립니다. 깊을수록 몬스터가 세고, 점수와 펫도 큽니다.</li>
@@ -178,6 +178,6 @@
 </div></div>
 <div class="modal" id="mRank" hidden><div class="card"><h2>주간 순위표</h2><div class="rktabs"><button class="ghost on" id="rkTabG" type="button">사냥터별</button><button class="ghost" id="rkTabS" type="button">점수 합</button></div><p id="rkNote">모든 사냥꾼의 이번 주 사냥터별 점수입니다.</p><div class="rkb" id="rkBoard">불러오는 중…</div><div class="lb" id="rankList" hidden>불러오는 중…</div><button class="btn" id="rankClose" type="button">닫기</button></div></div>
 <div class="modal" id="mNick" hidden><div class="card"><h2>사냥꾼 이름</h2><p>순위표에 올라갈 이름입니다. 한글 2~8자, 다른 게임과 같이 씁니다.</p><input id="nickIn" maxlength="8" placeholder="예: 바람사냥꾼"><p class="err" id="nickErr"></p><button class="btn" id="nickGo" type="button">정하기</button></div></div>
-<script src="app.426d7df6.js"></script>
+<script src="app.5d2e9bc7.js"></script>
 </body>
 </html>
