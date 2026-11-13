@@ -77,7 +77,7 @@
       <li><b>출전 준비</b>: 사냥터 단추를 누르면 준비 창이 뜹니다. 나오는 몬스터 · 보스 패턴 · 속성 · 지형을 보고, 팀 칸을 눌러 그 자리에서 펫을 바꾼 뒤 출발하세요. 한 번 다녀온 사냥터는 위의 <b>바로 출발</b>로 곧장 떠납니다.</li>
       <li><b>사냥꾼 특성</b>: 사냥꾼 Lv 마다 특성 포인트 1점을 받습니다. 막타(포획률 · 끝내기 · 사냥꾼 공격) · 지휘(협력 공격 · 펫 공격 · 필살 게이지) · 생존(팀 HP · 받는 피해 · 웨이브 회복)에 나눠 넣고, 한 갈래에 6점을 넣으면 핵심 특성(사냥 본능 · 생포 지휘 · 버팀)이 열립니다. 첫 초기화는 무료입니다.</li>
       <li><b>지형</b>: 사냥터마다 가속 판 · 문 · 가시 벽 · 기둥 · 얼음 바닥 가운데 하나가 있습니다. 조준선이 지형을 따라 꺾이니 끌면서 확인하세요.</li>
-      <li><b style="color:#9fc3ff">역할 몬스터</b>: Lv 5 이상 사냥터는 웨이브마다 하나가 역할을 맡습니다 — 방패병(방패 쪽 피해 −70% · 벽에 튕겨 뒤나 옆을 노리세요) · 치유사(카운트 0 에 둘레 적 HP 회복) · 지휘관(둘레 적 카운트 −1 · 쓰러지면 +1).</li>
+      <li><b style="color:#9fc3ff">역할 몬스터</b>: Lv 5 이상 사냥터는 웨이브마다 하나가 역할을 맡습니다 — 방패병(방패 쪽 피해 −70% · 벽에 튕겨 뒤나 옆을 노리세요) · 치유사(카운트 0 에 둘레 적 HP 회복) · 지휘관(둘레 적 카운트 −1 · 쓰러지면 +1) · 폭탄병(공격하지 않음 · 쓰러지면 둘레 원 안 적에게 최대 HP 30% 피해, 보스는 8% · 사냥꾼이 잡으면 터지지 않음).</li>
       <li><b style="color:#d7a8ff">변종 몬스터</b>: 사냥 8번 뒤부터 몬스터 하나에 접두어가 붙어 나옵니다(어려움은 둘까지) — 단단한(HP ×1.6) · 가시 돋친(부딪히면 팀이 반사 피해) · 흡혈하는(공격하면 HP 회복) · 재빠른(카운트 −1) · 분열하는(쓰러지면 작은 둘) · 지키는(곁 적 피해 −30%). 변종이 나온 판은 점수 ×1.15, 사냥꾼 막타로 잡으면 금색 특성이 50%로 붙습니다.</li>
     </ul>
     <button class="reset" id="reset" type="button">처음부터 다시</button>
@@ -195,6 +195,6 @@
 <div class="modal" id="mRank" hidden><div class="card"><h2>주간 순위표</h2><div class="rktabs"><button class="ghost on" id="rkTabG" type="button">사냥터별</button><button class="ghost" id="rkTabS" type="button">점수 합</button></div><p id="rkNote">모든 사냥꾼의 이번 주 사냥터별 점수입니다.</p><div class="rkb" id="rkBoard">불러오는 중…</div><div class="lb" id="rankList" hidden>불러오는 중…</div><button class="btn" id="rankClose" type="button">닫기</button></div></div>
 <div class="modal" id="mOhsR" hidden><div class="card ohrc"><h2>오늘의 해법</h2><p class="ohrn" id="ohrNote"></p><canvas class="ohrcv" id="ohrCv" width="720" height="1040"></canvas><div class="hcbtns"><button class="ghost" id="ohrAgain" type="button">다시 재생</button><button class="btn" id="ohrGo" type="button">닫기</button></div></div></div>
 <div class="modal" id="mNick" hidden><div class="card"><h2>사냥꾼 이름</h2><p>순위표에 올라갈 이름입니다. 한글 2~8자, 다른 게임과 같이 씁니다.</p><input id="nickIn" maxlength="8" placeholder="예: 바람사냥꾼"><p class="err" id="nickErr"></p><button class="btn" id="nickGo" type="button">정하기</button></div></div>
-<script src="app.609ea9ee.js"></script>
+<script src="app.92551d0f.js"></script>
 </body>
 </html>
