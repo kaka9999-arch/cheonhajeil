@@ -9,7 +9,7 @@
 <meta name="description" content="사냥꾼을 당겨 쏘아 몬스터를 튕겨 잡고, 사냥꾼으로 막타를 쳐 펫으로 데려옵니다. 사냥터마다 이번 주 1등이 주인입니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@500;700;900&display=swap">
-<link rel="stylesheet" href="style.b34fb841.css">
+<link rel="stylesheet" href="style.3b3402cf.css">
 </head>
 <body>
 <section class="wrap screen" id="hub">
@@ -21,7 +21,6 @@
   <button class="ssnbar" id="btnSsn" type="button" aria-label="시즌 순위와 보상"><span class="ssnno" id="ssnNo">시즌 1</span><span class="ssnmid"><span class="ssnl"><span class="ssndots" id="ssnDots"></span><span id="ssnTxt"></span></span><small id="ssnSub"></small></span><i class="namego">▸</i></button>
   <div class="guide" id="guide" hidden></div>
   <div id="evt" hidden></div>
-  <div id="bty" hidden></div>
   <div class="sec" id="secDaily">오늘의 임무 <small id="dqTxt">자정에 바뀝니다</small><button class="foldbtn" id="fdDaily" type="button" data-fold="daily">접기 ▴</button></div>
   <button class="fsum" id="dailySum" type="button" data-fold="daily" hidden></button>
   <div class="daily" id="daily"></div>
@@ -31,6 +30,7 @@
   <div class="sec">사냥터 <small id="leftTxt">새 주까지</small></div>
   <button class="quick" id="btnQuick" type="button" hidden></button>
   <div id="ohs" hidden></div>
+  <div id="bty" hidden></div>
   <div class="expbox" id="expBox" hidden></div>
   <button class="fsum" id="mapSum" type="button" data-fold="map" hidden></button>
   <div class="wmap" id="wmap"><canvas id="mapCv" aria-label="대륙 지도"></canvas><div class="mapfoot"><div class="mapcap" id="mapCap">사냥터를 누르면 그 칸으로 갑니다</div><button class="foldbtn" id="fdMap" type="button" data-fold="map">접기 ▴</button></div></div>
@@ -171,6 +171,6 @@
 <div class="modal" id="mRank" hidden><div class="card"><h2>주간 순위표</h2><div class="rktabs"><button class="ghost on" id="rkTabG" type="button">사냥터별</button><button class="ghost" id="rkTabS" type="button">점수 합</button></div><p id="rkNote">모든 사냥꾼의 이번 주 사냥터별 점수입니다.</p><div class="rkb" id="rkBoard">불러오는 중…</div><div class="lb" id="rankList" hidden>불러오는 중…</div><button class="btn" id="rankClose" type="button">닫기</button></div></div>
 <div class="modal" id="mOhsR" hidden><div class="card ohrc"><h2>오늘의 해법</h2><p class="ohrn" id="ohrNote"></p><canvas class="ohrcv" id="ohrCv" width="720" height="1040"></canvas><div class="hcbtns"><button class="ghost" id="ohrAgain" type="button">다시 재생</button><button class="btn" id="ohrGo" type="button">닫기</button></div></div></div>
 <div class="modal" id="mNick" hidden><div class="card"><h2>사냥꾼 이름</h2><p>순위표에 올라갈 이름입니다. 한글 2~8자, 다른 게임과 같이 씁니다.</p><input id="nickIn" maxlength="8" placeholder="예: 바람사냥꾼"><p class="err" id="nickErr"></p><button class="btn" id="nickGo" type="button">정하기</button></div></div>
-<script src="app.24912508.js"></script>
+<script src="app.c57eb5b3.js"></script>
 </body>
 </html>
