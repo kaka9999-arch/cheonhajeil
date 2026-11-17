@@ -9,7 +9,7 @@
 <meta name="description" content="사냥꾼을 당겨 쏘아 몬스터를 튕겨 잡고, 사냥꾼으로 막타를 쳐 펫으로 데려옵니다. 사냥터마다 이번 주 1등이 주인입니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@500;700;900&display=swap">
-<link rel="stylesheet" href="style.6e48c4a4.css">
+<link rel="stylesheet" href="style.cb3c8808.css">
 </head>
 <body>
 <section class="wrap screen" id="hub">
@@ -44,7 +44,7 @@
   <button class="talbar" id="btnTal" type="button" aria-label="사냥꾼 특성"></button>
   <div class="sec" id="secGear">사냥꾼 장비 <small id="gearTxt">전투력 0</small></div>
   <div class="gearbar" id="gearbar"></div>
-  <div class="sec">펫 보관함 <small id="dexTxt">0마리</small><button class="ghost dexbtn" id="btnDex" type="button">도감 ▸</button></div>
+  <div class="sec">펫 보관함 <small id="dexTxt">0마리</small><button class="ghost dexbtn dspbtn" id="btnDsp" type="button" hidden>파견 ▸</button><button class="ghost dexbtn" id="btnDex" type="button">도감 ▸</button></div>
   <div class="pbar" id="pbar" hidden></div>
   <div class="pets" id="pets"></div>
   <details>
@@ -135,6 +135,12 @@
   <p class="dxmsg" id="talMsg" hidden></p>
   <div class="hcbtns"><button class="ghost" id="talReset" type="button">초기화</button><button class="btn" id="talGo" type="button">닫기</button></div>
 </div></div>
+<div class="modal" id="mDsp" hidden><div class="card">
+  <h2>펫 파견</h2>
+  <p id="dspSum"></p>
+  <div id="dspBody"></div>
+  <button class="ghost" id="dspGo" type="button">닫기</button>
+</div></div>
 <div class="modal" id="mDex" hidden><div class="card">
   <h2>도감</h2>
   <p id="dxSum"></p>
@@ -186,6 +192,6 @@
 <div class="modal" id="mBstR" hidden><div class="card ohrc"><h2>최고의 한 방</h2><p class="ohrn" id="bsrNote"></p><canvas class="ohrcv" id="bsrCv" width="720" height="1040"></canvas><div class="hcbtns"><button class="ghost" id="bsrAgain" type="button">다시 재생</button><button class="btn" id="bsrGo" type="button">닫기</button></div></div></div>
 <div class="modal" id="mOhsR" hidden><div class="card ohrc"><h2>오늘의 해법</h2><p class="ohrn" id="ohrNote"></p><canvas class="ohrcv" id="ohrCv" width="720" height="1040"></canvas><div class="hcbtns"><button class="ghost" id="ohrAgain" type="button">다시 재생</button><button class="btn" id="ohrGo" type="button">닫기</button></div></div></div>
 <div class="modal" id="mNick" hidden><div class="card"><h2>사냥꾼 이름</h2><p>순위표에 올라갈 이름입니다. 한글 2~8자, 다른 게임과 같이 씁니다.</p><input id="nickIn" maxlength="8" placeholder="예: 바람사냥꾼"><p class="err" id="nickErr"></p><button class="btn" id="nickGo" type="button">정하기</button></div></div>
-<script src="app.107c071f.js"></script>
+<script src="app.f1e93e0d.js"></script>
 </body>
 </html>
