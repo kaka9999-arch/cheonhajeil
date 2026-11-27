@@ -23,7 +23,7 @@
 <meta name="description" content="여덟 깃발의 땅에서 깃발 없이 싸우는 용병입니다. 직접 고르는 턴제 전투로 장비를 모으고 강해집니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.98d9825a.css">
+<link rel="stylesheet" href="style.ba5aafe0.css">
 </head>
 <body>
 <div id="app">
@@ -88,6 +88,7 @@
 
     <section class="screen" id="scrShop" hidden>
     <header class="mc-head"><h1>상<em>점</em></h1><button class="mc-back" id="btnShopBack" type="button">◀ 마을</button></header>
+        <div class="mc-tkbar mc-gwbar" id="lbShop" hidden></div>
     <div class="mc-panel mc-pts"><div><small>가진 골드</small><span class="mc-note">장비는 장비 화면에서 팝니다.</span></div><b id="shopSilver">0</b></div>
         <div class="mc-ftabs" id="shopTabs" hidden></div>
     <div id="shopHead">
@@ -105,6 +106,7 @@
 
     <section class="screen" id="scrForge" hidden>
     <header class="mc-head"><h1>대장<em>간</em></h1><button class="mc-back" id="btnForgeBack" type="button">◀ 마을</button></header>
+    <div class="mc-tkbar mc-gwbar" id="gbForge" hidden></div>
     <div class="mc-panel mc-pts"><div><small>가진 골드</small><span class="mc-note" id="forgeBind"></span></div><b id="forgeSilver">0</b></div>
     <h2 class="mc-h3">재료 가방</h2>
     <div class="mc-mats" id="forgeMats"></div>
@@ -114,6 +116,7 @@
 
     <section class="screen" id="scrSpell" hidden>
     <header class="mc-head"><h1>주<em>문</em></h1><button class="mc-back" id="btnSpellBack" type="button">◀ 마을</button></header>
+    <div class="mc-tkbar mc-gwbar" id="gbSpell" hidden></div>
     <p class="mc-lead" id="spellLead"></p>
     <div class="mc-panel mc-ring" id="spellRing"></div>
     <h2 class="mc-h3">주문 책 <small id="quickCount"></small></h2>
@@ -123,6 +126,7 @@
 
     <section class="screen" id="scrFeat" hidden>
     <header class="mc-head"><h1>특<em>성</em></h1><button class="mc-back" id="btnFeatBack" type="button">◀ 마을</button></header>
+    <div class="mc-tkbar mc-gwbar" id="gbFeat" hidden></div>
     <div class="mc-panel mc-pts"><div><small>남은 특성 포인트</small><span class="mc-note" id="featNote"></span></div><b id="featPts">0</b></div>
     <p class="mc-lead" id="featLead"></p>
         <div class="mc-ftabs" id="featSetBox" hidden></div>
@@ -190,6 +194,7 @@
 
     <section class="screen" id="scrStats" hidden>
     <header class="mc-head"><h1>스<em>탯</em></h1><button class="mc-back" id="btnStatsBack" type="button">◀ 마을</button></header>
+    <div class="mc-tkbar mc-gwbar" id="gbStats" hidden></div>
     <div class="mc-panel mc-pts"><div><small>남은 스탯 포인트</small><span class="mc-note" id="ptsNote"></span></div><b id="ptsNow">0</b></div>
     <div class="mc-stlist" id="statList"></div>
         <div class="mc-panel mc-ssp" id="sspecBox" hidden></div>
@@ -211,6 +216,7 @@
 
     <section class="screen" id="scrGear" hidden>
         <header class="mc-head"><h1>장<em>비</em></h1><button class="mc-fchip mc-tobag" id="btnToBag" type="button">가방 ▾</button><button class="mc-back" id="btnGearBack" type="button">◀ 마을</button></header>
+    <div class="mc-tkbar mc-gwbar" id="gbGear" hidden></div>
     <div class="mc-slots" id="slotList"></div>
         <div class="mc-trkbox" id="trkBox" hidden></div>
         <div class="mc-panel mc-bestbox" id="bestBox" hidden><div><b>좋은 것 모두 끼기</b><span id="bestTxt"></span></div><button class="mc-btn gold" id="btnWearBest" type="button">모두 끼기</button></div>
@@ -279,6 +285,7 @@
 <div class="mc-dim" id="goSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="goTitle">
     <h2 class="mc-sheet-h" id="goTitle">훈련장</h2>
+        <div class="mc-tkbar mc-gwbar" id="gbStar" hidden></div>
     <p class="mc-sheet-p" id="goSub"></p>
         <p class="mc-note mc-golk" id="goLk" hidden></p>
         <p class="mc-note mc-gocook" id="goCook" hidden></p>
@@ -296,6 +303,7 @@
 <div class="mc-dim" id="altarSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="altarTitle">
     <h2 class="mc-sheet-h" id="altarTitle">제단</h2>
+        <div class="mc-tkbar mc-gwbar" id="gbAltar" hidden></div>
     <p class="mc-sheet-p" id="altarSub">유물을 바치고 석판 하나를 고릅니다. 바친 유물은 돌려받을 수 없습니다.</p>
     <div class="mc-gains two" id="altarSum"></div>
     <div class="mc-slabs" id="altarList"></div>
@@ -307,6 +315,7 @@
 <div class="mc-dim" id="trainSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="trainTitle">
     <h2 class="mc-sheet-h" id="trainTitle">연구소</h2>
+        <div class="mc-tkbar mc-gwbar" id="gbTrain" hidden></div>
     <p class="mc-sheet-p" id="trainSub">골드와 시간을 들여 영구 효과를 올립니다. 한 번에 하나만 연구합니다.</p>
     <div class="mc-trq" id="trainNow"></div>
         <div class="mc-panel mc-trf" id="trainFocus" hidden></div>
@@ -486,6 +495,7 @@
 <div class="mc-dim" id="codexSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="codexTitle">
     <h2 class="mc-sheet-h" id="codexTitle">도감</h2>
+        <div class="mc-tkbar mc-gwbar" id="gbCodex" hidden></div>
     <p class="mc-sheet-p" id="codexSub">적을 많이 쓰러뜨리면 그 종족에게 주는 피해가 늘어납니다.</p>
     <div class="mc-filters mc-achtabs" id="codexTabs" role="group" aria-label="도감 갈래 고르기" hidden></div>
     <div class="mc-gains two" id="codexSum"></div>
@@ -658,6 +668,7 @@
 <div class="mc-dim" id="stallSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="stallTitle">
     <h2 class="mc-sheet-h" id="stallTitle">전리품 노점 — 값 부르기</h2>
+        <div class="mc-tkbar mc-gwbar" id="lbStall" hidden></div>
     <div class="mc-den" id="stallBody"></div>
     <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnStallBack" type="button">닫기</button></div>
   </div>
@@ -700,6 +711,7 @@
 <div class="mc-dim" id="seaSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="seaTitle">
     <h2 class="mc-sheet-h" id="seaTitle">바다</h2>
+        <div class="mc-tkbar mc-gwbar" id="lbSea" hidden></div>
     <div class="mc-den" id="seaBody"></div>
     <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnSeaBack" type="button">닫기</button></div>
   </div>
@@ -707,6 +719,7 @@
 <div class="mc-dim" id="denSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="denTitle">
     <h2 class="mc-sheet-h" id="denTitle">소굴</h2>
+        <div class="mc-tkbar mc-gwbar" id="lbDen" hidden></div>
     <div class="mc-den" id="denBody"></div>
     <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnDenBack" type="button">닫기</button></div>
   </div>
@@ -721,6 +734,7 @@
 <div class="mc-dim" id="fishSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="fishTitle">
     <h2 class="mc-sheet-h" id="fishTitle">낚시</h2>
+        <div class="mc-tkbar mc-gwbar" id="lbFish" hidden></div>
     <div class="mc-fish" id="fishBody"></div>
     <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnFishBack" type="button">닫기</button></div>
   </div>
@@ -728,6 +742,7 @@
 <div class="mc-dim" id="mountSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="mountTitle">
     <h2 class="mc-sheet-h" id="mountTitle">마구간</h2>
+        <div class="mc-tkbar mc-gwbar" id="lbMount" hidden></div>
     <div class="mc-mount" id="mountBody"></div>
     <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnMountBack" type="button">닫기</button></div>
   </div>
@@ -735,6 +750,7 @@
 <div class="mc-dim" id="cookSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="cookTitle">
     <h2 class="mc-sheet-h" id="cookTitle">취사</h2>
+        <div class="mc-tkbar mc-gwbar" id="lbCook" hidden></div>
     <div class="mc-cook" id="cookBody"></div>
     <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnCookBack" type="button">닫기</button></div>
   </div>
@@ -742,6 +758,7 @@
 <div class="mc-dim" id="fortSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="fortTitle">
     <h2 class="mc-sheet-h" id="fortTitle">요새</h2>
+        <div class="mc-tkbar mc-gwbar" id="lbFort" hidden></div>
     <div class="mc-fort" id="fortBody"></div>
     <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnFortBack" type="button">닫기</button></div>
   </div>
@@ -749,6 +766,7 @@
 <div class="mc-dim" id="beastSheet" hidden>
   <div class="mc-panel mc-sheet" role="dialog" aria-modal="true" aria-labelledby="beastTitle">
     <h2 class="mc-sheet-h" id="beastTitle">짐승</h2>
+        <div class="mc-tkbar mc-gwbar" id="gbBeast" hidden></div>
     <div class="mc-bst" id="beastBody"></div>
     <div class="mc-shfoot"><button class="mc-btn mc-wide" id="btnBeastBack" type="button">닫기</button></div>
   </div>
@@ -1072,6 +1090,6 @@
 <div id="toast" class="mc-toast" role="status" hidden></div>
 
 <script src="https://cdn.jsdelivr.net/npm/zzfx@1.3.2/ZzFXMicro.min.js"></script>
-<script src="app.bfbca063.js"></script>
+<script src="app.aa7ba545.js"></script>
 </body>
 </html>
